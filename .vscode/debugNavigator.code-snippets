@@ -2,7 +2,7 @@
     "Debug Navigator Script": {
         "prefix": "dN",
         "body": [
-            "<script type=\"text/javascript\" src=\"../controllers/debugNavigator.js\" id=\"rendered-js\"></script>"
+            "<script type=\"text/javascript\" src=\"../../assets/js/debugNavigator.js\" id=\"rendered-js\"></script>"
         ],
         "description": "Inserts a script tag for the Debug Navigator"
     }
