@@ -1,6 +1,8 @@
-function openLoginPopUp(event, url) {
+
+function openLoginPopUp(event, url, baseUrl) {
     
     event.preventDefault();
+   
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onreadystatechange = function() {
@@ -10,7 +12,7 @@ function openLoginPopUp(event, url) {
 
             if (!document.getElementById('sendFormScript')) {
                 const script = document.createElement('script');
-                script.src = 'assets/js/sendForm.js';
+                script.src = baseUrl+'assets/js/sendForm.js';
                 script.id = 'sendFormScript';
                 document.body.appendChild(script);
             }
