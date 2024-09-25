@@ -26,6 +26,15 @@ class UserModel {
         return $user ? true : false;
     }
 
+    public function checkIfLoggedIn(){
+        if(isset($_SESSION['user_id'])){
+            $user_id = $_SESSION['user_id'];
+            return $this->findUserByUserID($user_id);
+        } else {
+            return false;
+        }
+    }
+
     public function createUser($email, $username, $password) {
         $this->db->query("INSERT INTO users (email, username, password, first_name, picture_path, role) VALUES (:email, :username, :password, :first_name, 'default_profile_picture.png' , '1')", [
             'email' => $email,

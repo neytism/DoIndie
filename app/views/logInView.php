@@ -1,7 +1,5 @@
 <div id="login-container">
-
-
-
+    
     <h3>Log In</h3>
 
     <p id="error-message" style="color: red;"></p>
