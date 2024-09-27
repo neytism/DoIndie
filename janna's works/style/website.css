@@ -1,0 +1,90 @@
+/* Divisions */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+/* Mobile View */
+@media only screen and (max-width: 600px) {
+  body {
+      [class*="col-"] {
+          width: 100%;
+      }
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  /*Default Website Spacing*/
+  margin: 0px;
+  padding: 0px; 
+  border: 0px;
+  outline: none;
+
+  /*Default Text Settings*/
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: #423329;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration:none;
+}
+
+body {
+  background-color: #f4e9dc;
+}
+
+.center {
+  margin: auto;
+  padding: 10px;
+}
+
+.headerTitle {
+  font-size: 50px;
+  font-weight: 900px;
+  letter-spacing: 0px;
+}
+
+/*Default Button Class Formats*/
+.inputButtonV1 {
+  border-radius: 1em;
+  background-color:#f4e9dc;
+  font-weight: bolder;
+  letter-spacing: 0px;
+  color:#423329;
+  margin: 10px;
+  padding: 7.5px 25px;
+}
+
+.inputButtonV1:hover {
+  background-color:#ccb9a5;
+}
+
+.inputButtonV2 {
+  border-radius: 1em;
+  background-color:#423329;
+  font-weight: bolder;
+  letter-spacing: 0px;
+  color:#f4e9dc;
+  margin: 10px;
+  padding: 7.5px 25px;
+}
+
+.inputButtonV2:hover {
+  background-color:#6d584b;
+}

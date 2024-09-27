@@ -1,66 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="icon" type="image/png" href="../assets/LOGO.png" />
     <title>DoIndie</title>
-    <link rel="icon" type="image/x-icon" href="..\images\LOGO.png">
+
+     <!-- CSS FILE LINK -->
+     <link rel="stylesheet" type="text/css" href="../style/homepage.css">
+
+
   </head>
-<body>
+  <body>
 
-    <!-- NAV BAR -->
-    <div class="main">
-        <div class="navbar">
-            <div class="icon">
-                <h2 class="logo" a href="#">DoIndie</h2>
-            </div>
-
-            <div class="menu">
-                <ul>
-                    <li><a href="#">ARTISTS</a>
-                        <ul>
-                            <li><a href="#">Name 1</a></li>
-                            <li><a href="#">Name 2</a></li>
-                            <li><a href="#">Name 3</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">PRODUCTS</a>
-                        <ul>
-                            <li><a href="#">Pins</a></li>
-                            <li><a href="#">Posters</a></li>
-                            <li><a href="#">Stickers</a></li>
-                            <li><a href="#">Keychains</a></li>
-                            <li><a href="#">Fanart</a></li>
-                            <li><a href="#">Commissions</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">CART</a></li>
-                    <li><a href="#">PROFILE</a>
-                        <ul>
-                            <li><a href="#">Edit Profile</a></li>
-                            <li><a href="#">Log Out</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="search">
-                <input class="srch" type="search" name="" placeholder=" ">
-                <a href="#"><button class="btn">Search</button></a>
-            </div>
-        </div> 
-        <!-- END NAV BAR -->
-
-        <div class="content">
-            <h1>DoIndie<br>Made by Artists, For Artists</h1>
-            <p>Lorem Ipsum Dolor Set.</p>
+    <!-- HEADER SECTION START -->
+    <header>
+      <nav class="header__nav">
+        <div class="header__logo">
+          <h4 data-aos="fade-down">DOINDIE</h4>
+          <div class="header__logo-overlay"></div>
         </div>
 
-        <!-- FOOTER -->
-        <div class="footer">
-            <p>&copy; 2024 DoIndie. All rights reserved.</p>
+        <ul class="header__menu" data-aos="fade-down">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown">Artists</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Artist 1</a></li>
+              <li><a href="#">Artist 2</a></li>
+              <li><a href="#">Artist 3</a></li>
+              <li><a href="#">Artist 4</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown">Products</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Product 1</a></li>
+              <li><a href="#">Product 2</a></li>
+              <li><a href="#">Product 3</a></li>
+              <li><a href="#">Product 4</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="cart.html">Cart</a>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown">Profile</a>
+            <ul class="dropdown-menu">
+              <li><a href="#edit-profile">Edit Profile</a></li>
+              <li><a href="#log-out">Log Out</a></li>
+            </ul>
+          </li>
+            <img src="../assets/search.svg" alt="search" />
+          </li>
+        </ul>
+
+        <ul class="header__menu-mobile" data-aos="fade-down">
+          <li>
+            <img src="../assets/1.png" alt="art1" />
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- HEADER SECTION END -->
+
+    <!-- HERO SECTION START -->
+    <section class="hero">
+      <div class="hero-image">
+        <img 
+          src="../assets/FISH MASCOT.png"
+          alt="homepage image"
+          data-aos="fade-up"
+        />
+        <h2 data-aos="fade-up">
+          Do, <br />
+          Indie
+        </h2>
+
+        <div class="hero-image__overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-content-info" data-aos="fade-left">
+          <h1>Made by Artists, for Artists</h1>
+          <p>An online artists' marketplace.</p>
+
+          <div class="hero-content__buttons">
+            <button class="hero-content__order-button">What's New?</button>
+            <button class="hero-content__play-button">
+              <img src="../assets/play-circle.svg" alt="play" />
+              Terms and Conditions
+            </button>
+          </div>
         </div>
-    </div>
-</body>
+
+        <div class="hero-content__testimonial" data-aos="fade-up">
+          <div class="hero-content__customer flex-center">
+            <h4>Lorem</h4>
+            <p>Ipsum Dolor</p>
+          </div>
+
+          <div class="hero-content__review">
+            <img src="../assets/user.png" alt="user" />
+            <p>"User review here maybe?"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- HERO SECTION END -->
+
+
+    <!-- SCROLLING GALLERY START -->
+    <section class="popular-foods" id="menu">
+      <h2 class="popular-foods__title" data-aos="flip-up">What's New?</h2>
+
+      <div class="popular-foods__filters homepage__hide-scrollbar" data-aos="fade-up">
+        <button class="popular-foods__filter-btn active">All</button>
+        <button class="popular-foods__filter-btn">
+          <img src="../assets/LOGO.png" alt="" />
+          Art One
+        </button>
+        <button class="popular-foods__filter-btn">
+          <img src="../assets/LOGO.png" alt="" />
+          Art Two
+        </button>
+        <button class="popular-foods__filter-btn">
+          <img src="../assets/LOGO.png" alt="" />
+          Art Three
+        </button>
+        <button class="popular-foods__filter-btn">
+          <img src="../assets/LOGO.png" alt="" />
+          Art Four
+        </button>
+        <button class="popular-foods__filter-btn">All</button>
+      </div>
+
+      <div class="popular-foods__catalogue" data-aos="fade-up">
+        <article class="popular-foods__card">
+          <img class="popular-foods__card-image" src="../assets/1.png" alt="" />
+          <h4 class="popular-foods__card-title">Artist Name</h4>
+
+          <div class="popular-foods__card-details flex-between">
+            <div class="popular-foods__card-rating">
+              <img src="../assets/star.svg" alt="star" />
+              <p>4.9</p>
+            </div>
+
+            <p class="popular-foods__card-price">$21.00</p>
+          </div>
+        </article>
+
+        <article class="popular-foods__card active-card">
+          <img class="popular-foods__card-image" src="../assets/1.png" alt="" />
+          <h4 class="popular-foods__card-title">Artist Name</h4>
+          
+          <div class="popular-foods__card-details flex-between">
+            <div class="popular-foods__card-rating">
+              <img src="../assets/star.svg" alt="star" />
+              <p>5.0</p>
+            </div>
+            
+            <p class="popular-foods__card-price">$19.00</p>
+          </div>
+        </article>
+
+        <article class="popular-foods__card">
+          <img class="popular-foods__card-image" src="../assets/1.png" alt="" />
+          <h4 class="popular-foods__card-title">Artist Name</h4>
+
+          <div class="popular-foods__card-details flex-between">
+            <div class="popular-foods__card-rating">
+              <img src="../assets/star.svg" alt="star" />
+              <p>4.7</p>
+            </div>
+
+            <p class="popular-foods__card-price">$13.00</p>
+          </div>
+        </article>
+      </div>
+
+      <button class="popular-foods__button">
+        Explore More Artists
+        <img src="../assets/arrow-right.svg"  alt="arrow-right" />
+      </button>
+    </section>
+    <!-- SCROLLING GALLERY END -->
+
+    <!-- FOOTER START -->
+    <footer class="footer flex-between">
+      <h3 class="footer__logo">
+        <span>Do</span>Indie
+      </h3>
+
+      <ul class="footer__nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="">Customer Service</a></li>
+        <li><a href="">Shopping Cart</a></li>
+        <li><a href="">About Us</a></li>
+      </ul>
+
+      <ul class="footer__social">
+        <li class="flex-center">
+          <img src="../assets/facebook.svg" alt="facebook" />
+        </li>
+        <li class="flex-center">
+          <img src="../assets/instagram.svg" alt="instagram" />
+        </li>
+        <li class="flex-center">
+          <img src="../assets/twitter.svg" alt="twitter" />
+        </li>
+      </ul>
+    </footer>
+    <!-- FOOTER END -->
+
+    <!-- JS FILE LINK -->
+    <script src="js/script.js" type="module"></script>
+  </body>
 </html>
