@@ -13,9 +13,9 @@ class UserModel {
     }
     
     public function findUserByUserID($user_id) {
-        return $this->db->fetch("SELECT * FROM users WHERE id = :user_id", ['user_id' => $user_id]);
+        return $this->db->fetch("SELECT * FROM users WHERE user_id = :user_id", ['user_id' => $user_id]);
     }
-
+    
     public function checkIfUserExistByUsername($username) {
         $user = $this->db->fetch("SELECT * FROM users WHERE username = :username", ['username' => $username]);
         return $user ? true : false;
@@ -36,11 +36,16 @@ class UserModel {
     }
 
     public function createUser($email, $username, $password) {
-        $this->db->query("INSERT INTO users (email, username, password, first_name, picture_path, role) VALUES (:email, :username, :password, :first_name, 'default_profile_picture.png' , '1')", [
+        $picture_path = 'default_profile_picture.png'; //remove after implementing upload
+        $role = '1';
+
+        $this->db->query("INSERT INTO users (email, username, password, first_name, picture_path, role) VALUES (:email, :username, :password, :first_name, :picture_path , :role)", [
             'email' => $email,
             'username' => $username,
             'password' => $password,
-            'first_name' => $username
+            'first_name' => $username,
+            'picture_path' => $picture_path ,
+            'role' => $role
         ]);
     }
 

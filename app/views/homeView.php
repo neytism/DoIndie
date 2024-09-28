@@ -4,7 +4,7 @@
 
 <h1>Hello, <?php 
 
- if ($data['is_logged_in']) {
+ if ($is_logged_in) {
     ;
     echo $data['user_info']['username'];
 } else {

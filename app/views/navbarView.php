@@ -8,7 +8,7 @@
     <a href="<?php echo BASEURL; ?>home/aboutUs">About us</a>&nbsp;&nbsp;
     <?php endif; ?>
     <?php if ($view != 'signUpView'): ?>
-        <?php if (!$data['is_logged_in']): ?>
+        <?php if (!$is_logged_in): ?>
             <a href="" onclick="openLoginPopUp(event,'<?php echo BASEURL; ?>login/popUp','<?php echo BASEURL; ?>')">Log in</a>&nbsp;&nbsp;
             <a href="<?php echo BASEURL; ?>signUp">Sign up</a>&nbsp;&nbsp;
         <?php else: ?>
@@ -25,4 +25,3 @@
 </div>
 
 <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/logInPopUp.js"></script>
-

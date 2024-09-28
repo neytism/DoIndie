@@ -1,6 +1,6 @@
 <?php
 
-class RegisterAsArtist extends Controller
+class Products extends Controller
 {
     private $userModel;
     
@@ -19,10 +19,11 @@ class RegisterAsArtist extends Controller
         $user_info = $this->userModel->checkIfLoggedIn();
 
         if ($user_info) {
-            $this->view('registerAsArtistView', ['user_info' => $user_info]);
+            $this->view('productsView', ['user_info' => $user_info]);
         } else {
-            $this->view('homeView');
+            $this->view('productsView');
         }
     
     }
+
 }

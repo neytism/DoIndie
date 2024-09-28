@@ -19,9 +19,9 @@ class Home extends Controller
         $user_info = $this->userModel->checkIfLoggedIn();
 
         if ($user_info) {
-            $this->view('homeView', ['is_logged_in' => true, 'user_info' => $user_info]);
+            $this->view('homeView', ['user_info' => $user_info]);
         } else {
-            $this->view('homeView', ['is_logged_in' => false]);
+            $this->view('homeView');
         }
     
     }
@@ -33,9 +33,9 @@ class Home extends Controller
         $user_info = $this->userModel->checkIfLoggedIn();
         
         if ($user_info) {
-            $this->view('aboutUsView', ['is_logged_in' => true, 'user_info' => $user_info]);
+            $this->view('aboutUsView', ['user_info' => $user_info]);
         } else {
-            $this->view('aboutUsView', ['is_logged_in' => false]);
+            $this->view('aboutUsView');
         }
     }
 }
