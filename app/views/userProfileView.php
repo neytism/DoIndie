@@ -14,6 +14,11 @@ $user_info = $data['user_info'];
 <h4> User id is <?= $data['user_info']['user_id'] ?></h4>
 <h4> First Name is <?= $data['user_info']['first_name'] ?></h4>
 <h4> Last Name is <?= $data['user_info']['last_name'] ?></h4>
+<?php if ($data['user_info']['is_verified_email'] == 'true'): ?>
+    <h4>Email is Verified.</h4>
+<?php else: ?>
+    <h4>Email is Not verified.</h4>
+<?php endif; ?>
 <?php
 $date_joined = new DateTime($data['user_info']['date_joined']);
 $formatted_date = $date_joined->format('F j, Y \a\t g:i A');

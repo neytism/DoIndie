@@ -25,6 +25,10 @@ class UserModel {
         $user = $this->db->fetch("SELECT * FROM users WHERE email = :email", ['email' => $email]);
         return $user ? true : false;
     }
+    
+    public function verifyUserEmailByUserID($user_id, $is_verified_email) {
+        $this->db->fetch("UPDATE users SET is_verified_email = :is_verified_email WHERE user_id = :user_id", ['is_verified_email' => $is_verified_email, 'user_id' => $user_id]);
+    }
 
     public function checkIfLoggedIn(){
         if(isset($_SESSION['user_id'])){

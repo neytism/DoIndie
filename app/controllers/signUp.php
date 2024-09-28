@@ -19,9 +19,9 @@ class SignUp extends Controller{
         $username = $_POST['username'];
         $password = $_POST['password'];
         $repeat_password = $_POST['repeat_password'];
-
+        
         $username = strtolower($username);
-
+        
         $errors = array(
             'email' => '',
             'username' => '',
@@ -80,7 +80,7 @@ class SignUp extends Controller{
             //no errors
             $hashedPassword = $this->hashPassword($password);
             $password = $hashedPassword['hash'] . "::" . $hashedPassword['salt'];
-
+            
             $this->userModel->createUser($email, $username, $password);
 
             // Redirect to a success page or log in

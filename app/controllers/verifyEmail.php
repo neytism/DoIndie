@@ -2,22 +2,78 @@
 
 class VerifyEmail extends Controller
 {
+    private $emailer;
     private $userModel;
     
     public function __construct() {
         $this->userModel = $this->model('UserModel');
+        $this->emailer = new Emailer();
     }
     
     public function index()
     {
-        http_response_code(400);
+        $this->checkIfLoggedIn();   
     }
     
-    public function verifyEmail(){
-    
+    protected function checkIfLoggedIn(){
+        session_start();
+        
+        $user_info = $this->userModel->checkIfLoggedIn();
+
+        if ($user_info) {
+            $this->generateverificationCode($user_info);
+            $this->view('verifyEmailView', ['user_info' => $user_info]);
+        } else {
+            $this->view('homeView');
+        }
     }
     
-    public function generateverificationCode(){
-        return substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 6);
+    public function verify(){
+        if (session_status() == PHP_SESSION_NONE) session_start();
+
+        $code = $_POST['code'];
+
+        if (isset($_SESSION['code_created_at']) && (time() - $_SESSION['code_created_at'] > 180)) {
+            // Code has expired
+            unset($_SESSION['verification_code']); 
+            unset($_SESSION['code_created_at']); 
+            echo 'error: code expired';
+        } else {
+            if($code == $_SESSION['verification_code']){
+                $this->userModel->verifyUserEmailByUserID($_SESSION['user_id'], 'true');
+                unset($_SESSION['verification_code']); 
+                unset($_SESSION['code_created_at']); 
+                echo 'success:'.BASEURL;
+                
+            } else{
+                echo 'error: incorrect code';
+            }
+            
+        }
+    
     }
+
+    public function clearStoredCode(){
+        if (isset($_SESSION['code_created_at']) && isset($_SESSION['verification_code'])) {
+            unset($_SESSION['verification_code']); 
+            unset($_SESSION['code_created_at']);
+        } 
+    }
+    
+    public function generateverificationCode($user_info){
+        $code = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 6);
+
+        if (session_status() == PHP_SESSION_NONE) session_start();
+    
+        if (!isset($_SESSION['verification_code'])) {
+            $_SESSION['verification_code'] = $code;
+            $_SESSION['code_created_at'] = time(); 
+            
+            $this->emailer->sendMail($user_info['email'], 'noreply: Doindie Email Verification Code', $code);
+        }
+    }
+
+    protected function sendCodeViaEmail(){
+
+    }    
 }
