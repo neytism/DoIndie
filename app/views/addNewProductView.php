@@ -2,7 +2,11 @@
 
 <p id="error-message" style="color: red;"></p>
 
-<form id="add-product-form" method="POST">
+<form id="add-product-form" method="POST" enctype="multipart/form-data">
+    <div><img style="height: auto; max-width: 250px" src="<?php echo BASEURL; ?>uploads/images/product_pictures/default_product_picture.png" alt=""></div><br>
+    <label for="image">Image:</label><br>
+    <input type="file" name="image" id="image" accept="image/*" required><br><br>
+    
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" required><br><br>
     
@@ -11,6 +15,7 @@
     
     <label for="product_category_id">Category:</label><br>
     <select name="product_category_id" id="product_category_id">
+        <option value="">Please choose an option</option>
         <?php foreach ($data['product_categories'] as $category): ?>
             <option value="<?= htmlspecialchars($category['product_category_id']) ?>">
                 <?= htmlspecialchars($category['product_category_name']) ?>
@@ -27,3 +32,5 @@
 </form>
 
 <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/sendForm.js"></script>
+
+<script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/updateUploadImage.js"></script>

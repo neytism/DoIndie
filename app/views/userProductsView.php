@@ -16,6 +16,7 @@ $is_self = $data['is_self'];
             src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>"
             alt=""></div>
             <h3>Title: <?= $product['title']?></h3>
+            <h4>Category: <?= $product['product_category_name'] ?></h4>
         </div><br>
     <?php endforeach; ?>
 <?php endif;?>
