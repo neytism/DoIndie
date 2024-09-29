@@ -1,7 +1,7 @@
 <div>
     <a>DOINDIE</a>&nbsp;&nbsp;
     <a href="<?php echo BASEURL; ?>">Home</a>&nbsp;&nbsp;
-    <a href="<?php echo BASEURL; ?>artist">Artists</a>&nbsp;&nbsp;
+    <a href="<?php echo BASEURL; ?>artists">Artists</a>&nbsp;&nbsp;
     <a href="<?php echo BASEURL; ?>products">Products</a>&nbsp;&nbsp;
     <a href="<?php echo BASEURL; ?>contactUs">Contact us</a>&nbsp;&nbsp;
     <?php if ($view != 'aboutUsView'): ?>

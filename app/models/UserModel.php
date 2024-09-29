@@ -66,7 +66,30 @@ class UserModel {
             'user_id' => $user_id
         ]);
     }
+    public function getAllArtist(){
+        return $this->db->fetchAll("SELECT u.*, c.artist_category_name FROM users u LEFT JOIN artist_categories c ON u.artist_category_id = c.artist_category_id WHERE u.is_artist = 'true'");
+    }
+    
+    public function updateUserAsArtistByUserID($user_id, $image, $username, $email, $address, $artist_display_name, $artist_category_id){
+        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, address = :address, artist_display_name = :artist_display_name, artist_category_id = :artist_category_id WHERE user_id = :user_id", [
+            'image' => $image,
+            'username' => $username,
+            'email' => $email,
+            'address' => $address,
+            'artist_display_name' => $artist_display_name ,
+            'artist_category_id' => $artist_category_id,
+            'user_id' => $user_id
+        ]);
+    }
 
-
+    public function updateUserByUserID($user_id, $image, $username, $email, $address){
+        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, address = :address WHERE user_id = :user_id", [
+            'image' => $image,
+            'username' => $username,
+            'email' => $email,
+            'address' => $address,
+            'user_id' => $user_id
+        ]);
+    }
     
 }

@@ -8,7 +8,8 @@
 <?php else:?>
     <?php foreach($data['all_products'] as $product):?>
         <div>
-            <div style="height: auto; width: 100px"><img
+            <div><img
+            style="height: auto; max-width: 250px; min-width: 250px;"
             src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>"
             alt=""></div>
             <h3>Title: <?= $product['title']?></h3>

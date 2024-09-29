@@ -14,7 +14,8 @@ $is_self = $data['is_self'];
 <h2>DoIndie Profile Page</h2>
 
 
-<div style="height: auto; width: auto"><img
+<div ><img
+        style="height: auto; max-width: 300px"
         src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $user_info['picture_path'] ?>"
         alt="<?= $user_info['username'] ?> Profile Pic"></div>
 <?php if ($user_info['is_artist'] == "true"): ?>
@@ -31,12 +32,16 @@ $is_self = $data['is_self'];
     <h4>Email is Verified.</h4>
 <?php else: ?>
     <h4>Email is Not verified.</h4>
+    <button onclick="window.location='<?php echo BASEURL; ?>verifyEmail'">Verify Email</button>
 <?php endif; ?>
 <?php
 $date_joined = new DateTime($user_info['date_joined']);
 $formatted_date = $date_joined->format('F j, Y \a\t g:i A');
 ?>
 <h4> Joined last <?= $formatted_date ?></h4>
+<?php if ($is_self): ?>
+    <button onclick="window.location='<?php echo BASEURL; ?>updateProfile/edit'">Edit Profile</button>
+<?php endif; ?>
 <?php if($user_info['is_artist'] == "true"):?>
 <h4><a href="<?php echo BASEURL; ?>products/artist/<?=$user_info['username']?>">See products</a></h4>
 <?php endif; ?>

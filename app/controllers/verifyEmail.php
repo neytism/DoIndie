@@ -21,7 +21,7 @@ class VerifyEmail extends Controller
         $user_info = $this->userModel->checkIfLoggedIn();
 
         if ($user_info) {
-            $this->generateverificationCode($user_info);
+            $this->generateVerificationCode($user_info);
             $this->view('verifyEmailView', ['user_info' => $user_info]);
         } else {
             $this->view('homeView');
@@ -60,20 +60,24 @@ class VerifyEmail extends Controller
         } 
     }
     
-    public function generateverificationCode($user_info){
+    public function generateVerificationCode($user_info){
         $code = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 6);
-
+        
         if (session_status() == PHP_SESSION_NONE) session_start();
     
         if (!isset($_SESSION['verification_code'])) {
             $_SESSION['verification_code'] = $code;
             $_SESSION['code_created_at'] = time(); 
             
-            $this->emailer->sendMail($user_info['email'], 'noreply: Doindie Email Verification Code', $code);
+            $message = include 'app/views/verifyEmailTemplate.php';
+            
+            $this->emailer->sendMail($user_info['email'], 'noreply: Doindie Email Verification Code', $message);
         }
     }
-
-    protected function sendCodeViaEmail(){
-
-    }    
+    
+    //remove
+    public function unverify(){
+        session_start();
+        $this->userModel->verifyUserEmailByUserID($_SESSION['user_id'], 'false');
+    }
 }
