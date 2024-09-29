@@ -40,7 +40,7 @@ $formatted_date = $date_joined->format('F j, Y \a\t g:i A');
 ?>
 <h4> Joined last <?= $formatted_date ?></h4>
 <?php if ($is_self): ?>
-    <button onclick="window.location='<?php echo BASEURL; ?>updateProfile/edit'">Edit Profile</button>
+    <button onclick="window.location='<?php echo BASEURL; ?>profile/edit'">Edit Profile</button>
 <?php endif; ?>
 <?php if($user_info['is_artist'] == "true"):?>
 <h4><a href="<?php echo BASEURL; ?>products/artist/<?=$user_info['username']?>">See products</a></h4>

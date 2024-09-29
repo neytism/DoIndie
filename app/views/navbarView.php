@@ -20,6 +20,9 @@
             <?php if ($view != 'userProfileView'): ?>
                 <a href="<?php echo BASEURL; ?>profile/<?php echo $data['user_info']['username'] ?>">Profile</a>&nbsp;&nbsp;
             <?php endif; ?>
+            <?php if ($view != 'cartView'): ?>
+                <a href="<?php echo BASEURL; ?>cart">Cart</a>&nbsp;&nbsp;
+            <?php endif; ?>
             <a href="<?php echo BASEURL; ?>login/logout">Logout</a>
         <?php endif; ?>
     <?php endif; ?>

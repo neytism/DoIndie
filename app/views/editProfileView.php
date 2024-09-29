@@ -39,7 +39,7 @@
         </select><br><br>
     <?php endif; ?>
     
-    <input type="submit" value="Save" onclick="sendForm(event,'edit-profile-form','error-message','<?php echo BASEURL; ?>updateProfile/checkProfile')">
+    <input type="submit" value="Save" onclick="sendForm(event,'edit-profile-form','error-message','<?php echo BASEURL; ?>profile/verifyProfileEdit')">
     
     <input type="button" value="Back" onclick="history.back()">
 </form>
