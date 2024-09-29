@@ -20,20 +20,25 @@ class Profile extends Controller
             http_response_code(400);
         }
 
+        //something is wrong with this code
+
+        session_start();
+        
         $searched_user = $this->userModel->findUserByUsername(strtolower($username));
+        $user_info = $this->userModel->checkIfLoggedIn();
 
         if ($searched_user) {
-            session_start();
+            
 
             if (isset($_SESSION['user_id'])) {
                 if ($_SESSION['user_id'] == $searched_user['user_id']) {
                     $this->myProfile();
                 } else {
-                    $this->view('userProfileView', ['user_info' => $searched_user, 'is_self' => false]);
+                    $this->view('userProfileView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'is_self' => false]);
                 }
-
+            
             } else {
-                $this->view('userProfileView', ['user_info' => $searched_user, 'is_self' => false]);
+                $this->view('userProfileView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'is_self' => false]);
             }
 
         } else {
@@ -57,9 +62,5 @@ class Profile extends Controller
         }
 
     }
-
-    public function about()
-    {
-        $this->view('aboutView');
-    }
+    
 }

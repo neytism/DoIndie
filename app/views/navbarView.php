@@ -13,7 +13,9 @@
             <a href="<?php echo BASEURL; ?>signUp">Sign up</a>&nbsp;&nbsp;
         <?php else: ?>
             <?php if ($view == 'userProfileView'): ?>
-                <a href="<?php echo BASEURL; ?>registerAsArtist">Register as Artist</a>&nbsp;&nbsp;
+                <?php if($data['user_info']['is_artist'] != 'true'):?>
+                    <a href="<?php echo BASEURL; ?>registerAsArtist">Register as Artist</a>&nbsp;&nbsp;
+                <?php endif; ?>
             <?php endif; ?>
             <?php if ($view != 'userProfileView'): ?>
                 <a href="<?php echo BASEURL; ?>profile/<?php echo $data['user_info']['username'] ?>">Profile</a>&nbsp;&nbsp;

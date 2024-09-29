@@ -1,6 +1,6 @@
 <?php
 
-class RegisterAsArtist extends Controller
+class Artist extends Controller
 {
     private $userModel;
     
@@ -17,11 +17,9 @@ class RegisterAsArtist extends Controller
         session_start();
         
         $user_info = $this->userModel->checkIfLoggedIn();
-        $artist_categories = $this->userModel->getArtistCategories();
-        
-        
+
         if ($user_info) {
-            $this->view('registerAsArtistView', ['user_info' => $user_info, 'artist_categories' => $artist_categories]);
+            $this->view('homeView', ['user_info' => $user_info]);
         } else {
             $this->view('homeView');
         }
@@ -29,19 +27,16 @@ class RegisterAsArtist extends Controller
     }
 
     public function checkRegister(){
-        $artist_name = $_POST['artist_name'];
-        $address = $_POST['address'];
-        $artist_category_id = $_POST['artist_category_id'];
-        
         session_start();
+        
         $user_info = $this->userModel->checkIfLoggedIn();
         
         if ($user_info) {
-            $this->userModel->setUserAsArtist($user_info['user_id'], $artist_name, $address, $artist_category_id);
-            echo 'success|'.BASEURL.'profile';
+            $this->view('homeView', ['user_info' => $user_info]);
         } else {
-           echo 'error you are not logged in.';
+            $this->view('homeView');
         }
-        
+    
     }
+    
 }

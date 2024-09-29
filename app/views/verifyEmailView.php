@@ -2,8 +2,6 @@
 
 <div id="verify-email-container">
     
-    <h3>Log In</h3>
-
     <p id="error-message" style="color: red;"></p>
     
     <!-- sending form data with javascript, no need for refreshing -->

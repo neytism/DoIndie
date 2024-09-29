@@ -25,7 +25,7 @@ function sendForm(event, form_id, error_id, url) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             
             const response = xhr.responseText
-            var [result, redirect] = response.split(":");
+            var [result, redirect] = response.split("|");
 
             if(result == 'success'){
                 window.location.href = redirect;

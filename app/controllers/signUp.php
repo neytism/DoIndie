@@ -84,7 +84,7 @@ class SignUp extends Controller{
             $this->userModel->createUser($email, $username, $password);
 
             // Redirect to a success page or log in
-            echo 'success:'.BASEURL.'login';
+            echo 'success|'.BASEURL.'login';
         }
     }
 

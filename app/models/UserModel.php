@@ -38,11 +38,15 @@ class UserModel {
             return false;
         }
     }
+    
+    public function getArtistCategories(){
+        return $this->db->fetchAll("SELECT * FROM artist_categories");
+    }
 
     public function createUser($email, $username, $password) {
         $picture_path = 'default_profile_picture.png'; //remove after implementing upload
         $role = '1';
-
+        
         $this->db->query("INSERT INTO users (email, username, password, first_name, picture_path, role) VALUES (:email, :username, :password, :first_name, :picture_path , :role)", [
             'email' => $email,
             'username' => $username,
@@ -50,6 +54,16 @@ class UserModel {
             'first_name' => $username,
             'picture_path' => $picture_path ,
             'role' => $role
+        ]);
+    }
+
+    public function setUserAsArtist($user_id, $artist_name, $address, $artist_category_id) {
+        $this->db->query("UPDATE users SET artist_display_name = :artist_name, address = :address, artist_category_id = :artist_category_id, is_artist = :is_artist WHERE user_id = :user_id", [
+            'artist_name' => $artist_name,
+            'address' => $address,
+            'artist_category_id' => $artist_category_id,
+            'is_artist' => 'true',
+            'user_id' => $user_id
         ]);
     }
 

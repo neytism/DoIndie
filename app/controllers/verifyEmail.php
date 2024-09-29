@@ -43,7 +43,7 @@ class VerifyEmail extends Controller
                 $this->userModel->verifyUserEmailByUserID($_SESSION['user_id'], 'true');
                 unset($_SESSION['verification_code']); 
                 unset($_SESSION['code_created_at']); 
-                echo 'success:'.BASEURL;
+                echo 'success|'.BASEURL;
                 
             } else{
                 echo 'error: incorrect code';
