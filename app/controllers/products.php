@@ -72,5 +72,11 @@ class Products extends Controller
         $product_categories = $this->productModel->getProductCategories();
         $this->view('addNewProductView', ['product_categories' => $product_categories]);
     }
+
+    public function increaseViewCount(){
+        $product_id = $_POST['product_id'];
+            
+        $this->productModel->increaseViewCount($product_id);
+    }
     
 }

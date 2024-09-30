@@ -40,7 +40,14 @@ class ProductModel {
     public function getProductCategories(){
         return $this->db->fetchAll("SELECT * FROM product_categories");
     }
-
+    
+    public function increaseViewCount($product_id)
+    {
+        $this->db->query("UPDATE products SET views = views + 1 WHERE product_id = :product_id", [
+            'product_id' => $product_id
+        ]);
+    
+    }
 
     
 }
