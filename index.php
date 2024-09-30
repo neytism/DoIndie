@@ -12,5 +12,6 @@ $app = new App;
 //TODO: add place order and send email show receipt
 //TODO: add contact form
 //TODO: search display (live and page)
-//TODO: product focus popup.
+//TODO: product focus popup. ✔
 //TODO: admin pages
+// TODO implement guest checkout and cart?

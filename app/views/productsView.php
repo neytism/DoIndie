@@ -9,8 +9,11 @@
 <?php else:?>
     <?php foreach($data['all_products'] as $product):?>
         <?php $is_self = false;
-            if($product['artist_id'] == $data['user_info']['user_id']) $is_self = true; ?>
-        <div style="background-color: #dbdbdb; padding: 10px; border-radius: 5px;">
+            if(isset($data['user_info']) && $product['artist_id'] == $data['user_info']['user_id']) {
+                $is_self = true;
+            }; 
+        ?>
+        <div style="background-color: #dbdbdb; padding: 10px; border-radius: 5px; cursor: pointer; " onclick="openProductPopUp(event, '<?= BASEURL; ?>', '<?= $product['product_id'] ?>', '<?= $product['product_picture_path'] ?>', '<?= $product['title'] ?>', '<?= $product['artist_display_name'] ?>', '<?= $product['product_description'] ?>', <?php echo $is_logged_in ?> )">
             <div>
                 <img
                 style="height: auto; max-width: 250px; min-width: 250px;"
@@ -18,12 +21,18 @@
                 alt="">
             </div>
             <h3>Title: <?= $product['title']?></h3>
-            <h4><a href="<?php echo BASEURL; ?>profile/user/<?=$product['username']?>">Artist: <?= $product['artist_display_name']?></a></h4>
+            <h4><a href="<?php echo BASEURL; ?>profile/user/<?=$product['username']?>" onclick="event.stopPropagation();">Artist: <?= $product['artist_display_name']?><a></h4>
             <?php if (!$is_self): ?>
-            <button onclick="addToCart(event,<?=$product['product_id']?>,'<?php echo BASEURL; ?>cart/addToCart')">Add to cart</button>
+                <?php if ($is_logged_in): ?>
+                    <button onclick="addToCart(event,<?=$product['product_id']?>,'<?php echo BASEURL; ?>cart/addToCart'); event.stopPropagation();">Add to cart</button><br>
+                <?php else: ?>
+                    <button onclick="window.location='<?php echo BASEURL; ?>logIn'; event.stopPropagation();">Add to cart</button><br>
+                <?php endif; ?>
             <?php endif;?>
         </div><br>
     <?php endforeach; ?>
 <?php endif;?>
 
+
 <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/cart.js"></script>
+<script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/productPopUp.js"></script>
