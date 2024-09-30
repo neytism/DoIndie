@@ -2,14 +2,34 @@
 
 <h2>DoIndie Cart Page</h2>
 
-<h2 id="checkout-total">Checkout: ₱ 0.00</h2>
+
+
+<h3 id="checkout-subtotal">Subtotal: ₱ 0.00</h3>
+
+<h3 id="checkout-voucher">Voucher:</h3>
+<input type="text" id="voucher_input_code" name="voucher_input_code" placeholder="Enter voucher code." oninput ="checkVoucher('<?php echo BASEURL; ?>')">
+<p id="voucher-error"></p>
+
+<h2 id="checkout-total">Total: ₱ 0.00</h2>
+
+<h3>Mode of payment:</h3>
+<input type="radio" id="cod" name="mode_of_payment" value="HTML" checked>
+<label for="cod">Cash on delivery</label><br>
+<input type="radio" id="gcash" name="mode_of_payment" value="CSS">
+<label for="gcash">Gcash</label><br><br>
+
+<button onclick="">CHECKOUT</button><br><br>
+
+<button onclick="selectAllItemsInCart(true)">Select All</button>
+<button onclick="selectAllItemsInCart(false)">Unselect All</button><br><br>
+
 
 <?php if(count($data['cart_items']) <= 0):?>
     <p>No items in cart.</p>
 <?php else:?>
     <?php foreach($data['cart_items'] as $product):?>
         <div style="background-color: #dbdbdb; padding: 10px; border-radius: 5px;" id="cart-<?=$product['cart_id']?>"> <?php // bruh is should just use the cart_id?>
-            <input type="checkbox" onchange="updateCheckoutTotal()">
+            <input type="checkbox" onchange="updateCheckoutSummary()">
             <div>
                 <img
                 style="width: auto; max-height: 80px; min-height: 80px;"

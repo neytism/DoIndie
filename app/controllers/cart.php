@@ -4,11 +4,13 @@ class Cart extends Controller
 {
     private $cartModel;
     private $userModel;
+    private $voucherModel;
     
     public function __construct()
     {
         $this->cartModel = $this->model('CartModel');
         $this->userModel = $this->model('UserModel');
+        $this->voucherModel = $this->model('VoucherModel');
     }
     
     public function index()
@@ -63,6 +65,17 @@ class Cart extends Controller
             $this->cartModel->increaseQuantity($cart_id);
         } elseif ($action === 'decrease') {
             $this->cartModel->decreaseQuantity($cart_id);
+        }
+    }
+
+    public function checkVoucher($voucher_code){
+        $voucher = $this->voucherModel->checkIfValidVoucher($voucher_code);
+        
+        if(!$voucher){
+            echo 'invalid|Voucher is invalid.';
+        } else{
+            echo 'valid|Voucher is valid.|'.$voucher['discount_value'].'|'.$voucher['discount_type'];
+           
         }
     }
 
