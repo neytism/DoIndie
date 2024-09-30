@@ -17,6 +17,7 @@
                 alt="">
             </div>
             <h3>Title: <?= $product['title']?></h3>
+            <p><?= $product['product_description']?></p>
             <h4 id="price-<?=$product['product_id']?>">Price: ₱ <?= number_format((float)$product['price'], 2, '.', '') ?></h4>
             <h4 id="quantity-<?=$product['product_id']?>">Quantity: <?= $product['quantity']?></h4>
             <button onclick="updateQuantity(event,<?=$product['product_id']?>, 'decrease','<?php echo BASEURL; ?>cart/updateQuantity')">-</button>

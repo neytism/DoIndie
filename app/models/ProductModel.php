@@ -16,14 +16,15 @@ class ProductModel {
         }
     }
     
-    public function createProduct($title, $product_category_id, $product_picture_path, $artist_id, $price, $sale_price, $tags) {
-        $this->db->query("INSERT INTO products (title, product_category_id, product_picture_path, artist_id, price, sale_price, tags) VALUES (:title, :product_category_id, :product_picture_path, :artist_id, :price, :sale_price ,:tags)", [
+    public function createProduct($title, $product_category_id, $product_picture_path, $artist_id, $price, $sale_price, $product_description, $tags) {
+        $this->db->query("INSERT INTO products (title, product_category_id, product_picture_path, artist_id, price, sale_price, product_description, tags) VALUES (:title, :product_category_id, :product_picture_path, :artist_id, :price, :sale_price, :product_description ,:tags)", [
             'title' => $title,
             'product_category_id' => $product_category_id,
             'product_picture_path' => $product_picture_path,
             'artist_id' => $artist_id,
             'price' => $price,
             'sale_price' => $sale_price,
+            'product_description' => $product_description,
             'tags' => $tags,
         ]);
     }

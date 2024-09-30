@@ -9,6 +9,9 @@
     
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" required><br><br>
+
+    <label for="product_description">Description:</label><br>
+    <textarea id="product_description" name="product_description"></textarea><br><br>
     
     <label for="price">Price:</label><br>
     <input type="number" id="price" min="0.1" step="any" name="price" required><br><br>

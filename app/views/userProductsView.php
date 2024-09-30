@@ -18,6 +18,9 @@ $is_self = $data['is_self'];
             alt=""></div>
             <h3>Title: <?= $product['title']?></h3>
             <h4>Category: <?= $product['product_category_name'] ?></h4>
+            <?php if (!$is_self): ?>
+            <button onclick="addToCart(event,<?=$product['product_id']?>,'<?php echo BASEURL; ?>cart/addToCart')">Add to cart</button>
+            <?php endif;?>
         </div><br>
     <?php endforeach; ?>
 <?php endif;?>
@@ -25,3 +28,7 @@ $is_self = $data['is_self'];
 <?php if ($is_self && $data['searched_user']['is_artist'] == "true"): ?>
     <button onclick="window.location='<?php echo BASEURL; ?>products/upload'">Upload new Product</button>
 <?php endif; ?>
+
+<?php if (!$is_self): ?>
+<script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/cart.js"></script>
+<?php endif;?>

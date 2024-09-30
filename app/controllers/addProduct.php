@@ -33,10 +33,19 @@ class AddProduct extends Controller
         $title = $_POST['title'];
         $price = $_POST['price'];
         $category_id = $_POST['product_category_id'];
+        $product_description = $_POST['product_description'];
         $tags = $_POST['tags'];
         
         if (empty($category_id)) {
             $errors['category_id'] = '-Category is required';
+        }
+
+        if (empty($price)) {
+            $errors['price'] = '-Price is required';
+        }
+
+        if (empty($product_description)) {
+            $product_description = 'No description.';
         }
     
         
@@ -90,7 +99,7 @@ class AddProduct extends Controller
             echo 'error/s: <br>'. implode("<br>", array_filter($errors));
         } else{
             
-            $this->productModel->createProduct($title, $category_id, $new_file_name , $user_info['user_id'], $price, $price, $tags );
+            $this->productModel->createProduct($title, $category_id, $new_file_name , $user_info['user_id'], $price, $price, $product_description, $tags );
             // Redirect to a success page or log in
             echo 'success|'.BASEURL.'products/artist/'.$user_info['username'];
         }

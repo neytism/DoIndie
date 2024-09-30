@@ -40,7 +40,7 @@ class CartModel {
     }
     
     public function getCartItemsByUserID($user_id){
-        return $this->db->fetchAll("SELECT c.*, p.* FROM carts c LEFT JOIN products p ON c.product_id = p.product_id WHERE c.user_id = :user_id", ['user_id' => $user_id]);
+        return $this->db->fetchAll("SELECT c.*, p.* FROM carts c LEFT JOIN products p ON c.product_id = p.product_id WHERE c.user_id = :user_id ORDER BY p.date_added DESC", ['user_id' => $user_id]);
     }
     
     public function increaseQuantity($user_id, $product_id) {

@@ -68,7 +68,7 @@ function updateQuantity(event, product_id, action, url) {
 
 function updateCheckoutTotal(){
     let total = 0;
-
+    
     const cartItems = document.querySelectorAll('div[id^="cart-"]');
 
     cartItems.forEach(cartItem => {
