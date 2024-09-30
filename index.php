@@ -14,4 +14,5 @@ $app = new App;
 //TODO: search display (live and page)
 //TODO: product focus popup. ✔
 //TODO: admin pages
+//TODO: product likes and views
 // TODO implement guest checkout and cart?

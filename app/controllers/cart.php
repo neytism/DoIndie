@@ -49,38 +49,21 @@ class Cart extends Controller
     }
 
     public function removeFromCart(){
-        session_start();
-        
-        $user_info = $this->userModel->checkIfLoggedIn();
-
-        if ($user_info) {
-
-            $user_id = $user_info['user_id'];
-            $product_id = $_POST['product_id'];
+        $cart_id = $_POST['cart_id'];
             
-            $this->cartModel->removeFromCart($user_id, $product_id);
-            
-        } 
+        $this->cartModel->removeFromCart($cart_id);
     }
 
     public function updateQuantity() {
-        session_start();
-        
-        $user_info = $this->userModel->checkIfLoggedIn();
     
-        if ($user_info) {
-            $user_id = $user_info['user_id'];
-            $product_id = $_POST['product_id'];
-            $action = $_POST['action'];
-    
-            if ($action === 'increase') {
-                $this->cartModel->increaseQuantity($user_id, $product_id);
-            } elseif ($action === 'decrease') {
-                $this->cartModel->decreaseQuantity($user_id, $product_id);
-            }
-            
-            
-        } 
+        $cart_id = $_POST['cart_id'];
+        $action = $_POST['action'];
+
+        if ($action === 'increase') {
+            $this->cartModel->increaseQuantity($cart_id);
+        } elseif ($action === 'decrease') {
+            $this->cartModel->decreaseQuantity($cart_id);
+        }
     }
 
 

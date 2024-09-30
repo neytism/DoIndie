@@ -30,11 +30,10 @@ class CartModel {
         
     }
     
-    public function removeFromCart($user_id, $product_id)
+    public function removeFromCart($cart_id)
     {
-        $this->db->query("DELETE FROM carts WHERE product_id = :product_id AND user_id = :user_id", [
-            'product_id' => $product_id,
-            'user_id' => $user_id
+        $this->db->query("DELETE FROM carts WHERE cart_id = :cart_id", [
+            'cart_id' => $cart_id
         ]);
     
     }
@@ -42,28 +41,30 @@ class CartModel {
     public function getCartItemsByUserID($user_id){
         return $this->db->fetchAll("SELECT c.*, p.* FROM carts c LEFT JOIN products p ON c.product_id = p.product_id WHERE c.user_id = :user_id ORDER BY c.date_added_to_cart DESC", ['user_id' => $user_id]);
     }
+
+    public function getCartItemsByCartID($cart_id){
+        return $this->db->fetchAll("SELECT c.*, p.* FROM carts c LEFT JOIN products p ON c.product_id = p.product_id WHERE c.cart_id = :cart_id ORDER BY c.date_added_to_cart DESC", ['cart_id' => $cart_id]);
+    }
     
-    public function increaseQuantity($user_id, $product_id) {
-        $this->db->query("UPDATE carts SET quantity = quantity + 1 WHERE product_id = :product_id AND user_id = :user_id", [
-            'product_id' => $product_id, 
-            'user_id' => $user_id
+    public function increaseQuantity($cart_id) {
+        $this->db->query("UPDATE carts SET quantity = quantity + 1 WHERE cart_id = :cart_id", [
+            'cart_id' => $cart_id
         ]);        
     }
     
-    public function decreaseQuantity($user_id, $product_id) {
+    public function decreaseQuantity($cart_id) {
         
-        $current_quantity = $this->db->fetch("SELECT quantity FROM carts WHERE product_id = :product_id AND user_id = :user_id", ['product_id' => $product_id, 'user_id' => $user_id]);
+        $current_quantity = $this->db->fetch("SELECT quantity FROM carts WHERE cart_id = :cart_id", ['cart_id' => $cart_id]);
         
         if ((int)$current_quantity['quantity'] > 1){
         
-            $this->db->query("UPDATE carts SET quantity = quantity - 1 WHERE product_id = :product_id AND user_id = :user_id", [
-                'product_id' => $product_id, 
-                'user_id' => $user_id
+            $this->db->query("UPDATE carts SET quantity = quantity - 1 WHERE cart_id = :cart_id", [
+                'cart_id' => $cart_id
             ]);
         
         } else{
             
-            $this->removeFromCart($user_id, $product_id);
+            $this->removeFromCart($cart_id);
         
         }
     

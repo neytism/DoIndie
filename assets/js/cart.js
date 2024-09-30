@@ -1,4 +1,14 @@
-console.log('loaded cart.js script');
+const ascii = `┳┓  •   ┓•                                                        
+┃┃┏┓┓┏┓┏┫┓┏┓                                                      
+┻┛┗┛┗┛┗┗┻┗┗                                                       
+┳┓    ╹                  ┓•       ┏┏                              
+┃┃┏┓┏┓ ╋  ╋┏┓┓┏  ╋┏┓  ┏┓┏┫┓╋  ┏╋┓┏╋╋                              
+┻┛┗┛┛┗ ┗  ┗┛ ┗┫  ┗┗┛  ┗ ┗┻┗┗  ┛┗┗┻┛┛•                             
+┓ ┏┓          ┛ ╹           •            ┓           ╹          ┓  
+┃┃┃┣┓┏┓╋  ┓┏┏┓┓┏ ┏┓┏┓  ╋┏┓┓┏┓┏┓┏┓  ╋┏┓  ┏┫┏┓  ┓┏┏┏┓┏┓ ╋  ┓┏┏┏┓┏┓┃┏ 
+┗┻┛┛┗┗┻┗  ┗┫┗┛┗┻ ┛ ┗   ┗┛ ┗┫┗┛┗┗┫  ┗┗┛  ┗┻┗┛  ┗┻┛┗┛┛┗ ┗  ┗┻┛┗┛┛ ┛┗•
+           ┛               ┛    ┛                                 `;
+console.log(ascii);
 
 function addToCart(event, product_id, url) {
     event.preventDefault();
@@ -11,36 +21,36 @@ function addToCart(event, product_id, url) {
 
 }
 
-function removeFromCart(event, product_id, url) {
+function removeFromCart(event, cart_id, url) {
     event.preventDefault();
     
-    const cart_item = document.getElementById('cart-'+product_id);
+    const cart_item = document.getElementById('cart-'+cart_id);
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url, true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     
-    xhr.send('product_id=' + product_id);
+    xhr.send('cart_id=' + cart_id);
     
     cart_item.remove();
 
 }
 
-function updateQuantity(event, product_id, action, url) {
+function updateQuantity(event, cart_id, action, url) {
     event.preventDefault();
     
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url, true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     
-    xhr.send('product_id=' + product_id + '&action=' + action);
+    xhr.send('cart_id=' + cart_id + '&action=' + action);
         
-    const quantity_text = document.getElementById('quantity-'+product_id);
+    const quantity_text = document.getElementById('quantity-'+cart_id);
     var quantity = quantity_text.innerHTML.replace('Quantity: ','');
     
-    const price_text = document.getElementById('price-'+product_id);
+    const price_text = document.getElementById('price-'+cart_id);
     const price = price_text.innerHTML.replace('Price: ₱ ','');
     
-    const total_text = document.getElementById('total-'+product_id);
+    const total_text = document.getElementById('total-'+cart_id);
     var total = total_text.innerHTML.replace('Total: ₱ ','');
     
     
@@ -50,7 +60,7 @@ function updateQuantity(event, product_id, action, url) {
     } else{
         quantity--;
         if(quantity == 0){
-            const cart_item = document.getElementById('cart-'+product_id);
+            const cart_item = document.getElementById('cart-'+cart_id);
             cart_item.remove();
         }
     }
@@ -68,7 +78,7 @@ function updateQuantity(event, product_id, action, url) {
 
 function updateCheckoutTotal(){
     let total = 0;
-    
+
     const cartItems = document.querySelectorAll('div[id^="cart-"]');
 
     cartItems.forEach(cartItem => {
