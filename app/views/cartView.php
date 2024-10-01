@@ -13,12 +13,12 @@
 <h2 id="checkout-total">Total: ₱ 0.00</h2>
 
 <h3>Mode of payment:</h3>
-<input type="radio" id="cod" name="mode_of_payment" value="HTML" checked>
+<input type="radio" id="cod" name="mode_of_payment" value="cod" checked>
 <label for="cod">Cash on delivery</label><br>
-<input type="radio" id="gcash" name="mode_of_payment" value="CSS">
+<input type="radio" id="gcash" name="mode_of_payment" value="gcash">
 <label for="gcash">Gcash</label><br><br>
 
-<button onclick="">CHECKOUT</button><br><br>
+<button onclick="proceedToCheckOutPage('<?php echo BASEURL; ?>')">CHECKOUT</button><br><br>
 
 <button onclick="selectAllItemsInCart(true)">Select All</button>
 <button onclick="selectAllItemsInCart(false)">Unselect All</button><br><br>

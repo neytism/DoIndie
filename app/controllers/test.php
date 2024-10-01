@@ -17,6 +17,12 @@ class Test extends Controller{
     public function goTo($newView){
         $this->view($newView); 
     }
+    
+    public function directUrl(){
+        $voucher_code = $_POST['voucher_code'];
+
+        echo $voucher_code;
+    }
 
     
 }

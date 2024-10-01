@@ -2,7 +2,7 @@ console.log('script loaded');
 //how to use example:
 //onclick="sendForm(event,'login-form','error-message','<?php echo BASEURL; ?>login/checkLogIn')"
 function sendForm(event, form_id, error_id, url) {
-
+    
     const form = document.getElementById(form_id);
     
     if (!form.checkValidity()) {
@@ -11,7 +11,7 @@ function sendForm(event, form_id, error_id, url) {
     }
     
     event.preventDefault(); //prevents reloading when submitting
-
+    
     const xhr = new XMLHttpRequest();
     const formData = new FormData(form);
     
@@ -36,6 +36,6 @@ function sendForm(event, form_id, error_id, url) {
             
         } 
     };
-
+    
     xhr.send(formData);
 }

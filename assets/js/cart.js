@@ -170,3 +170,59 @@ function updateCheckoutSummary(){
     document.getElementById('checkout-total').innerHTML = 'Total: ₱ ' + total.toFixed(2);
 
 }
+
+function proceedToCheckOutPage(base_url){
+    
+    var new_url = base_url + 'checkOut';
+    
+    let selected_carts = [];
+    
+    const cartItems = document.querySelectorAll('div[id^="cart-"]');
+    
+    cartItems.forEach(cartItem => {
+        const checkbox = cartItem.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) {
+            const cart_id = cartItem.id.replace('cart-', '');
+            selected_carts.push(cart_id);
+            //or its better to use json
+        }
+    });
+        
+    if (selected_carts.length === 0) {
+        alert('No selected items.');
+        return;
+    }
+    
+    const mode_of_payment = document.querySelector("input[type='radio'][name=mode_of_payment]:checked").value;
+    
+    const voucher_code = global_voucher_code;
+    
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = new_url;
+    
+    const inputCarts = document.createElement('input');
+    inputCarts.type = 'hidden';
+    inputCarts.name = 'selected_carts'; 
+    inputCarts.value = JSON.stringify(selected_carts);
+    
+    form.appendChild(inputCarts);
+    
+    const inputPayment = document.createElement('input');
+    inputPayment.type = 'hidden';
+    inputPayment.name = 'mode_of_payment';
+    inputPayment.value = mode_of_payment;
+    
+    form.appendChild(inputPayment);
+    
+    const inputVoucher = document.createElement('input');
+    inputVoucher.type = 'hidden';
+    inputVoucher.name = 'voucher_code';
+    inputVoucher.value = voucher_code;
+    
+    form.appendChild(inputVoucher);
+    
+    document.body.appendChild(form);
+    
+    form.submit();
+}

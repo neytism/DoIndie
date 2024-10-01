@@ -46,6 +46,10 @@ class CartModel {
         return $this->db->fetchAll("SELECT c.*, p.* FROM carts c LEFT JOIN products p ON c.product_id = p.product_id WHERE c.cart_id = :cart_id ORDER BY c.date_added_to_cart DESC", ['cart_id' => $cart_id]);
     }
     
+    public function getCartItemByCartID($cart_id){
+        return $this->db->fetch("SELECT c.*, p.* FROM carts c LEFT JOIN products p ON c.product_id = p.product_id WHERE c.cart_id = :cart_id ORDER BY c.date_added_to_cart DESC", ['cart_id' => $cart_id]);
+    }
+    
     public function increaseQuantity($cart_id) {
         $this->db->query("UPDATE carts SET quantity = quantity + 1 WHERE cart_id = :cart_id", [
             'cart_id' => $cart_id
