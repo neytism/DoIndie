@@ -47,7 +47,7 @@ class CartModel {
     }
     
     public function getCartItemByCartID($cart_id){
-        return $this->db->fetch("SELECT c.*, p.* FROM carts c LEFT JOIN products p ON c.product_id = p.product_id WHERE c.cart_id = :cart_id ORDER BY c.date_added_to_cart DESC", ['cart_id' => $cart_id]);
+        return $this->db->fetch("SELECT c.*, p.* , u.artist_display_name, u.username FROM carts c LEFT JOIN products p ON c.product_id = p.product_id LEFT JOIN users u ON p.artist_id = u.user_id WHERE c.cart_id = :cart_id ORDER BY c.date_added_to_cart DESC", ['cart_id' => $cart_id]);
     }
     
     public function increaseQuantity($cart_id) {
