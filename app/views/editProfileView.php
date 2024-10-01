@@ -7,7 +7,7 @@
 <form id="edit-profile-form" method="POST" enctype="multipart/form-data">
     <div><img style="height: auto; max-width: 250px" src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?php echo $user_info['picture_path']?>" alt=""></div><br>
     <label for="image">Image:</label><br>
-    <input type="file" name="image" id="image" accept="image/*" required><br><br>
+    <input type="file" name="image" id="image" accept="image/*"><br><br>
     
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username" value="<?= $user_info['username'] ?>" required><br><br>

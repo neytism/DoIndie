@@ -145,6 +145,8 @@ class Profile extends Controller
                     $errors['image'] = '- There was an error uploading your file.';
                 }
             }
+        } else{
+            $new_file_name = $user_info['picture_path'];
         }
         
 
