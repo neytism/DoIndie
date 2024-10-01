@@ -59,15 +59,15 @@ class CheckOut extends Controller
         }
 
         $total = $subtotal;
-
+        
         if(empty($voucher_code)){
             $voucher_code = 'None';
         } else{
             $voucher = $this->voucherModel->checkIfValidVoucher($voucher_code);
-
+            
             if($voucher){
                 $voucher_code = $voucher['voucher_code'];
-
+                
                 $voucher_type = $voucher['discount_type'];
 
                 if($voucher_type == 'fixed'){
@@ -85,6 +85,16 @@ class CheckOut extends Controller
         $user_info = $this->userModel->checkIfLoggedIn();
            
         if ($user_info) {
+
+            $_SESSION['checkout_data'] = [
+                'user_info' => $user_info, 
+                'selected_carts' => $selected_carts, 
+                'subtotal' => number_format($subtotal, 2, '.', ','), 
+                'total' => number_format($total, 2, '.', ','),
+                'mode_of_payment' => $mode_of_payment,
+                'voucher_code' => $voucher_code,
+                'voucher_desc' => $voucher_desc
+            ];
             
             $this->view('checkOutView', [
                 'user_info' => $user_info, 

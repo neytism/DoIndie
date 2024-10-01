@@ -7,12 +7,13 @@
 <p><b>Username: </b><?= $data['user_info']['username']?></p>
 <p><b>Email: </b><?= $data['user_info']['email']?></p>
 <?php if($data['user_info']['is_verified_email'] == 'false'):?>
-<p style="color: red;">IMPORTANT: Verify your email to make purchases.</p>
+<p style="color: red;">IMPORTANT: Verify your email on the profile page to make a purchase.</p>
 <?php endif; ?>
-    
-<label for="address">Address:</label><br>
-<textarea type="text" id="address" name="address" required><?= $data['user_info']['address']?></textarea><br>
 
+<p><b>Address: </b><?= $data['user_info']['address']?></p>
+<?php if(empty($data['user_info']['address'])):?>
+<p style="color: red;">IMPORTANT: Add an address on the profile page to make a purchase.</p>
+<?php endif; ?>
 
 <p>==========================================</p>
 
@@ -43,10 +44,12 @@
 <p><b>TOTAL: </b>₱ <?= $data['total']?></p>
 
 <br>
-<?php if($data['user_info']['is_verified_email'] == 'false'):?>
+<?php if($data['user_info']['is_verified_email'] == 'false' || empty($data['user_info']['address'])):?>
     <button disabled>CONFIRM</button>
 <?php else: ?>
     <button onclick="">CONFIRM</button>
 <?php endif; ?>
+
+<button onclick="window.location='<?php echo BASEURL; ?>cart'">GO BACK TO CART</button>
 
 <script src="http://localhost:8000/DoIndie/assets/js/sendForm.js" id="sendFormScript"></script>
