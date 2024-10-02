@@ -91,5 +91,17 @@ class UserModel {
             'user_id' => $user_id
         ]);
     }
+
+    public function searchUsers($keyword, $count){
+        return $this->db->fetchAll("SELECT u.*, c.artist_category_name FROM users u LEFT JOIN artist_categories c ON u.artist_category_id = c.artist_category_id WHERE username LIKE :keyword LIMIT $count", [
+            'keyword' => '%'.$keyword.'%'
+        ]);
+    }
+
+    public function searchArtists($keyword, $count){
+        return $this->db->fetchAll("SELECT u.*, c.artist_category_name FROM users u LEFT JOIN artist_categories c ON u.artist_category_id = c.artist_category_id WHERE is_artist = 'true' AND artist_display_name LIKE :keyword LIMIT $count", [
+            'keyword' => '%'.$keyword.'%'
+        ]);
+    }
     
 }

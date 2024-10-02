@@ -9,7 +9,7 @@ $app = new App;
 //TODO: add description for artworks and show on cart ✔
 //TODO: add addtocart on userproduct ✔
 //TODO: add checkout popup ✔
-//TODO: add place order and send email show receipt
+//TODO: add place order and send email show receipt ✔
 //TODO: add contact form 
 //TODO: search display (live and page)
 //TODO: product focus popup. ✔

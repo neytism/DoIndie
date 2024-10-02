@@ -32,7 +32,9 @@ $is_self = $data['is_self'];
     <h4>Email is Verified.</h4>
 <?php else: ?>
     <h4>Email is Not verified.</h4>
-    <button onclick="window.location='<?php echo BASEURL; ?>verifyEmail'">Verify Email</button>
+    <?php if ($is_self): ?>
+        <button onclick="window.location='<?php echo BASEURL; ?>verifyEmail'">Verify Email</button>
+    <?php endif; ?>
 <?php endif; ?>
 <?php
 $date_joined = new DateTime($user_info['date_joined']);

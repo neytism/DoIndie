@@ -1,5 +1,6 @@
 <div>
     <a>DOINDIE</a>&nbsp;&nbsp;
+    <input type="text" placeholder="Search..." oninput="inputSearch(this,'<?php echo BASEURL; ?>')">&nbsp;&nbsp;
     <a href="<?php echo BASEURL; ?>">Home</a>&nbsp;&nbsp;
     <a href="<?php echo BASEURL; ?>artists">Artists</a>&nbsp;&nbsp;
     <a href="<?php echo BASEURL; ?>products">Products</a>&nbsp;&nbsp;
@@ -27,6 +28,18 @@
         <?php endif; ?>
     <?php endif; ?>
     
+    <div id="search-container" style="background-color: gray; display: none;" >
+        
+        <div id="loading" style="display: none;">Loading...</div>
+        <div id="no-result" style="display: none;">No Result.</div>
+        
+        <div id="results" style="display: none;">
+        
+        </div>
+
+    </div>
+    
 </div>
 
 <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/logInPopUp.js"></script>
+<script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/search.js"></script>
