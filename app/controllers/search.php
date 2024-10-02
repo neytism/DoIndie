@@ -30,29 +30,32 @@ class Search extends Controller
             $maxResults = 5;
 
             $artists = $this->userModel->searchArtists($keyword, $maxResults);
-
-            $artists = json_encode($artists);
             
             $users = $this->userModel->searchUsers($keyword, $maxResults);
-
-            $users = json_encode($users);
             
             $products = $this->productModel->searchProducts($keyword, $maxResults);
-
-            $products = json_encode($products);
             
-            $results = [
-                'artists' => $artists,
-                'users' => $users,
-                'products' => $products
-            ];
-
-            $results = json_encode( $results);
             
-            if (!empty($users)) {
-                echo 'notnull|' . $results;
-            } else {
+            if (empty(array_filter($artists)) && empty(array_filter($users)) && empty(array_filter($products))) {
+
                 echo 'null|';
+                
+            } else {
+                
+                $artists = json_encode($artists);
+
+                $users = json_encode($users);
+
+                $products = json_encode($products);
+               
+                $results = [
+                    'artists' => $artists,
+                    'users' => $users,
+                    'products' => $products
+                ];
+
+                $results = json_encode( $results);
+                echo 'notnull|' . $results;
             }
 
         } else {
