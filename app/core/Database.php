@@ -33,4 +33,8 @@ class Database {
         $stmt = $this->query($sql, $params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function lastInsertId() {
+        return $this->pdo->lastInsertId();
+    }
 }

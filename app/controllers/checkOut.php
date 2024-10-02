@@ -5,12 +5,17 @@ class CheckOut extends Controller
     private $cartModel;
     private $userModel;
     private $voucherModel;
+    private $transactionModel;
+
+    private $emailer;
     
     public function __construct()
     {
         $this->cartModel = $this->model('CartModel');
         $this->userModel = $this->model('UserModel');
         $this->voucherModel = $this->model('VoucherModel');
+        $this->transactionModel = $this->model('TransactionModel');
+        $this->emailer = new Emailer();
     }
     
     
@@ -89,8 +94,8 @@ class CheckOut extends Controller
             $_SESSION['checkout_data'] = [
                 'user_info' => $user_info, 
                 'selected_carts' => $selected_carts, 
-                'subtotal' => number_format($subtotal, 2, '.', ','), 
-                'total' => number_format($total, 2, '.', ','),
+                'subtotal' => $subtotal, 
+                'total' => $total,
                 'mode_of_payment' => $mode_of_payment,
                 'voucher_code' => $voucher_code,
                 'voucher_desc' => $voucher_desc
@@ -109,6 +114,60 @@ class CheckOut extends Controller
         }
         
     }
-    
+
+    public function confirmOrder(){
+
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $user_info = $this->userModel->checkIfLoggedIn();
+
+        //add error handling if not logged in
+
+        $checkout_data = $_SESSION['checkout_data'];
+        
+        $selected_carts = $checkout_data['selected_carts'];
+        
+        //add here lines for using voucher, removing to cart, adding to transaction history
+        
+        // adding data to transaction table
+        $transaction_id = $this->transactionModel->createTransaction(
+            $user_info['user_id'],
+            $checkout_data['total'],
+            $checkout_data['voucher_code'],
+            $checkout_data['voucher_desc'],
+            $checkout_data['mode_of_payment'],
+            $user_info['address'],
+            $selected_carts  
+        );
+
+        $order_id = $transaction_id;
+        
+        $padded_order_id = str_pad($order_id, 12, '0', STR_PAD_LEFT);
+        
+        $formatted_order_id = substr($padded_order_id, 0, 4) . '-' . substr($padded_order_id, 4, 4) . '-' . substr($padded_order_id, 8, 4);
+        
+        //removing from cart
+        
+        foreach($selected_carts as $cart){
+            $this->cartModel->removeFromCart($cart['cart_id']);
+        }
+
+        //using voucher
+        $this->voucherModel->useVoucherByVoucherCode($checkout_data['voucher_code']);
+
+        //sending email
+        if ($user_info) {
+            
+            $message = include 'app/views/orderConfirmationEmailTemplate.php';
+
+            $this->emailer->sendMail($user_info['email'], 'noreply: Doindie Order Confirmation', $message);
+            
+            $this->view('homeView', ['user_info' => $user_info]);
+        }
+
+    }
+
 
 }

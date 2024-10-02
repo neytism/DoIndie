@@ -47,7 +47,7 @@
 <?php if($data['user_info']['is_verified_email'] == 'false' || empty($data['user_info']['address'])):?>
     <button disabled>CONFIRM</button>
 <?php else: ?>
-    <button onclick="">CONFIRM</button>
+    <button onclick="window.location='<?php echo BASEURL; ?>checkOut/confirmOrder'">CONFIRM</button>
 <?php endif; ?>
 
 <button onclick="window.location='<?php echo BASEURL; ?>cart'">GO BACK TO CART</button>

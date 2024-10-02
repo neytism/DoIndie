@@ -52,8 +52,8 @@ class VoucherModel {
         //status
     }
     
-    public function useVoucher($voucher_code){
-        
+    public function useVoucherByVoucherCode($voucher_code){
+        $this->db->query("UPDATE vouchers SET used_count = used_count + 1 WHERE voucher_code = :voucher_code", ['voucher_code' => $voucher_code]);
     }
     
 
