@@ -163,7 +163,7 @@ function updateCheckoutSummary(){
         if(global_discount_type == 'fixed'){
             total = total - parseFloat(global_discount_value);
         } else{
-            total = total * (parseFloat(global_discount_value) * 0.01);
+            total = total - (total * (parseFloat(global_discount_value) * 0.01));
         }
     }
     

@@ -34,4 +34,8 @@ class TransactionModel {
         
         return $this->db->lastInsertId();
     }
+
+    public function getCreatedAtByID($id){
+        return $this->db->fetch('SELECT created_at FROM transactions WHERE transaction_id = :id', ['id' => $id]);
+    }
 }
