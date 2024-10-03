@@ -26,7 +26,7 @@
 
 let timer_for_view_increase;
 
-function openProductPopUp(event, base_url, product_id, image_name, title, artist, description, is_logged_in) {
+function openProductPopUp(event, base_url, product_id, image_name, title, artist, description, view_count, is_logged_in) {
     event.preventDefault();
     if (document.getElementById('product-container')) {
         closeProductPopUp();
@@ -38,6 +38,8 @@ function openProductPopUp(event, base_url, product_id, image_name, title, artist
             var add_to_cart_button = `<button onclick="window.location='`+base_url+`logIn'; event.stopPropagation();">Add to cart</button><br><br>`; 
         }
         
+        //after creating actual front end, its better to create elements and append child, and add listener to button instead
+
         const login_popup_template = `
         <div style="position: fixed; background-color: #00000050 ; width: 100%; height: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center;"
             id="product-container" onclick="closeProductPopUp();">
@@ -51,6 +53,7 @@ function openProductPopUp(event, base_url, product_id, image_name, title, artist
                 <h3>Artist: `+artist+`</h3>
                 <h4>Description: </h4>
                 <p>`+description+`</p>
+                <p>Views: `+ view_count +`</p>
                 `+add_to_cart_button+`
                 <button onclick="closeProductPopUp(); event.stopPropagation();">Close</button>
             </div>

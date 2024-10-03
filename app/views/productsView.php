@@ -13,7 +13,7 @@
                 $is_self = true;
             }; 
         ?>
-        <div style="background-color: #dbdbdb; padding: 10px; border-radius: 5px; cursor: pointer; " onclick="openProductPopUp(event, '<?= BASEURL; ?>', '<?= $product['product_id'] ?>', '<?= $product['product_picture_path'] ?>', '<?= $product['title'] ?>', '<?= $product['artist_display_name'] ?>', '<?= $product['product_description'] ?>', <?php echo $is_logged_in ?> )">
+        <div style="background-color: #dbdbdb; padding: 10px; border-radius: 5px; cursor: pointer; " onclick="openProductPopUp(event, '<?= BASEURL; ?>', '<?= $product['product_id'] ?>', '<?= $product['product_picture_path'] ?>', '<?= $product['title'] ?>', '<?= $product['artist_display_name'] ?>', '<?= $product['product_description'] ?>', '<?= $product['views'] ?>', <?php echo $is_logged_in ?> )">
             <div>
                 <img
                 style="height: auto; max-width: 250px; min-width: 250px;"
