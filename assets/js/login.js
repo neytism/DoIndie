@@ -1,10 +1,10 @@
 function onClickLogin() {
-    var email = document.getElementById("lgnUser").value;
+    var user = document.getElementById("lgnUser").value;
     var password = document.getElementById("lgnPass").value;
     
     let output = "";
 
-    if(email == '' || password == '')
+    if(user == '' || password == '')
     {
         alert("Please fill in all the fields.");
     }
