@@ -55,12 +55,13 @@ class UserModel {
             'picture_path' => $picture_path ,
             'role' => $role
         ]);
+
+        return $this->db->lastInsertId();
     }
 
-    public function setUserAsArtist($user_id, $artist_name, $address, $artist_category_id) {
-        $this->db->query("UPDATE users SET artist_display_name = :artist_name, address = :address, artist_category_id = :artist_category_id, is_artist = :is_artist WHERE user_id = :user_id", [
+    public function setUserAsArtist($user_id, $artist_name, $artist_category_id) {
+        $this->db->query("UPDATE users SET artist_display_name = :artist_name, artist_category_id = :artist_category_id, is_artist = :is_artist WHERE user_id = :user_id", [
             'artist_name' => $artist_name,
-            'address' => $address,
             'artist_category_id' => $artist_category_id,
             'is_artist' => 'true',
             'user_id' => $user_id
@@ -70,24 +71,22 @@ class UserModel {
         return $this->db->fetchAll("SELECT u.*, c.artist_category_name FROM users u LEFT JOIN artist_categories c ON u.artist_category_id = c.artist_category_id WHERE u.is_artist = 'true'");
     }
     
-    public function updateUserAsArtistByUserID($user_id, $image, $username, $email, $address, $artist_display_name, $artist_category_id){
-        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, address = :address, artist_display_name = :artist_display_name, artist_category_id = :artist_category_id WHERE user_id = :user_id", [
+    public function updateUserAsArtistByUserID($user_id, $image, $username, $email, $artist_display_name, $artist_category_id){
+        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, artist_display_name = :artist_display_name, artist_category_id = :artist_category_id WHERE user_id = :user_id", [
             'image' => $image,
             'username' => $username,
             'email' => $email,
-            'address' => $address,
             'artist_display_name' => $artist_display_name ,
             'artist_category_id' => $artist_category_id,
             'user_id' => $user_id
         ]);
     }
 
-    public function updateUserByUserID($user_id, $image, $username, $email, $address){
-        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, address = :address WHERE user_id = :user_id", [
+    public function updateUserByUserID($user_id, $image, $username, $email){
+        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, WHERE user_id = :user_id", [
             'image' => $image,
             'username' => $username,
             'email' => $email,
-            'address' => $address,
             'user_id' => $user_id
         ]);
     }

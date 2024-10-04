@@ -3,9 +3,11 @@
 class SignUp extends Controller{
     
     private $userModel;
+    private $addressModel;
     
     public function __construct() {
         $this->userModel = $this->model('UserModel');
+        $this->addressModel = $this->model('AddressModel');
     }
 
     public function index()
@@ -81,7 +83,9 @@ class SignUp extends Controller{
             $hashedPassword = $this->hashPassword($password);
             $password = $hashedPassword['hash'] . "::" . $hashedPassword['salt'];
             
-            $this->userModel->createUser($email, $username, $password);
+            $new_user_id = $this->userModel->createUser($email, $username, $password);
+
+            $this->addressModel->createEmptyAddress($new_user_id);
 
             // Redirect to a success page or log in
             echo 'success|'.BASEURL.'login';

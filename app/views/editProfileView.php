@@ -1,4 +1,7 @@
-<?php $user_info = $data['user_info']?>
+<?php 
+$user_info = $data['user_info'];
+$user_address = $data['user_address'];
+?>
 
 <h2>Edit Profile</h2>
 
@@ -24,43 +27,58 @@
     <label for="">ADDRESS:</label><br>
     
     <label for="region_id">Region:</label><br>
-    <select name="region_id" id="region_id" onchange="checkRegion(this)">
+    <select name="region_id" id="region_id" onchange="checkRegion(this)" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>>
                 <option value="">
                     ---Select Region---
                 </option>
             <?php foreach ($data['regions'] as $region): ?>
-                <option value="<?= htmlspecialchars($region['regCode']) //add selected?>" >
+                <option value="<?= htmlspecialchars($region['regCode'])?>" <?php if($region['id'] == $user_address['region_id']) echo 'selected'?>>
                     <?= htmlspecialchars($region['regDesc']) ?>
                 </option>
             <?php endforeach; ?>
     </select><br><br>
 
     <label for="province_id">Province:</label><br>
-    <select name="province_id" id="province_id" onchange="checkProvince(this)">
+    <select name="province_id" id="province_id" value="<?=$user_address['province_id']?>" onchange="checkProvince(this)" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>>
                 <option value="">
                     ---Select Province---
                 </option>
+                <?php foreach ($data['provinces'] as $province): ?>
+                <option value="<?= htmlspecialchars($province['provCode'])?>" <?php if($province['id'] == $user_address['province_id']) echo 'selected'?>>
+                    <?= htmlspecialchars($province['provDesc']) ?>
+                </option>
+                <?php endforeach; ?>
     </select><br><br>
     
     <label for="city_id">City:</label><br>
-    <select name="city_id" id="city_id" onchange="checkCity(this)">
+    <select name="city_id" id="city_id" value="<?=$user_address['city_id']?>" onchange="checkCity(this)" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>>
                 <option value="">
                     ---Select City---
                 </option>
+                <?php foreach ($data['cities'] as $city): ?>
+                <option value="<?= htmlspecialchars($city['citymunCode'])?>" <?php if($city['id'] == $user_address['city_id']) echo 'selected'?>>
+                    <?= htmlspecialchars($city['citymunDesc']) ?>
+                </option>
+                <?php endforeach; ?>
     </select><br><br>
     
     <label for="brgy_id">Brgy:</label><br>
-    <select name="brgy_id" id="brgy_id" onchange="">
+    <select name="brgy_id" id="brgy_id" value="<?=$user_address['brgy_id']?>" onchange="" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>>
                 <option value="">
                     ---Select Barangay---
                 </option>
+                <?php foreach ($data['brgys'] as $brgy): ?>
+                <option value="<?= htmlspecialchars($brgy['brgyCode'])?>" <?php if($brgy['id'] == $user_address['brgy_id']) echo 'selected'?>>
+                    <?= htmlspecialchars($brgy['brgyDesc']) ?>
+                </option>
+                <?php endforeach; ?>
     </select><br><br>
 
-    <label for="">Street, building, and  number:</label><br>
-    <input type="text" id="address" name="address" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>><br><br>
-
-    <label for="">Landmark:</label><br>
-    <input type="text" id="address" name="address"><br><br>
+    <label for="detailed_address">Street, building, and  number:</label><br>
+    <input type="text" id="detailed_address" name="detailed_address" value="<?= $user_address['detailed_info'] ?>" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>><br><br>
+    
+    <label for="landmark">Landmark:</label><br>
+    <input type="text" id="landmark" name="landmark" value="<?= $user_address['landmark'] ?>"><br><br>
 
     <?php if($user_info['is_artist'] == 'true'):?>
 

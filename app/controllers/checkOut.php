@@ -6,6 +6,7 @@ class CheckOut extends Controller
     private $userModel;
     private $voucherModel;
     private $transactionModel;
+    private $addressModel;
 
     private $emailer;
     
@@ -15,6 +16,7 @@ class CheckOut extends Controller
         $this->userModel = $this->model('UserModel');
         $this->voucherModel = $this->model('VoucherModel');
         $this->transactionModel = $this->model('TransactionModel');
+        $this->addressModel = $this->model('AddressModel');
         $this->emailer = new Emailer();
     }
     
@@ -115,8 +117,11 @@ class CheckOut extends Controller
            
         if ($user_info) {
 
+            $address = $this->addressModel->getFullAddressOfUserByUserID($user_info['user_id']);
+
             $_SESSION['checkout_data'] = [
                 'user_info' => $user_info, 
+                'address' => $address, 
                 'selected_carts' => $selected_carts, 
                 'subtotal' => $subtotal, 
                 'total' => $total,
@@ -127,6 +132,7 @@ class CheckOut extends Controller
             
             $this->view('checkOutView', [
                 'user_info' => $user_info, 
+                'address' => $address, 
                 'selected_carts' => $selected_carts, 
                 'subtotal' => number_format($subtotal, 2, '.', ','), 
                 'total' => number_format($total, 2, '.', ','),
@@ -172,7 +178,7 @@ class CheckOut extends Controller
             $checkout_data['voucher_code'],
             $checkout_data['voucher_desc'],
             $checkout_data['mode_of_payment'],
-            $user_info['address'],
+            $checkout_data['address'], 
             $selected_carts  
         );
         
@@ -204,6 +210,7 @@ class CheckOut extends Controller
             
             $_SESSION['receipt_data'] = [
                 'user_info' => $user_info,
+                'address' => $checkout_data['address'],
                 'order_id' => $padded_order_id,
                 'dop' => $dop,
                 'formatted_order_id' => $formatted_order_id,
@@ -261,6 +268,7 @@ class CheckOut extends Controller
         $this->view('receiptView', [
             'user_info' => $receipt_data['user_info'],
             'order_id' => $receipt_data['order_id'],
+            'address' => $receipt_data['address'],
             'dop' => $receipt_data['dop'],
             'formatted_order_id' => $receipt_data['formatted_order_id'],
             'selected_carts' => $receipt_data['selected_carts'], 

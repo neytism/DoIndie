@@ -10,9 +10,11 @@
 <p style="color: red;">IMPORTANT: Verify your email on the profile page to make a purchase.</p>
 <?php endif; ?>
 
-<p><b>Address: </b><?= $data['user_info']['address']?></p>
-<?php if(empty($data['user_info']['address'])):?>
-<p style="color: red;">IMPORTANT: Add an address on the profile page to make a purchase.</p>
+<?php if(empty(preg_replace('/\s+/', '', str_replace(',','', $data['address'])))):?>
+<p><b>Address: </b>No address.</p>
+<p style="color: red;">IMPORTANT: Add or complete an address on the profile page to make a purchase.</p>
+<?php else:; ?>
+<p><b>Address: </b><?= $data['address']?></p>
 <?php endif; ?>
 
 <p>==========================================</p>
@@ -44,7 +46,7 @@
 <p><b>TOTAL: </b>₱ <?= $data['total']?></p>
 
 <br>
-<?php if($data['user_info']['is_verified_email'] == 'false' || empty($data['user_info']['address'])):?>
+<?php if($data['user_info']['is_verified_email'] == 'false' || empty(preg_replace('/\s+/', '', str_replace(',','', $data['address'])))):?>
     <button disabled>CONFIRM</button>
 <?php else: ?>
     <button onclick="window.location='<?php echo BASEURL; ?>checkOut/confirmOrder'">CONFIRM</button>

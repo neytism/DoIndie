@@ -244,7 +244,7 @@
                     Where:
                 </div>
                 <div class="transactionDetails">
-                    <div class="detail"><?= $data['user_info']['address'] ?></div>
+                    <div class="detail"><?= $data['address'] ?></div>
                 </div>
                 <div class="cashier">
                     When:

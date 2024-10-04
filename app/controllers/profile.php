@@ -71,11 +71,15 @@ class Profile extends Controller
             session_start();
         
         $user_info = $this->userModel->checkIfLoggedIn();
+        $user_address = $this->addressModel->getAddressOfUserByUserID($user_info['user_id']);
         $artist_categories = $this->userModel->getArtistCategories();
         $regions = $this->addressModel->getAllRegion();
+        $provinces = $this->addressModel->getAllProvinceByRegionCode($this->addressModel->getRegionCodeByRegionID($user_address['region_id']));
+        $cities = $this->addressModel->getAllCityByProvinceCode($this->addressModel->getProvinceCodeByProvinceID($user_address['province_id']));
+        $brgys = $this->addressModel->getAllBrgyByCityCode($this->addressModel->getCityMunCodeByCityMunID($user_address['city_id']));
         
         if ($user_info) {
-            $this->view('editProfileView', ['user_info' => $user_info, 'artist_categories' => $artist_categories, 'regions' => $regions]);
+            $this->view('editProfileView', ['user_info' => $user_info,  'user_address' => $user_address , 'artist_categories' => $artist_categories, 'regions' => $regions, 'provinces' => $provinces, 'cities' => $cities, 'brgys' => $brgys]);
         } 
     
     }
@@ -98,7 +102,7 @@ class Profile extends Controller
         );
 
         $username = $_POST['username'];
-        $address = $_POST['address'];
+        
         
         if($user_info['is_verified_email'] != 'true'){
             $email = $_POST['email'];
@@ -196,10 +200,17 @@ class Profile extends Controller
         } else{
             $email = $user_info['email'];
         }
+        
+        $region_code = $_POST['region_id'];
+        $province_code = $_POST['province_id'];
+        $city_code = $_POST['city_id'];
+        $brgy_code = $_POST['brgy_id'];
+        $detailed_address = $_POST['detailed_address'];
+        $landmark = $_POST['landmark'];
 
-        if (empty($address)) {
+        if (empty($region_code) || empty($province_code) || empty($city_code) || empty($brgy_code) || empty($detailed_address)) {
             if ($user_info['is_artist'] == 'true') {
-                $errors['address'] = '- As an artist, an address is required';
+                $errors['address'] = '- As an artist, a valid address is required';
             }
         }
 
@@ -222,10 +233,17 @@ class Profile extends Controller
         } else {
             
             if ($user_info['is_artist'] == 'true') {
-                $this->userModel->updateUserAsArtistByUserID($user_info['user_id'], $new_file_name, $username, $email, $address, $artist_display_name, $artist_category_id);
+                $this->userModel->updateUserAsArtistByUserID($user_info['user_id'], $new_file_name, $username, $email, $artist_display_name, $artist_category_id);
             } else{
-                $this->userModel->updateUserByUserID($user_info['user_id'], $new_file_name, $username, $email, $address);
+                $this->userModel->updateUserByUserID($user_info['user_id'], $new_file_name, $username, $email);
             }
+            
+            $region_id = $this->addressModel->getRegionIDByRegCode($region_code);
+            $province_id = $this->addressModel->getProvinceIDByProvCode($province_code);
+            $city_id = $this->addressModel->getCityMunIDByCityMunCode($city_code);
+            $brgy_id = $this->addressModel->getBrgyIDByBrgyCode($brgy_code);
+            
+            $this->addressModel->updateUserAddressByUserID($user_info['user_id'], $brgy_id, $city_id, $province_id, $region_id, $detailed_address, $landmark);
             
             // Redirect to a success page or log in
             echo 'success|' . BASEURL . 'profile';
@@ -260,19 +278,13 @@ class Profile extends Controller
         
         $cities = $this->addressModel->getAllCityByProvinceCode($province_code);
 
-        echo count($cities);
-
         if (empty(array_filter($cities))) {
 
             echo 'null|';
             
         } else {
             
-            $cities = array_map(function($city) {
-                return array_map(function($value) {
-                    return mb_convert_encoding($value, 'UTF-8', 'UTF-8');
-                }, $city);
-            }, $cities);
+            $cities = $this->convertEncoding($cities);
 
             $results = json_encode($cities);
 
@@ -295,25 +307,24 @@ class Profile extends Controller
             
         } else {
 
-            $brgys = array_map(function($brgy) {
-                return array_map(function($value) {
-                    return mb_convert_encoding($value, 'UTF-8', 'UTF-8');
-                }, $brgy);
-            }, $brgys);
+            $brgys = $this->convertEncoding($brgys);
             
-            $results = json_encode($brgys);
+            $results = json_encode($brgys, JSON_UNESCAPED_UNICODE);
             echo 'notnull|' . $results;
         }
 
     }
+    
+    public function convertEncoding($arrays){
 
-    function checkUtf8($data) {
-        foreach ($data as $item) {
-            if (!mb_check_encoding($item, 'UTF-8')) {
-                echo "Invalid UTF-8 detected: " . $item . "\n";
-            }
-        }
+        return array_map(function($array) {
+            return array_map(function($value) {
+                return mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1');
+            }, $array);
+        }, $arrays);
+
     }
+
     
     
 }

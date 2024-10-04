@@ -30,14 +30,13 @@ class RegisterAsArtist extends Controller
 
     public function checkRegister(){
         $artist_name = $_POST['artist_name'];
-        $address = $_POST['address'];
         $artist_category_id = $_POST['artist_category_id'];
         
         session_start();
         $user_info = $this->userModel->checkIfLoggedIn();
         
         if ($user_info) {
-            $this->userModel->setUserAsArtist($user_info['user_id'], $artist_name, $address, $artist_category_id);
+            $this->userModel->setUserAsArtist($user_info['user_id'], $artist_name, $artist_category_id);
             echo 'success|'.BASEURL.'profile';
         } else {
            echo 'error you are not logged in.';

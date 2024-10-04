@@ -5,7 +5,7 @@
 <hr>
 
 <h4>Where...</h4>
-<p><?= $user_info['address']?></p>
+<p><?= $checkout_data['address']?></p>
 
 <h4>When...</h4>
 <p>Standard Delivery</p>
