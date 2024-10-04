@@ -5,39 +5,34 @@
 }
 
 body{
-  background: #f4e9dc;
-}
-
-.main {
-  width: 100%;
-  display: flex;
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center;
-  min-height: 100vh; 
+  margin: 0;
+  padding: 0;
   background: url(../images/back.png);
-  background-repeat: no-repeat;
+  box-sizing: border-box;
+  background-repeat: no-repeat center center fixed;
   background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }
 
 .navbar {
-  width: 100%;
-  height: 75px;
+  width: 100vw;
+  height: 7vh;
   background-color: #423329;
   display: flex;
   align-items: center;
   padding: 0 20px;
   z-index: 999; 
+  position: relative;
 }
 
 .navbar ul {
-  list-style-type: none;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  padding: 0;
+  width: 100%;
+  flex-direction: row;
+
 }
 
 .navbar li {
@@ -48,10 +43,10 @@ body{
 .navbar li a {
   color: white;
   text-decoration: none;
-  padding: 20px;
+  padding: 1vh;
   font-family: Arial, sans-serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 2vh;
   display: block;
 }
 
@@ -131,7 +126,7 @@ body{
   flex-direction: column;
   justify-content: center;
   margin-right: 0;
-  min-height: 100vh;
+  min-height: 70vh;
 }
 
 .products {
@@ -174,8 +169,6 @@ body{
   justify-content: center;
 }
 
-
-
 .product-item:hover {
   background-color: #2f1a09;
   transform: translateY(-5px);
@@ -185,15 +178,75 @@ body{
   color: #ff7200;
 }
 
+/* Center the gallery section container with text and swiper */
+.gallery-section {
+  display: flex;
+  flex-direction: column;  /* Align items vertically (stack text and swiper) */
+  align-items: center;     /* Center everything horizontally */
+  text-align: center;      /* Ensures the heading is centered */
+  margin: 20px auto;       /* Adds vertical space and centers section */
+  width: 100%;             /* Makes sure the container takes full width */
+}
+
+/* Style for the headings */
+.gallery-section h2 {
+  display: flex;
+  font-size: 24px;         /* Adjust heading size */
+  margin-bottom: 20px;     /* Adds space between the heading and the gallery */
+  color: #423329;          /* Adjust the color as needed */
+}
+
+/* Center the swiper inside each section */
+.swiper {
+  width: 90%;              /* Set a width for the swiper */
+  max-width: 2000px;        /* Ensure the swiper doesn't get too wide */
+  padding: 10px 0;         /* Adds padding around the swiper */
+  display: flex;
+  justify-content: center;  /* Centers the swiper content horizontally */
+  align-items: center;
+}
+
+/* Style for the swiper slides */
+.swiper-slide {
+  margin: 0 10px;          /* Space between slides */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Center the swiper buttons */
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
+  color: #423329;
+}
+
+/* Optional: Adjust the button positions */
+.swiper-button-prev {
+  left: 20px;
+}
+
+.swiper-button-next {
+  right: 20px;
+}
+
+
+
 .footer {
-  height: 50px;
+  position: fixed;
+  bottom: 0;
+  height: 4vh;
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding: 10px;
+  padding: 1vh;
   font-family: 'Arial', sans-serif;
-  width: 100%;
-  position: relative; 
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width:600px ) {
