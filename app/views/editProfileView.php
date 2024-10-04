@@ -20,9 +20,39 @@
         <label style="color:green;" for="email">* email verified</label><br>
     <?php endif; ?>
     <br>
+    
+    <label for="">ADDRESS:</label><br>
+    
+    <label for="region_id">Region:</label><br>
+    <select name="region_id" id="region_id" onchange="checkRegion(this,'<?php echo BASEURL; ?>')">
+                <option value="">
+                    ---Select Region---
+                </option>
+            <?php foreach ($data['regions'] as $region): ?>
+                <option value="<?= htmlspecialchars($region['regCode']) //add selected?>" >
+                    <?= htmlspecialchars($region['regDesc']) ?>
+                </option>
+            <?php endforeach; ?>
+    </select><br><br>
 
-    <label for="address">Address:</label><br>
-    <input type="text" id="address" name="address" value="<?= $user_info['address'] ?>" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>><br><br>
+    <label for="province_id">Province:</label><br>
+    <select name="province_id" id="province_id" onchange="">
+                <option value="">
+                    ---Select Province---
+                </option>
+    </select><br><br>
+    
+    <label for="">City:</label><br>
+    <input type="text" id="address" name="address" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>><br><br>
+    
+    <label for="">Brgy:</label><br>
+    <input type="text" id="address" name="address" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>><br><br>
+
+    <label for="">Street, building, and  number:</label><br>
+    <input type="text" id="address" name="address" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>><br><br>
+
+    <label for="">Landmark:</label><br>
+    <input type="text" id="address" name="address"><br><br>
 
     <?php if($user_info['is_artist'] == 'true'):?>
 
@@ -47,3 +77,5 @@
 <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/sendForm.js"></script>
 
 <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/updateUploadImage.js"></script>
+
+<script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/address.js"></script>

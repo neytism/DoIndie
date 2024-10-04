@@ -4,7 +4,7 @@ class TransactionModel {
     private $db;
 
     public function __construct() {
-        $this->db = new Database();  // Assuming you're using the Database class you provided
+        $this->db = new Database();  
     }
 
     public function createTransaction($user_id, $total, $voucher_code, $voucher_desc, $payment_method, $address, $selected_carts) {

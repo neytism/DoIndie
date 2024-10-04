@@ -3,10 +3,12 @@
 class Profile extends Controller
 {
     private $userModel;
+    private $addressModel;
 
     public function __construct()
     {
         $this->userModel = $this->model('UserModel');
+        $this->addressModel = $this->model('AddressModel');
     }
 
     public function index()
@@ -70,9 +72,10 @@ class Profile extends Controller
         
         $user_info = $this->userModel->checkIfLoggedIn();
         $artist_categories = $this->userModel->getArtistCategories();
+        $regions = $this->addressModel->getAllRegion();
         
         if ($user_info) {
-            $this->view('editProfileView', ['user_info' => $user_info, 'artist_categories' => $artist_categories]);
+            $this->view('editProfileView', ['user_info' => $user_info, 'artist_categories' => $artist_categories, 'regions' => $regions]);
         } 
     
     }
@@ -233,6 +236,24 @@ class Profile extends Controller
     function HasSpecialCharacters($str)
     {
         return preg_match('/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/', $str);
+    }
+
+    //should be somwhere else
+
+    function checkRegion($region_code){
+        
+        $provinces = $this->addressModel->getAllProvinceByRegionCode($region_code);
+
+        if (empty(array_filter($provinces))) {
+
+            echo 'null|';
+            
+        } else {
+            
+            $results = json_encode( $provinces);
+            echo 'notnull|' . $results;
+        }
+
     }
     
 }
