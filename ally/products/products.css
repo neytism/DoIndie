@@ -178,43 +178,38 @@ body{
   color: #ff7200;
 }
 
-/* Center the gallery section container with text and swiper */
 .gallery-section {
   display: flex;
-  flex-direction: column;  /* Align items vertically (stack text and swiper) */
-  align-items: center;     /* Center everything horizontally */
-  text-align: center;      /* Ensures the heading is centered */
-  margin: 20px auto;       /* Adds vertical space and centers section */
-  width: 100%;             /* Makes sure the container takes full width */
+  flex-direction: column;  
+  align-items: center;     
+  text-align: center;     
+  margin: 20px auto;       
+  width: 100%;         
 }
 
-/* Style for the headings */
 .gallery-section h2 {
   display: flex;
-  font-size: 24px;         /* Adjust heading size */
-  margin-bottom: 20px;     /* Adds space between the heading and the gallery */
-  color: #423329;          /* Adjust the color as needed */
+  font-size: 24px;       
+  margin-bottom: 20px;    
+  color: #423329;       
 }
 
-/* Center the swiper inside each section */
 .swiper {
-  width: 90%;              /* Set a width for the swiper */
-  max-width: 2000px;        /* Ensure the swiper doesn't get too wide */
-  padding: 10px 0;         /* Adds padding around the swiper */
+  width: 90%;              
+  max-width: 2000px;        
+  padding: 10px 0;         
   display: flex;
-  justify-content: center;  /* Centers the swiper content horizontally */
+  justify-content: center;  
   align-items: center;
 }
 
-/* Style for the swiper slides */
 .swiper-slide {
-  margin: 0 10px;          /* Space between slides */
+  margin: 0 10px;          
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Center the swiper buttons */
 .swiper-button-prev, .swiper-button-next {
   position: absolute;
   top: 50%;
@@ -224,7 +219,6 @@ body{
   color: #423329;
 }
 
-/* Optional: Adjust the button positions */
 .swiper-button-prev {
   left: 20px;
 }
