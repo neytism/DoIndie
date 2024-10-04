@@ -255,5 +255,65 @@ class Profile extends Controller
         }
 
     }
+
+    function checkProvince($province_code){
+        
+        $cities = $this->addressModel->getAllCityByProvinceCode($province_code);
+
+        echo count($cities);
+
+        if (empty(array_filter($cities))) {
+
+            echo 'null|';
+            
+        } else {
+            
+            $cities = array_map(function($city) {
+                return array_map(function($value) {
+                    return mb_convert_encoding($value, 'UTF-8', 'UTF-8');
+                }, $city);
+            }, $cities);
+
+            $results = json_encode($cities);
+
+                if ($results === false) {
+                    echo 'error|' . json_last_error_msg(); 
+                } else {
+                    echo 'notnull|' . $results;
+                }
+        }
+
+    }
+
+    function checkCity($city_code){
+        
+        $brgys = $this->addressModel->getAllBrgyByCityCode($city_code);
+
+        if (empty(array_filter($brgys))) {
+
+            echo 'null|';
+            
+        } else {
+
+            $brgys = array_map(function($brgy) {
+                return array_map(function($value) {
+                    return mb_convert_encoding($value, 'UTF-8', 'UTF-8');
+                }, $brgy);
+            }, $brgys);
+            
+            $results = json_encode($brgys);
+            echo 'notnull|' . $results;
+        }
+
+    }
+
+    function checkUtf8($data) {
+        foreach ($data as $item) {
+            if (!mb_check_encoding($item, 'UTF-8')) {
+                echo "Invalid UTF-8 detected: " . $item . "\n";
+            }
+        }
+    }
+    
     
 }

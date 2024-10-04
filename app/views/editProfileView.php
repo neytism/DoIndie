@@ -24,7 +24,7 @@
     <label for="">ADDRESS:</label><br>
     
     <label for="region_id">Region:</label><br>
-    <select name="region_id" id="region_id" onchange="checkRegion(this,'<?php echo BASEURL; ?>')">
+    <select name="region_id" id="region_id" onchange="checkRegion(this)">
                 <option value="">
                     ---Select Region---
                 </option>
@@ -36,17 +36,25 @@
     </select><br><br>
 
     <label for="province_id">Province:</label><br>
-    <select name="province_id" id="province_id" onchange="">
+    <select name="province_id" id="province_id" onchange="checkProvince(this)">
                 <option value="">
                     ---Select Province---
                 </option>
     </select><br><br>
     
-    <label for="">City:</label><br>
-    <input type="text" id="address" name="address" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>><br><br>
+    <label for="city_id">City:</label><br>
+    <select name="city_id" id="city_id" onchange="checkCity(this)">
+                <option value="">
+                    ---Select City---
+                </option>
+    </select><br><br>
     
-    <label for="">Brgy:</label><br>
-    <input type="text" id="address" name="address" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>><br><br>
+    <label for="brgy_id">Brgy:</label><br>
+    <select name="brgy_id" id="brgy_id" onchange="">
+                <option value="">
+                    ---Select Barangay---
+                </option>
+    </select><br><br>
 
     <label for="">Street, building, and  number:</label><br>
     <input type="text" id="address" name="address" <?php if($user_info['is_artist'] == 'true') echo 'required' ?>><br><br>
@@ -79,3 +87,5 @@
 <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/updateUploadImage.js"></script>
 
 <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/address.js"></script>
+
+<script>setBaseUrl('<?php echo BASEURL; ?>');</script>
