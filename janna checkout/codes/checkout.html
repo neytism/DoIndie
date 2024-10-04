@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping Cart</title>
+
+    <!-- CSS FILE LINK --><link rel="stylesheet" type="text/css" href="../style/checkout.css">
+
+  </head>
+  <body>
+
+    <!-- NAV BAR -->
+    <div class="main">
+      <div class="navbar">
+          <div class="icon">
+              <a href="#"><img src="..\assets\LOGO.png" alt="DoIndie Logo" class="logo-img"></a>
+          </div>
+          <div class="menu">
+              <ul>
+                  <li><a href="#">HOME</a></li>
+                  <li><a href="#">PRODUCTS</a>
+                      <ul>
+                          <li><a href="#">Pins</a></li>
+                          <li><a href="#">Posters</a></li>
+                          <li><a href="#">Stickers</a></li>
+                          <li><a href="#">Keychains</a></li>
+                          <li><a href="#">Fanart</a></li>
+                          <li><a href="#">Commissions</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="#">CART</a></li>
+                  <li><a href="#">PROFILE</a>
+                      <ul>
+                          <li><a href="#">Edit Profile</a></li>
+                          <li><a href="#">Log Out</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+          <div class="search">
+              <input class="srch" type="search" name="" placeholder="Search...">
+              <button class="btn">Search</button>
+          </div>
+      </div> 
+      <!-- END NAV BAR -->
+
+    <!-- PRODUCT LIST START -->
+    <div class="shopping-cart">
+      <!-- Title -->
+      <div class="title">
+        Shopping Bag
+      </div>
+
+      <!-- Product #1 -->
+      <div class="item">
+        <div class="buttons">
+          <span class="delete-btn"></span>
+        </div>
+
+        <div class="image">
+          <img src="..\assets\item-1.png" alt="" />
+        </div>
+
+        <div class="description">
+          <span>Product Name</span>
+          <span>Artist Name</span>
+          <span>Product Description</span>
+        </div>
+
+        <div class="quantity">
+          <button class="plus-btn" type="button" name="button">
+            <img src="..\assets\plus.svg" alt="" />
+          </button>
+          <input type="text" name="name" value="1">
+          <button class="minus-btn" type="button" name="button">
+            <img src="..\assets\minus.svg" alt="" />
+          </button>
+        </div>
+
+        <div class="total-price">$549</div>
+      </div>
+
+      <!-- Product #2 -->
+      <div class="item">
+        <div class="buttons">
+          <span class="delete-btn"></span>
+        </div>
+
+        <div class="image">
+          <img src="..\assets\item-2.png" alt=""/>
+        </div>
+
+        <div class="description">
+          <span>Product Name</span>
+          <span>Artist Name</span>
+          <span>Product Description</span>
+        </div>
+
+        <div class="quantity">
+          <button class="plus-btn" type="button" name="button">
+            <img src="..\assets\plus.svg" alt="" />
+          </button>
+          <input type="text" name="name" value="1">
+          <button class="minus-btn" type="button" name="button">
+            <img src="..\assets\minus.svg" alt="" />
+          </button>
+        </div>
+
+        <div class="total-price">$870</div>
+      </div>
+
+      <!-- Product #3 -->
+      <div class="item">
+        <div class="buttons">
+          <span class="delete-btn"></span>
+        </div>
+
+        <div class="image">
+          <img src="..\assets\item-3.png" alt="" />
+        </div>
+
+        <div class="description">
+          <span>Product Name</span>
+          <span>Artist Name</span>
+          <span>Product Description</span>
+        </div>
+
+        <div class="quantity">
+          <button class="plus-btn" type="button" name="button">
+            <img src="..\assets\plus.svg" alt="" />
+          </button>
+          <input type="text" name="name" value="1">
+          <button class="minus-btn" type="button" name="button">
+            <img src="..\assets\minus.svg" alt="" />
+          </button>
+        </div>
+
+        <div class="total-price">$349</div>
+      </div>
+    </div>
+<!-- PRODUCT LIST END -->
+
+     <!-- FOOTER START -->
+     <footer class="footer flex-between">
+      <h3 class="footer__logo">
+        <span>Do</span>Indie
+      </h3>
+
+      <ul class="footer__nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="">Customer Service</a></li>
+        <li><a href="">Shopping Cart</a></li>
+        <li><a href="">About Us</a></li>
+      </ul>
+
+      <ul class="footer__social">
+        <li class="flex-center">
+          <img src="../assets/facebook.svg" alt="facebook" />
+        </li>
+        <li class="flex-center">
+          <img src="../assets/instagram.svg" alt="instagram" />
+        </li>
+        <li class="flex-center">
+          <img src="../assets/twitter.svg" alt="twitter" />
+        </li>
+      </ul>
+    </footer>
+    <!-- FOOTER END -->
+
+    <!-- JS FILE LINK -->
+    <script src="../js/script.js" type="module"></script>
+
+  </body>
+</html>
