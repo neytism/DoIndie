@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body{
+    margin: 0;
+    padding: 0;
+    background: url(../images/back.png);
+    box-sizing: border-box;
+    background-repeat: no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .navbar {
+    width: 100vw;
+    height: 7vh;
+    background-color: #423329;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 999; 
+    position: relative;
+  }
+  
+  .navbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: row;
+  
+  }
+  
+  .navbar li {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .navbar li a {
+    color: white;
+    text-decoration: none;
+    padding: 1vh;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2vh;
+    display: block;
+  }
+  
+  .navbar ul ul {
+    position: absolute;
+    top: 100%;
+    display: none;
+    background-color: rgba(51, 51, 51, 0.8);
+  }
+  
+  .navbar ul ul li {
+    display: block;
+  }
+  
+  .navbar li:hover ul {
+    width: 150px;
+    display: block;
+  }
+  
+  .navbar ul ul li a:hover {
+    background-color: #423329;
+  }
+  
+  .navbar .search {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  .srch {
+    width: 200px;
+    height: 40px;
+    border: 1px solid #dcd3c6; 
+    background: #f4e9dc; 
+    color: #423329;
+    padding: 10px;
+    border-bottom-left-radius: 25px; 
+    border-top-left-radius: 25px;
+    font-family: 'Arial', 'sans-serif';
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .btn {
+    width: 100px;
+    height: 40px;
+    background: #423329;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    border-bottom-right-radius: 25px; 
+    border-top-right-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .srch:focus, .btn:focus {
+    outline: none;
+  }
+  
+  .btn:hover {
+    background: #f4e9dc;
+    color: #000;
+  }
+  
+  
+  .logo-img {
+    height: 60px;
+  }
+
+  .footer {
+    position: relative;
+    bottom: 0;
+    height: 4vh;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1vh;
+    font-family: 'Arial', sans-serif;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+  }
