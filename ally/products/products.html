@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         .swiper {
-            height: 250px; /* Adjust as needed */
+            height: 250px;
         }
         .swiper-button-next,
         .swiper-button-prev {
@@ -77,7 +77,6 @@
     <br><br>
     <div class="swiper">
         <div class="swiper-wrapper">
-            <!-- Repeat this block for each pin -->
             <div class="swiper-slide">
                 <a href="pins-item1.html"><img src="..\images\sample.png" width="200" height="200" alt="Pin 1" /></a>
                 <a href="pins-item2.html"><img src="..\images\sample.png" width="200" height="200" alt="Pin 2" /></a>
@@ -98,7 +97,6 @@
     <br><br>
     <div class="swiper">
         <div class="swiper-wrapper">
-            <!-- Repeat this block for each poster -->
             <div class="swiper-slide">
                 <a href="posters-item1.html"><img src="..\images\sample.png" width="200" height="200" alt="Poster 1" /></a>
                 <a href="posters-item2.html"><img src="..\images\sample.png" width="200" height="200" alt="Poster 2" /></a>
@@ -119,7 +117,6 @@
     <br><br>
     <div class="swiper">
         <div class="swiper-wrapper">
-            <!-- Repeat this block for each sticker -->
             <div class="swiper-slide">
                 <a href="stickers-item1.html"><img src="..\images\sample.png" width="200" height="200" alt="Sticker 1" /></a>
                 <a href="stickers-item2.html"><img src="..\images\sample.png" width="200" height="200" alt="Sticker 2" /></a>
@@ -136,12 +133,11 @@
 </div>
 
 <!-- Keychains Section -->
-<div id="keychains-gallery" class="gallery-section"></div>
+<div id="keychains-gallery" class="gallery-section">
     <h2>Keychains</h2>
     <br><br>
     <div class="swiper">
         <div class="swiper-wrapper">
-            <!-- Repeat this block for each keychain -->
             <div class="swiper-slide">
                 <a href="keychains-item1.html"><img src="..\images\sample.png" width="200" height="200" alt="Keychain 1" /></a>
                 <a href="keychains-item2.html"><img src="..\images\sample.png" width="200" height="200" alt="Keychain 2" /></a>
@@ -149,13 +145,53 @@
                 <a href="keychains-item4.html"><img src="..\images\sample.png" width="200" height="200" alt="Keychain 4" /></a>
                 <a href="keychains-item5.html"><img src="..\images\sample.png" width="200" height="200" alt="Keychain 5" /></a>
                 <a href="keychains-item6.html"><img src="..\images\sample.png" width="200" height="200" alt="Keychain 6" /></a>
-
             </div>
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
 </div>
+
+<!-- Commissions Section -->
+<div id="commissions-gallery" class="gallery-section">
+    <h2>Commissions</h2>
+    <br><br>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="commissions-item1.html"><img src="..\images\sample.png" width="200" height="200" alt="Commission 1" /></a>
+                <a href="commissions-item2.html"><img src="..\images\sample.png" width="200" height="200" alt="Commission 2" /></a>
+                <a href="commissions-item3.html"><img src="..\images\sample.png" width="200" height="200" alt="Commission 3" /></a>
+                <a href="commissions-item4.html"><img src="..\images\sample.png" width="200" height="200" alt="Commission 4" /></a>
+                <a href="commissions-item5.html"><img src="..\images\sample.png" width="200" height="200" alt="Commission 5" /></a>
+                <a href="commissions-item6.html"><img src="..\images\sample.png" width="200" height="200" alt="Commission 6" /></a>
+            </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+
+<!-- Fan Arts Section -->
+<div id="fan-arts-gallery" class="gallery-section">
+    <h2>Fan Arts</h2>
+    <br><br>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="fan-art-item1.html"><img src="..\images\sample.png" width="200" height="200" alt="Fan Art 1" /></a>
+                <a href="fan-art-item2.html"><img src="..\images\sample.png" width="200" height="200" alt="Fan Art 2" /></a>
+                <a href="fan-art-item3.html"><img src="..\images\sample.png" width="200" height="200" alt="Fan Art 3" /></a>
+                <a href="fan-art-item4.html"><img src="..\images\sample.png" width="200" height="200" alt="Fan Art 4" /></a>
+                <a href="fan-art-item5.html"><img src="..\images\sample.png" width="200" height="200" alt="Fan Art 5" /></a>
+                <a href="fan-art-item6.html"><img src="..\images\sample.png" width="200" height="200" alt="Fan Art 6" /></a>
+            </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+
 
         <!-- FOOTER -->
         <div class="footer">
@@ -164,8 +200,10 @@
     </div>
 
     <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <!-- External JS File -->
-    <script src="product.js"></script>
+    <script src="products.js"></script>
 </body>
 </html>
