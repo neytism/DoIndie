@@ -4,26 +4,10 @@ const swiper = new Swiper('.swiper', {
     spaceBetween: 10, 
     slidesPerView: 5, 
     centeredSlides: false, 
-
-    // Navigation arrows
+	align-items: center,
+	
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev', 
-    },
-
-    // Responsive 
-    breakpoints: {
-        640: {
-            slidesPerView: 2, 
-            spaceBetween: 20,
-        },
-        768: {
-            slidesPerView: 3, 
-            spaceBetween: 30,
-        },
-        1024: {
-            slidesPerView: 5,
-            spaceBetween: 40,
-        },
     },
 });
