@@ -49,6 +49,16 @@ body {
   background-color: #f4e9dc;
 }
 
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 100%;               
+  background-color:#423329;
+  height: 2px;
+  margin: 0 0 2px 0;
+}
+
 .center {
   margin: auto;
   padding: 10px;
