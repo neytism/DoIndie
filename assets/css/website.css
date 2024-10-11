@@ -98,3 +98,186 @@ hr {
 .inputButtonV2:hover {
   background-color:#6d584b;
 }
+
+
+@media screen and (max-width: 850px) {
+  .navbar .row-list{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .navbar .search {
+    display: none;
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: con(5vw, 75px);
+  width: 100%;
+  margin-bottom: 25px;
+  background-color: #423329;
+  z-index: 999; 
+}
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.navbar li {
+  position: relative;
+  display: inline-block;
+  padding: 0 1vw;
+}
+
+.navbar li a {
+  color: #f4e9dc;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 20px;
+  display: block;
+}
+
+.navbar ul ul {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  display: none;
+  background-color: #504639;
+  transform: translate(-10%, 0);
+}
+
+.navbar ul ul li {
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+.navbar li:hover ul {
+  display: block;
+}
+
+.navbar ul ul li a:hover {
+  background-color: #423329;
+}
+
+.logo-img {
+  height: 50px;
+  width: 50px;
+  background-color: #f4e9dc;
+}
+
+.icon {
+  padding: 0 0 0 50px;
+}
+
+.menu {
+  padding: 0 50px;
+}
+
+.search {
+  margin-left: auto; 
+  margin-right: 0;
+  padding: 0;
+  padding-right: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.navbarSearch {
+  width: 250px;
+  height: 40px;
+  background: #f4e9dc; 
+  color: #423329;
+  border-bottom-left-radius: 25px; 
+  border-top-left-radius: 25px;
+}
+
+.navbarSearchButton {
+  width: 150px;
+  height: 40px;
+  background: #423329;
+  color: #f4e9dc;
+  font-size: 20px;
+  border-bottom-right-radius: 25px; 
+  border-top-right-radius: 25px;
+}
+
+.navbarSearchButton:hover {
+  background: #6d584b;
+}
+
+.srch:focus, .btn:focus {
+  outline: none;
+}
+
+
+@media screen and (max-width: 850px) {
+  .footer .row-list{
+    display: block;
+  }
+
+  .footer ul li{
+    margin-bottom: 10px;
+  }
+}
+
+.footer {
+  background-color: #423329;
+  position: relative;
+  bottom: 0;
+  padding: 25px 0;
+  height: con(5vw, 200px);
+  width: 100%;
+}
+
+.row-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 5px 0;
+}
+
+.row-list li {
+  flex-basis: calc(15% - 10px);
+  color: #f4e9dc;
+  text-align: center;
+}
+
+.rowItem {
+  color: #f4e9dc; 
+  font-size: 30px;
+}
+
+.rowItem:hover {
+  opacity: 0.50;
+}
+
+.fa {
+  padding: 25px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #f4e9dc;
+}
+
+.fa:hover {
+  opacity: 0.75;
+}
+
+.nonSelectable {
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
