@@ -117,7 +117,6 @@ hr {
   align-items: center;
   height: con(5vw, 75px);
   width: 100%;
-  margin-bottom: 25px;
   background-color: #423329;
   z-index: 999; 
 }
@@ -244,7 +243,6 @@ hr {
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin: 0 0 5px 0;
 }
 
 .row-list li {
