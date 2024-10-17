@@ -3,31 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="products.css"> 
+    <link rel="stylesheet" type="text/css" href="userprofile.css"> 
     <title>DoIndie</title>
     <link rel="icon" type="image/png" href="LOGO.jpg"> 
 
     <!-- Swiper Stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <style>
-        .swiper {
-            height: 250px;
-        }
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #2f1a09;
-        }
-        .swiper-slide img {
-            border-radius: 20px;
-        }
-    </style>
 </head>
 <body>
     <!-- NAV BAR -->
     <div class="main">
         <div class="navbar">
             <div class="icon">
-                <a href="#"><img src="LOGO.jpg" alt="DoIndie Logo" class="logo-img"></a>
+                <a href="#"><img src="../images/LOGO.png" alt="DoIndie Logo" class="logo-img"></a>
             </div>
             <div class="menu">
                 <ul>
@@ -49,6 +37,7 @@
                             <li><a href="#">Log Out</a></li>
                         </ul>
                     </li>
+                    <li><a href="#">ABOUT US</a>
                 </ul>
             </div>
             <div class="search">
@@ -58,42 +47,36 @@
 		</div>
         <!-- END NAV BAR -->
 
-		<div class="main-content" style="display: flex; justify-content: flex-start; align-items: center; margin-top: 20px; gap: 40px;">
-			<!-- Left Side: Picture -->
-			<div style="flex: 1; display: flex; padding-top: 30px; padding-left: 80px">
-				<div style="background-color: #423329; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;" src="sample.jpg">
-					<img src="sample.jpg" width="300" height="300" alt="PICTURE" />
-				</div>
-			</div>
-
-			<!-- Right Side: Artist Info with Longer Lines -->
-			<div style="flex: 1; text-align: center; padding-right: 250px">
-				<div style="border: 2px solid #423329; padding: 20px; display: inline-block; width: 100%; max-width: 1000px;">
-					<h2 style="padding-bottom: 10px; width: 100%; padding: 20px">ARTIST NAME</h2>
-					<p style="padding-bottom: 10px; margin-top: 10px; width: 100%;">"headline"</p>
-				</div>
-				<div style="display: inline-block; width: 100%; max-width: 1000px;">
-					<button style="margin-top:10px; padding: 10px 20px; background-color: #f4e9dc; border: 1px solid #423329; font-weight: bold; cursor: pointer; width: 100%;">BIO</button><br>
-				</div>
-				<div style="display: inline-block; width: 100%; max-width: 1000px;">
-					<button style="margin-top:10px; padding: 10px 20px; background-color: #f4e9dc; border: 1px solid #423329; font-weight: bold; cursor: pointer; width: 100%;">LOCATION</button><br>
-				</div>
-			</div>
-		</div>
+		<div class="artist-section">
+			<div class="artist-picture">
+                <img src="../images/sample.png" alt="Artist Picture"> 
+            </div>
+            <div class="box">
+			    <div class="artist-info">
+                    <h2>Artist Name</h2>
+                    <br>
+                    <p>"Headline"</p>
+                </div>
+                <div class="buttons">
+                    <button class="btn bio-btn">Bio</button>
+                    <button class="btn location-btn">Location</button>
+                </div>
+            </div>
+        </div>
 
 
 		 <!-- Pins Section -->
 		 <div id="gallery" class="gallery-section" style="display: flex; justify-content: center; align-items: center; margin-top: 100px;">
 			<div class="swiper">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide"> <a href="pins-item1.html"><img src="sample.jpg" width="200" height="200" alt="ARTWORK PREVIEW 1" /></a> </div>
-					<div class="swiper-slide"> <a href="pins-item2.html"><img src="sample.jpg" width="200" height="200" alt="ARTWORK PREVIEW 2" /></a> </div>
-					<div class="swiper-slide"> <a href="pins-item3.html"><img src="sample.jpg" width="200" height="200" alt="ARTWORK PREVIEW 3" /></a> </div>
-					<div class="swiper-slide"> <a href="pins-item4.html"><img src="sample.jpg" width="200" height="200" alt="ARTWORK PREVIEW 4" /></a> </div>
-					<div class="swiper-slide"> <a href="pins-item5.html"><img src="sample.jpg" width="200" height="200" alt="ARTWORK PREVIEW 5" /></a> </div>
-					<div class="swiper-slide"> <a href="pins-item6.html"><img src="sample.jpg" width="200" height="200" alt="ARTWORK PREVIEW 6" /></a> </div>
-					<div class="swiper-slide"> <a href="pins-item7.html"><img src="sample.jpg" width="200" height="200" alt="ARTWORK PREVIEW 7" /></a> </div>
-					<div class="swiper-slide"> <a href="pins-item8.html"><img src="sample.jpg" width="200" height="200" alt="ARTWORK PREVIEW 8" /></a> </div>
+					<div class="swiper-slide"> <a href="pins-item1.html"><img src="../images/sample.png" width="250" height="250" alt="ARTWORK PREVIEW 1" /></a> </div>
+					<div class="swiper-slide"> <a href="pins-item2.html"><img src="../images/sample.png" width="250" height="250" alt="ARTWORK PREVIEW 2" /></a> </div>
+					<div class="swiper-slide"> <a href="pins-item3.html"><img src="../images/sample.png" width="250" height="250" alt="ARTWORK PREVIEW 3" /></a> </div>
+					<div class="swiper-slide"> <a href="pins-item4.html"><img src="../images/sample.png" width="250" height="250" alt="ARTWORK PREVIEW 4" /></a> </div>
+					<div class="swiper-slide"> <a href="pins-item5.html"><img src="../images/sample.png" width="250" height="250" alt="ARTWORK PREVIEW 5" /></a> </div>
+					<div class="swiper-slide"> <a href="pins-item6.html"><img src="../images/sample.png" width="250" height="250" alt="ARTWORK PREVIEW 6" /></a> </div>
+					<div class="swiper-slide"> <a href="pins-item7.html"><img src="../images/sample.png" width="250" height="250" alt="ARTWORK PREVIEW 7" /></a> </div>
+					<div class="swiper-slide"> <a href="pins-item8.html"><img src="../images/sample.png" width="250" height="250" alt="ARTWORK PREVIEW 8" /></a> </div>
 				</div>
 				<div class="swiper-button-prev"></div>
 				<div class="swiper-button-next"></div>
