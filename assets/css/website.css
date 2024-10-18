@@ -99,7 +99,7 @@ hr {
   background-color:#6d584b;
 }
 
-
+/* HEADER */
 @media screen and (max-width: 850px) {
   .navbar .row-list{
     display: block;
@@ -216,7 +216,7 @@ hr {
   outline: none;
 }
 
-
+/* FOOTER */
 @media screen and (max-width: 850px) {
   .footer .row-list{
     display: block;
