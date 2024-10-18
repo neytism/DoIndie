@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../../assets/css/website.css">
+  <link rel="stylesheet" href="../../assets/css/register.css">
+  <!-- Bootstrap Modal CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+  <script src="../../assets/js/register.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+  <body class="registerBackground">
+    <div class="registerMainDiv row">
+        <div class="col-sm-5 center" style="padding: 2.5em;">
+          <img src="../../uploads/images/default_product_picture.png" class="img-responsive center" style="height:100%; width:100%;" alt="Image">
+        </div>
+
+        <div class="col-sm-7 center registerCenterDiv">
+          <h1 class="center" style="color: #f4e9dc; font-size: 50px;">REGISTER</h1>
+            <form class="registerFormDiv  " id="registerForm" method="post" action="html_homepage.html">
+            <div class="form-group"> <input type="email" class="registerInput" id="regEmail" name="registerEmail" placeholder="Email"></div>
+            <div class="form-group"> <input type="text" class="registerInput" id="regUser" name="registerUsername" placeholder="Username"></div>
+            <div class="form-group"> <input type="password" class="registerInput" id="regPass" name="registerPassword" placeholder="Password"></div>
+            <div class="form-group"> <input type="password" class="registerInput" id="regConPass" name="registerConfirmPassword" placeholder="Confirm Password"></div>
+            <div> 
+              <p style="color:#f4e9dc; font-size:35px">Select your account type</p>
+              <input type="radio" id="regBuy" name="userType" value="registerBuyer">
+              <label style="color:#f4e9dc; margin-right: 10px;" for="html">Buyer</label>
+              <input type="radio" id="regSell" name="userType" value="registerSeller">
+              <label style="color:#f4e9dc" for="css">Seller</label>
+            </div>
+            </form>
+                <button class="inputButtonV1" onclick="onClickRegister()">Register</button>
+        </div>
+    </div>
+  </body>
+</html>
+  
