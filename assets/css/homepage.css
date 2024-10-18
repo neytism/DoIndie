@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 /* other css file imports */
-@import url("sections/header.css");
-@import url("sections/hero.css");
-@import url("sections/featured.css");
-@import url("sections/footer.css");
+@import url("homepageSections/header.css");
+@import url("homepageSections/hero.css");
+@import url("homepageSections/featured.css");
+@import url("homepageSections/footer.css");
 
 /* CSS variables for reusablity across all files (including above imported) */
 :root {
