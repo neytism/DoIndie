@@ -1,0 +1,38 @@
+h1 {
+    font-size: 5vw;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px;
+}
+
+td {
+    font-weight: 300;
+}
+
+td, th {
+    font-size: min(1.75vw, 28px);
+    border: 2px solid #423329;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+    background-color: #42332980;
+}
+
+.analyticsTitle {
+    font-size: min(1.75vw, 28px);
+    margin-top: 1vw;
+}
+
+.chartDiv {
+    height: 100%;
+    width: 75%;
+    max-width: 1000px;
+}
+
+.chart {
+    margin: 1.5vw 0;
+}
