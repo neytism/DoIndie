@@ -1,0 +1,143 @@
+h1 {
+    font-size: 5vw;
+}
+
+.aboutUsMainHeader {
+    background-color: #423329;
+    width: 100%;
+    height: 250px;
+    background-image: url("../../uploads/images/back.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.aboutUsMainHeaderLogo {
+    height: 200px;
+    width: 200px;
+    padding: 2em;
+}
+
+.aboutUsDivContainer {
+    margin: 2.5vw;
+    padding: 0 5vw 2em;
+}
+
+.aboutUsTextCenter {
+    font-size: min(1.75vw, 28px);
+    line-height: 150%;
+}
+
+.aboutUsTextJustify {
+    font-size: min(1.75vw, 28px);
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 150%;
+}
+
+.aboutUsImageBackground {
+    width: 90%;
+    background-color: #423329; 
+    border-radius: 15px;
+}
+
+.aboutUsImage {
+    width: 90%; 
+    border-radius: 50px;
+    padding: 1em 1em 0;
+}
+
+.aboutUsDevContainer1 {
+    height: 25vw;
+    width: 25vw;
+    min-height: 150px;
+    min-width: 150px;
+    max-height: 300px;
+    max-width: 300px;
+    background-color: #ba8181;
+    background-image: url("../../uploads/images/LOGO.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.aboutUsDevContainer2 {
+    height: 25vw;
+    width: 25vw;
+    min-height: 150px;
+    min-width: 150px;
+    max-height: 300px;
+    max-width: 300px;
+    background-color: #ba8181;
+    background-image: url("../../uploads/images/LOGO.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.aboutUsDevContainer3 {
+    height: 25vw;
+    width: 25vw;
+    min-height: 150px;
+    min-width: 150px;
+    max-height: 300px;
+    max-width: 300px;
+    background-color: #ba8181;
+    background-image: url("../../uploads/images/LOGO.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.aboutUsDevContainer4 {
+    height: 25vw;
+    width: 25vw;
+    min-height: 150px;
+    min-width: 150px;
+    max-height: 300px;
+    max-width: 300px;
+    background-color: #ba8181;
+    background-image: url("../../uploads/images/LOGO.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+.row {
+    display: flex;
+}
+
+.reportCenterDiv {
+    background-color: #423329; 
+    border-radius: 50px;
+    padding: .5em;
+    margin: 5vw 10vw;
+}
+
+.reportFormDiv {
+    padding: 0 1.5em;
+}
+
+.reportInput {
+    font-size: min(3vw, 36px);
+    color: #423329; 
+    background-color: #f4e9dc; 
+    border-radius: 10px;
+    width: 100%;
+    padding: .25em 0;
+    margin: .5em;
+}
+
+.reportMessage {
+    font-size: min(3vw, 36px);
+    color: #423329; 
+    background-color: #f4e9dc; 
+    border-radius: 10px;
+    width: 100%;
+    padding: .25em 0;
+    margin: .5em;
+  }
