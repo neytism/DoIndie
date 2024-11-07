@@ -45,49 +45,54 @@ background-color: #423329;
   align-items: center;
 }
 
-.artist-info{
-  width:100%;
+.artist-info {
+  width: 100%;
   max-width: 600px;
-  border:2px solid #423329;
-  padding:20px;
+  padding: 20px;
   text-align: center;
-  background-color: #fff;
-  margin-bottom: 20px;
+  background-color: #f5efe5;
+  margin-bottom: 10px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.artist-info h2{
+.artist-info h2 {
   font-size: 48px;
   margin-bottom: 10px;
   font-family: Arial, sans-serif;
 }
 
-.artist-info p{
+.artist-info .headline {
   font-size: 24px;
-  margin-bottom: 20px;
   font-family: Arial, sans-serif;
+  color: #666;
 }
 
-.buttons{
-display: flex;
-width: 100%;
-max-width:600px;
-gap:10px;
-justify-content: center;
-}
-
-.bio-btn, .location-btn{
-  padding: 10px 20px;
-  background-color: #f4e9dc;
-  border: 2px solid #423329;
-  font-weight: bold;
-  cursor: pointer;
-  flex: 1;
+.artist-bio, .artist-location {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  background-color: #f5efe5;
+  color: #000000;
+  margin-bottom: 10px;
   border-radius: 10px;
-  text-align:center;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
+
+.artist-bio h3, .artist-location h3 {
+  font-size: 28px;
+  font-family: Arial, sans-serif;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.artist-bio p, .artist-location p {
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
 
 .navbar {
   display: flex;
