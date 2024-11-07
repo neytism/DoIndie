@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DoIndie</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="../../assets/css/website.css">
+        <link rel="stylesheet" href="../../assets/css/analytics.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+
+    <body>
+    <!-- NAVBAR -->
+        <div class="navbar row-list">
+
+            <a class="icon non-selectable"><img class="logo-img" src="..\..\assets\img\LOGO.png" alt="DoIndie Logo"></a>
+    
+            <ul class="menu">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">PRODUCTS</a>
+                    <ul>
+                        <li><a>Pins</a></li>
+                        <li><a>Posters</a></li>
+                        <li><a>Stickers</a></li>
+                        <li><a>Keychains</a></li>
+                        <li><a>Fanart</a></li>
+                        <li><a>Commissions</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">CART</a></li>
+                <li><a href="#">PROFILE</a>
+                    <ul>
+                        <li><a href="#">Edit Profile</a></li>
+                        <li><a href="#">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <a class="search">
+            <input class="navbarSearch" type="search" name="" placeholder="Search...">
+            <button class="navbarSearchButton">Search</button>
+            </a>
+        </div>
+
+        <!-- Charts -->
+        <div>
+            <h1 class="center" style="margin-top: 1vw;">ANALYTICS AND ORDERS</h1>
+        </div>
+
+        <div class="chartDiv center">
+            <hr>
+            <hr>
+                <p class="analyticsTitle">Amount Sold Per Piece</p>
+                <canvas id="soldWorksChart" class="chart"></canvas>
+            <hr>
+            <hr>
+                <p class="analyticsTitle">Amount Sold Throughout The Years</p>
+                <canvas id="salesProjection" class="chart"></canvas>
+            <hr>
+            <hr>
+                <p class="analyticsTitle">Pending Orders</p>
+                <table class="center chart">
+                    <tr>
+                      <th>Name</th>
+                      <th>Ordered</th>
+                    </tr>
+                    <tr>
+                      <td>Maria Sanchez</td>
+                      <td>Artwork3</td>
+                    </tr>
+                    <tr>
+                      <td>Michael Johnson</td>
+                      <td>Artwork1</td>
+                    </tr>
+                    <tr>
+                        <td>Maria Sanchez</td>
+                        <td>Artwork2</td>
+                      </tr>
+                      <tr>
+                        <td>Michael Johnson</td>
+                        <td>Artwork4</td>
+                      </tr>
+                </table>
+        </div>
+
+        <!-- Chart Objects-->
+        <script>
+            const xValuesSoldWorks = ["Artwork1", "Artwork2", "Artwork3", "Artwork4", "Artwork5"];
+            const yValuesSoldWorks = [30, 44, 26, 34, 15];
+            const barColorsSoldWorks = ["red", "green","blue","orange","brown"];
+
+            new Chart("soldWorksChart", {
+                type: "bar",
+                data: {
+                    labels: xValuesSoldWorks,
+                    datasets: [{
+                        backgroundColor: barColorsSoldWorks,
+                        data: yValuesSoldWorks
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: "Sold Artworks",
+                            font: {
+                                size: 20
+                            }
+                        }
+                    },
+                }
+            });
+
+            const xValuesSalesProj = ["2021", "2022", "2023", "2024", "2025"];
+            const yValuesSalesProj = [100, 320, 600, 450, 350];
+            new Chart("salesProjection", {
+                type: "line",
+                data: {
+                    labels: xValuesSalesProj,
+                    datasets: [{
+                        backgroundColor:"rgba(0,0,255,1.0)",
+                        borderColor: "rgba(0,0,255,0.1)",
+                        data: yValuesSalesProj
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: "Sales Throughout the Years",
+                            font: {
+                                size: 20
+                            }
+                        }
+                    },
+                }
+            });
+        </script>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <ul class="row-list center">
+                <li><a class="rowItem">Home</a></li>
+                <li><a class="rowItem">Products</a></li>
+                <li><a class="rowItem">Shopping Cart</a></li>
+                <li><a class="rowItem">Profile</a></li>
+                <li><a class="rowItem">About Us</a></li>
+            </ul>
+            <ul class="row-list center">
+                <a href="https://www.facebook.com" class="fa fa-facebook" style="font-size: 40px;" target="_blank"></a>
+                <a href="https://www.youtube.com" class="fa fa-youtube" style="font-size: 40px;" target="_blank"></a>
+                <a href="https://www.twitter.com" class="fa fa-twitter" style="font-size: 40px;" target="_blank"></a>
+                <a href="https://www.instagram.com" class="fa fa-instagram" style="font-size: 40px;" target="_blank"></a>
+                <a href="https://www.tumblr.com" class="fa fa-tumblr" style="font-size: 40px;" target="_blank"></a>
+            </ul>
+            <p style="color: #f4e9dc">&copy; 2024 DoIndie. All rights reserved.</p>
+        </div>
+    </body>
+</html>
