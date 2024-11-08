@@ -110,15 +110,23 @@
                     <?php else: ?>
                       <?php foreach ($data['all_transactions'] as $transaction): ?>
                         <tr>
-                          <td><img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $transaction["product_picture_path"] ?>" alt="Avatar" style="max-height: 75px;" /></td>
-                          <td><?= $transaction["product_id"] ?></td>
-                          <td><?= $transaction["artist_display_name"] ?></td>
-                          <td><?= $transaction["title"] ?></td>
-                          <td><?= $transaction["product_category_name"] ?></td>
-                          <td title="<?= $transaction["product_description"] ?>"><?php if(strlen($transaction["product_description"]) > 30) {echo substr($transaction["product_description"], 0, 30) . '...'; } else { echo $transaction["product_description"];} ?></td>
-                          <td style="text-align:right !important;">₱ <?= number_format($transaction['price'], 2, '.', ',')?></td>
-                          <td><?= $transaction["tags"] ?></td>
-                          <td><?= $transaction["date_added"] ?></td>
+                          <td><?= $transaction["transaction_id"] ?></td>
+                          <td><?= $transaction["username"] ?></td>
+                          <td><?php 
+                            
+                            $items = json_decode($transaction["selected_cart_items"]);
+
+                            
+                          
+                          ?></td>
+
+                          <td><?= $transaction["selected_cart_items"] ?></td>
+                          <td><?= $transaction["voucher_code"] . " " . $transaction["voucher_desc"] ?></td>
+                          <td style="text-align:right !important;">₱ <?= number_format($transaction['total'], 2, '.', ',')?></td>
+                          <td><?= $transaction["payment_method"] ?></td>
+                          <td title="<?= $transaction["address"] ?>"><?php if(strlen($transaction["address"]) > 30) {echo substr($transaction["address"], 0, 30) . '...'; } else { echo $transaction["address"];} ?></td>
+                          <td><?= $transaction["status"] ?></td>
+                          <td><?= $transaction["created_at"] ?></td>
                           <td>
                             <div class="dropdown">
                               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

@@ -4,10 +4,12 @@ class Admin extends Controller
 {
     private $userModel;
     private $productModel;
+    private $transactionModel;
     
     public function __construct() {
         $this->userModel = $this->model('UserModel');
         $this->productModel = $this->model('ProductModel');
+        $this->transactionModel = $this->model('TransactionModel');
     }
     
     public function index()
@@ -94,7 +96,7 @@ class Admin extends Controller
         $user_info = $this->checkUserAccess("0");
         
         if ($user_info) {
-            $all_transactions = $this->productModel->getAllProducts();
+            $all_transactions = $this->transactionModel->getAllTransactions();
             $this->view('admin/adminTransactionsListView', ['all_transactions' => $all_transactions, 'user_info' => $user_info]);
         }
     }
