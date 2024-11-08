@@ -158,46 +158,39 @@
                       <th></th>
                       <th>ID</th>
                       <th>Username</th>
+                      <th>Display Name</th>
                       <th>Email</th>
                       <th>Email Verification</th>
-                      <th>Role</th>
+                      <th>Category</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
-                    <?php if (count($data['all_users']) <= 0): ?>
+                    <?php if (count($data['all_artists']) <= 0): ?>
                       <p>No artists available.</p>
                     <?php else: ?>
-                      <?php foreach ($data['all_users'] as $users): ?>
+                      <?php foreach ($data['all_artists'] as $artist): ?>
                         <tr>
                           <td>
                             <ul class="list-unstyled m-0 avatar-group d-flex align-items-center">
                               <li class="avatar avatar-s">
                                 <img
-                                  src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $users["picture_path"] ?>"
+                                  src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $artist["picture_path"] ?>"
                                   alt="Avatar" class="rounded-circle" />
                               </li>
                             </ul>
                           </td>
-                          <td><?= $users["user_id"] ?></td>
-                          <td><?= $users["username"] ?></td>
-                          <td><?= $users["email"] ?></td>
-                          <?php if ($users["is_verified_email"] == "true"): ?>
+                          <td><?= $artist["user_id"] ?></td>
+                          <td><?= $artist["username"] ?></td>
+                          <td><?= $artist["artist_display_name"] ?></td>
+                          <td><?= $artist["email"] ?></td>
+                          <?php if ($artist["is_verified_email"] == "true"): ?>
                             <td><span class="badge bg-label-success me-1">Verified</span></td>
                           <?php else: ?>
                             <td><span class="badge bg-label-warning me-1">Pending</span></td>
                           <?php endif; ?>
-
-                          <!-- <td><span class="badge bg-label-warning me-1">Pending</span></td> -->
-                          <?php if ($users["is_artist"] == "true"): ?>
-                            <td>Artist</td>
-                          <?php else: ?>
-                            <?php if ($users["role"] == "1"): ?>
-                              <td>User</td>
-                            <?php else: ?>
-                              <td>Admin</td>
-                            <?php endif; ?>
-                          <?php endif; ?>
+                          <td><?= $artist["artist_category_name"] ?></td>
+                        
                           <td>
                             <div class="dropdown">
                               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

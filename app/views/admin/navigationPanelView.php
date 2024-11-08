@@ -34,7 +34,7 @@
               </a>
             </li>
             <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+              <a href="<?php echo BASEURL; ?>admin/artists" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
                 <div class="text-truncate" data-i18n="Basic">Artists</div>
               </a>

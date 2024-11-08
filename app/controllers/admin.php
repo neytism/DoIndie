@@ -36,4 +36,10 @@ class Admin extends Controller
         $all_users = $this->userModel->getAllUsers();
         $this->view('admin/adminUsersListView',['all_users' => $all_users]);
     }
+
+    public function artists()
+    {
+        $all_artists = $this->userModel->getAllArtist();
+        $this->view('admin/adminArtistsListView',['all_artists' => $all_artists]);
+    }
 }
