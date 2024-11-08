@@ -5,7 +5,7 @@
   class="light-style layout-menu-fixed layout-compact"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="../assets/"
+  data-assets-path="<?php echo BASEURL; ?>assets/"
   data-template="vertical-menu-template-free"
   data-style="light">
   <head>
@@ -14,12 +14,10 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>DoIdie Admin</title>
-
+    <title>DoIndie Admin</title>
+    
     <meta name="description" content="" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+  
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,192 +26,32 @@
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet" />
 
-    <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="assets/vendor/js/helpers.js"></script>
+    <script src="<?php echo BASEURL; ?>assets/vendor/js/helpers.js"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="assets/js/admin/config.js"></script>
+    <script src="<?php echo BASEURL; ?>assets/js/admin/config.js"></script>
   </head>
 
   <body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
-        <!-- Menu -->
-
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-          <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
-              <span class="app-brand-text demo menu-text fw-bold ms-2">DoIndie</span>
-            </a>
-
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-              <i class="bx bx-chevron-left bx-sm d-flex align-items-center justify-content-center"></i>
-            </a>
-          </div>
-
-          <div class="menu-inner-shadow"></div>
-
-          <ul class="menu-inner py-1">
-            <!-- Dashboards -->
-            <li class="menu-item active">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-home-smile"></i>
-                <div class="text-truncate" data-i18n="Dashboards">Dashboard</div>
-                <!-- <span class="badge rounded-pill bg-danger ms-auto">5</span> -->
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item active">
-                  <a href="index.html" class="menu-link">
-                    <div class="text-truncate" data-i18n="Analytics">Analytics</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a
-                    href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/dashboards-crm.html"
-                    target="_blank"
-                    class="menu-link">
-                    <div class="text-truncate" data-i18n="CRM">CRM</div>
-                    <div class="badge rounded-pill bg-label-primary text-uppercase fs-tiny ms-auto">Pro</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a
-                    href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-ecommerce-dashboard.html"
-                    target="_blank"
-                    class="menu-link">
-                    <div class="text-truncate" data-i18n="eCommerce">eCommerce</div>
-                    <div class="badge rounded-pill bg-label-primary text-uppercase fs-tiny ms-auto">Pro</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a
-                    href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/app-logistics-dashboard.html"
-                    target="_blank"
-                    class="menu-link">
-                    <div class="text-truncate" data-i18n="Logistics">Logistics</div>
-                    <div class="badge rounded-pill bg-label-primary text-uppercase fs-tiny ms-auto">Pro</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="app-academy-dashboard.html" target="_blank" class="menu-link">
-                    <div class="text-truncate" data-i18n="Academy">Academy</div>
-                    <div class="badge rounded-pill bg-label-primary text-uppercase fs-tiny ms-auto">Pro</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <!-- USERS -->
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Users</span>
-            </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div class="text-truncate" data-i18n="Basic">Users</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                <div class="text-truncate" data-i18n="Basic">Artists</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-pin"></i>
-                <div class="text-truncate" data-i18n="Basic">Admins</div>
-              </a>
-            </li>
-
-            <!-- PRODUCTS -->
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Products</span>
-            </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-shopping-bag"></i>
-                <div class="text-truncate" data-i18n="Basic">Products</div>
-              </a>
-            </li>
-
-            <!-- TRANSACTIONS -->
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Transactions</span>
-            </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cart"></i>
-                <div class="text-truncate" data-i18n="Basic">Orders</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-receipt"></i>
-                <div class="text-truncate" data-i18n="Basic">Receipts</div>
-              </a>
-            </li>
-
-            <!-- Support and Helpdesk -->
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Support and Helpdesk</span>
-            </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-message-dots"></i>
-                <div class="text-truncate" data-i18n="Basic">Concerns</div>
-              </a>
-            </li>
-
-            <!-- Settings -->
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Sitewide Settings</span>
-            </li>
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cog"></i>
-                <div class="text-truncate" data-i18n="Basic">Settings</div>
-              </a>
-            </li>
-            
-            
-            <!-- Misc -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
-            <li class="menu-item">
-              <a
-                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                target="_blank"
-                class="menu-link">
-                <i class="menu-icon tf-icons bx bx-support"></i>
-                <div class="text-truncate" data-i18n="Support">Support</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a
-                href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
-                target="_blank"
-                class="menu-link">
-                <i class="menu-icon tf-icons bx bx-file"></i>
-                <div class="text-truncate" data-i18n="Documentation">Documentation</div>
-              </a>
-            </li>
-          </ul>
-        </aside>
-        <!-- / Menu -->
+      
+      <?php include 'app/views/admin/navigationPanelView.php'; ?>
 
         <!-- Layout container -->
         <div class="layout-page">
@@ -263,7 +101,7 @@
                     href="javascript:void(0);"
                     data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="<?php echo BASEURL; ?>assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -272,7 +110,7 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="<?php echo BASEURL; ?>assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
@@ -341,7 +179,7 @@
                       <div class="col-sm-5 text-center text-sm-left">
                         <div class="card-body pb-0 px-0 px-md-6">
                           <img
-                            src="assets/img/illustrations/man-with-laptop.png"
+                            src="<?php echo BASEURL; ?>assets/img/illustrations/man-with-laptop.png"
                             height="175"
                             class="scaleX-n1-rtl"
                             alt="View Badge User" />
@@ -358,7 +196,7 @@
                           <div class="card-title d-flex align-items-start justify-content-between mb-4">
                             <div class="avatar flex-shrink-0">
                               <img
-                                src="assets/img/icons/unicons/chart-success.png"
+                                src="<?php echo BASEURL; ?>assets/img/icons/unicons/chart-success.png"
                                 alt="chart success"
                                 class="rounded" />
                             </div>
@@ -390,7 +228,7 @@
                           <div class="card-title d-flex align-items-start justify-content-between mb-4">
                             <div class="avatar flex-shrink-0">
                               <img
-                                src="assets/img/icons/unicons/wallet-info.png"
+                                src="<?php echo BASEURL; ?>assets/img/icons/unicons/wallet-info.png"
                                 alt="wallet info"
                                 class="rounded" />
                             </div>
@@ -518,7 +356,7 @@
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between mb-4">
                             <div class="avatar flex-shrink-0">
-                              <img src="assets/img/icons/unicons/paypal.png" alt="paypal" class="rounded" />
+                              <img src="<?php echo BASEURL; ?>assets/img/icons/unicons/paypal.png" alt="paypal" class="rounded" />
                             </div>
                             <div class="dropdown">
                               <button
@@ -547,7 +385,7 @@
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between mb-4">
                             <div class="avatar flex-shrink-0">
-                              <img src="assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
+                              <img src="<?php echo BASEURL; ?>assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
                             </div>
                             <div class="dropdown">
                               <button
@@ -726,7 +564,7 @@
                         <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
                           <div class="d-flex mb-6">
                             <div class="avatar flex-shrink-0 me-3">
-                              <img src="assets/img/icons/unicons/wallet.png" alt="User" />
+                              <img src="<?php echo BASEURL; ?>assets/img/icons/unicons/wallet.png" alt="User" />
                             </div>
                             <div>
                               <p class="mb-0">Total Balance</p>
@@ -782,7 +620,7 @@
                       <ul class="p-0 m-0">
                         <li class="d-flex align-items-center mb-6">
                           <div class="avatar flex-shrink-0 me-3">
-                            <img src="assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
+                            <img src="<?php echo BASEURL; ?>assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -797,7 +635,7 @@
                         </li>
                         <li class="d-flex align-items-center mb-6">
                           <div class="avatar flex-shrink-0 me-3">
-                            <img src="assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
+                            <img src="<?php echo BASEURL; ?>assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -812,7 +650,7 @@
                         </li>
                         <li class="d-flex align-items-center mb-6">
                           <div class="avatar flex-shrink-0 me-3">
-                            <img src="assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
+                            <img src="<?php echo BASEURL; ?>assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -827,7 +665,7 @@
                         </li>
                         <li class="d-flex align-items-center mb-6">
                           <div class="avatar flex-shrink-0 me-3">
-                            <img src="assets/img/icons/unicons/cc-primary.png" alt="User" class="rounded" />
+                            <img src="<?php echo BASEURL; ?>assets/img/icons/unicons/cc-primary.png" alt="User" class="rounded" />
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -842,7 +680,7 @@
                         </li>
                         <li class="d-flex align-items-center mb-6">
                           <div class="avatar flex-shrink-0 me-3">
-                            <img src="assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
+                            <img src="<?php echo BASEURL; ?>assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -857,7 +695,7 @@
                         </li>
                         <li class="d-flex align-items-center">
                           <div class="avatar flex-shrink-0 me-3">
-                            <img src="assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded" />
+                            <img src="<?php echo BASEURL; ?>assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded" />
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
@@ -885,12 +723,7 @@
                 <div
                   class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
                   <div class="text-body">
-                    ©
-                    <script>
-                      document.write(new Date().getFullYear());
-                    </script>
-                    , made with ❤️ by
-                    <a href="https://themeselection.com" target="_blank" class="footer-link">ThemeSelection</a>
+                    Template from ThemeSelection
                   </div>
                   <div class="d-none d-lg-inline-block">
                     <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
@@ -927,34 +760,26 @@
     </div>
     <!-- / Layout wrapper -->
 
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/item/sneat-dashboard-pro-bootstrap/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
 
-    <script src="assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="assets/vendor/js/menu.js"></script>
+    <script src="<?php echo BASEURL; ?>assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="<?php echo BASEURL; ?>assets/vendor/libs/popper/popper.js"></script>
+    <script src="<?php echo BASEURL; ?>assets/vendor/js/bootstrap.js"></script>
+    <script src="<?php echo BASEURL; ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="<?php echo BASEURL; ?>assets/vendor/js/menu.js"></script>
 
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
+    <script src="<?php echo BASEURL; ?>assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    
     <!-- Main JS -->
-    <script src="assets/js/admin/main.js"></script>
+    <script src="<?php echo BASEURL; ?>assets/js/admin/main.js"></script>
 
     <!-- Page JS -->
-    <script src="assets/js/admin/dashboards-analytics.js"></script>
+    <script src="<?php echo BASEURL; ?>assets/js/admin/dashboards-analytics.js"></script>
 
     <!-- Place this tag before closing body tag for github widget button. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

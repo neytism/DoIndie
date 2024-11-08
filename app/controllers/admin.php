@@ -10,7 +10,7 @@ class Admin extends Controller
     
     public function index()
     {
-        $this->view('admin/index');
+        $this->dashboard();
         //$this->checkIfLoggedIn();   
     }
     
@@ -27,16 +27,13 @@ class Admin extends Controller
     
     }
 
-    public function aboutUs()
+    public function dashboard(){
+        $this->view('admin/adminDashBoardView');
+    }
+    
+    public function users()
     {
-        session_start();
-        
-        $user_info = $this->userModel->checkIfLoggedIn();
-        
-        if ($user_info) {
-            $this->view('aboutUsView', ['user_info' => $user_info]);
-        } else {
-            $this->view('aboutUsView');
-        }
+        $all_users = $this->userModel->getAllUsers();
+        $this->view('admin/adminUsersListView',['all_users' => $all_users]);
     }
 }
