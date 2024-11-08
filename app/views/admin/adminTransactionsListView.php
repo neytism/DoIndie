@@ -112,16 +112,28 @@
                         <tr>
                           <td><?= $transaction["transaction_id"] ?></td>
                           <td><?= $transaction["username"] ?></td>
-                          <td><?php 
-                            
-                            $items = json_decode($transaction["selected_cart_items"]);
-
-                            
+                          <td><?php
+                              $items = json_decode($transaction["selected_cart_items"], true);
                           
-                          ?></td>
+                              if ($items && is_array($items)) {
+                                $totalItems = count($items); 
+                                foreach ($items as $index => $item) {
+                                  
+                                  echo "Product ID: " . htmlspecialchars($item["product_id"]);
+                                  echo " - ₱ " . $item["quantity"] . " x " . htmlspecialchars(number_format($item['current_price'], 2, '.', ',')) . "<br>";
+                                  
+                                  if ($index < $totalItems - 1) {
+                                    echo "<hr>";
+                                  }
+                                }
 
-                          <td><?= $transaction["selected_cart_items"] ?></td>
-                          <td><?= $transaction["voucher_code"] . " " . $transaction["voucher_desc"] ?></td>
+                              } else {
+                                echo "No items found.";
+                              }
+                              ?>
+                          </td>
+                          
+                          <td><?= $transaction["voucher_code"] . " - " . $transaction["voucher_desc"] ?></td>
                           <td style="text-align:right !important;">₱ <?= number_format($transaction['total'], 2, '.', ',')?></td>
                           <td><?= $transaction["payment_method"] ?></td>
                           <td title="<?= $transaction["address"] ?>"><?php if(strlen($transaction["address"]) > 30) {echo substr($transaction["address"], 0, 30) . '...'; } else { echo $transaction["address"];} ?></td>

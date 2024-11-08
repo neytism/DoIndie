@@ -61,7 +61,7 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Transactions</span>
             </li>
-            <li class="menu-item">
+            <li class="menu-item <?php if ($view == 'admin/adminTransactionsListView') echo 'active' ?>">
               <a href="<?php echo BASEURL; ?>admin/transactions" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cart"></i>
                 <div class="text-truncate" data-i18n="Basic">Orders</div>
