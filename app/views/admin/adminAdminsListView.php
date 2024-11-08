@@ -87,7 +87,7 @@
 
             <!-- Hoverable Table rows -->
             <div class="card">
-              <h5 class="card-header">All Users</h5>
+              <h5 class="card-header">All Admins</h5>
               <div class="table-responsive text-nowrap">
                 <table class="table table-hover">
                   <thead>
@@ -102,34 +102,42 @@
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
-                    <?php if (count($data['all_users']) <= 0): ?>
-                      <p>No artists available.</p>
+                    <?php if (count($data['all_admins']) <= 0): ?>
+                      <tr>
+                        <td>No admins available.</td>
+                        <td>No admins available.</td>
+                        <td>No admins available.</td>
+                        <td>No admins available.</td>
+                        <td>No admins available.</td>
+                        <td>No admins available.</td>
+                        <td>No admins available.</td>
+                      </tr>
                     <?php else: ?>
-                      <?php foreach ($data['all_users'] as $users): ?>
+                      <?php foreach ($data['all_admins'] as $admin): ?>
                         <tr>
                           <td>
                             <ul class="list-unstyled m-0 avatar-group d-flex align-items-center">
                               <li class="avatar avatar-s">
                                 <img
-                                  src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $users["picture_path"] ?>"
+                                  src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $admin["picture_path"] ?>"
                                   alt="Avatar" class="rounded-circle" />
                               </li>
                             </ul>
                           </td>
-                          <td><?= $users["user_id"] ?></td>
-                          <td><?= $users["username"] ?></td>
-                          <td><?= $users["email"] ?></td>
-                          <?php if ($users["is_verified_email"] == "true"): ?>
+                          <td><?= $admin["user_id"] ?></td>
+                          <td><?= $admin["username"] ?></td>
+                          <td><?= $admin["email"] ?></td>
+                          <?php if ($admin["is_verified_email"] == "true"): ?>
                             <td><span class="badge bg-label-success me-1">Verified</span></td>
                           <?php else: ?>
                             <td><span class="badge bg-label-warning me-1">Pending</span></td>
                           <?php endif; ?>
 
                           <!-- <td><span class="badge bg-label-warning me-1">Pending</span></td> -->
-                          <?php if ($users["is_artist"] == "true"): ?>
+                          <?php if ($admin["is_artist"] == "true"): ?>
                             <td>Artist</td>
                           <?php else: ?>
-                            <?php if ($users["role"] == "1"): ?>
+                            <?php if ($admin["role"] == "1"): ?>
                               <td>User</td>
                             <?php else: ?>
                               <td>Admin</td>

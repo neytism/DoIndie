@@ -31,7 +31,7 @@
   <!-- Vendors CSS -->
   <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
   <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/vendor/libs/apex-charts/apex-charts.css" />
-
+  
   <!-- Page CSS -->
 
   <!-- Helpers -->
@@ -45,7 +45,7 @@
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-
+      
       <?php include 'app/views/admin/navigationPanelView.php'; ?>
 
       <!-- Layout container -->
@@ -71,7 +71,7 @@
               </div>
             </div>
             <!-- /Search -->
-
+            
             <?php include 'app/views/admin/adminIconView.php'; ?>
             
           </div>
@@ -87,54 +87,38 @@
 
             <!-- Hoverable Table rows -->
             <div class="card">
-              <h5 class="card-header">All Users</h5>
+              <h5 class="card-header">All Orders</h5>
               <div class="table-responsive text-nowrap">
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th></th>
                       <th>ID</th>
-                      <th>Username</th>
-                      <th>Email</th>
-                      <th>Email Verification</th>
-                      <th>Role</th>
+                      <th>Buyer</th>
+                      <th>Items</th>
+                      <th>Voucher</th>
+                      <th>Total</th>
+                      <th>MOP</th>
+                      <th>Address</th>
+                      <th>Status</th>
+                      <th>Order Date</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
-                    <?php if (count($data['all_users']) <= 0): ?>
-                      <p>No artists available.</p>
+                    <?php if (count($data['all_transactions']) <= 0): ?>
+                      <p>No Products available.</p>
                     <?php else: ?>
-                      <?php foreach ($data['all_users'] as $users): ?>
+                      <?php foreach ($data['all_transactions'] as $transaction): ?>
                         <tr>
-                          <td>
-                            <ul class="list-unstyled m-0 avatar-group d-flex align-items-center">
-                              <li class="avatar avatar-s">
-                                <img
-                                  src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $users["picture_path"] ?>"
-                                  alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
-                          </td>
-                          <td><?= $users["user_id"] ?></td>
-                          <td><?= $users["username"] ?></td>
-                          <td><?= $users["email"] ?></td>
-                          <?php if ($users["is_verified_email"] == "true"): ?>
-                            <td><span class="badge bg-label-success me-1">Verified</span></td>
-                          <?php else: ?>
-                            <td><span class="badge bg-label-warning me-1">Pending</span></td>
-                          <?php endif; ?>
-
-                          <!-- <td><span class="badge bg-label-warning me-1">Pending</span></td> -->
-                          <?php if ($users["is_artist"] == "true"): ?>
-                            <td>Artist</td>
-                          <?php else: ?>
-                            <?php if ($users["role"] == "1"): ?>
-                              <td>User</td>
-                            <?php else: ?>
-                              <td>Admin</td>
-                            <?php endif; ?>
-                          <?php endif; ?>
+                          <td><img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $transaction["product_picture_path"] ?>" alt="Avatar" style="max-height: 75px;" /></td>
+                          <td><?= $transaction["product_id"] ?></td>
+                          <td><?= $transaction["artist_display_name"] ?></td>
+                          <td><?= $transaction["title"] ?></td>
+                          <td><?= $transaction["product_category_name"] ?></td>
+                          <td title="<?= $transaction["product_description"] ?>"><?php if(strlen($transaction["product_description"]) > 30) {echo substr($transaction["product_description"], 0, 30) . '...'; } else { echo $transaction["product_description"];} ?></td>
+                          <td style="text-align:right !important;">₱ <?= number_format($transaction['price'], 2, '.', ',')?></td>
+                          <td><?= $transaction["tags"] ?></td>
+                          <td><?= $transaction["date_added"] ?></td>
                           <td>
                             <div class="dropdown">
                               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

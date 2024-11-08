@@ -45,7 +45,7 @@
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-
+      
       <?php include 'app/views/admin/navigationPanelView.php'; ?>
 
       <!-- Layout container -->
@@ -71,7 +71,7 @@
               </div>
             </div>
             <!-- /Search -->
-
+            
             <?php include 'app/views/admin/adminIconView.php'; ?>
             
           </div>
@@ -87,54 +87,38 @@
 
             <!-- Hoverable Table rows -->
             <div class="card">
-              <h5 class="card-header">All Users</h5>
+              <h5 class="card-header">All Products</h5>
               <div class="table-responsive text-nowrap">
                 <table class="table table-hover">
                   <thead>
                     <tr>
                       <th></th>
                       <th>ID</th>
-                      <th>Username</th>
-                      <th>Email</th>
-                      <th>Email Verification</th>
-                      <th>Role</th>
+                      <th>Artist</th>
+                      <th>Title</th>
+                      <th>Category</th>
+                      <th>Description</th>
+                      <th>Price</th>
+                      <th>Tags</th>
+                      <th>Date Added</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
-                    <?php if (count($data['all_users']) <= 0): ?>
-                      <p>No artists available.</p>
+                    <?php if (count($data['all_products']) <= 0): ?>
+                      <p>No Products available.</p>
                     <?php else: ?>
-                      <?php foreach ($data['all_users'] as $users): ?>
+                      <?php foreach ($data['all_products'] as $product): ?>
                         <tr>
-                          <td>
-                            <ul class="list-unstyled m-0 avatar-group d-flex align-items-center">
-                              <li class="avatar avatar-s">
-                                <img
-                                  src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $users["picture_path"] ?>"
-                                  alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
-                          </td>
-                          <td><?= $users["user_id"] ?></td>
-                          <td><?= $users["username"] ?></td>
-                          <td><?= $users["email"] ?></td>
-                          <?php if ($users["is_verified_email"] == "true"): ?>
-                            <td><span class="badge bg-label-success me-1">Verified</span></td>
-                          <?php else: ?>
-                            <td><span class="badge bg-label-warning me-1">Pending</span></td>
-                          <?php endif; ?>
-
-                          <!-- <td><span class="badge bg-label-warning me-1">Pending</span></td> -->
-                          <?php if ($users["is_artist"] == "true"): ?>
-                            <td>Artist</td>
-                          <?php else: ?>
-                            <?php if ($users["role"] == "1"): ?>
-                              <td>User</td>
-                            <?php else: ?>
-                              <td>Admin</td>
-                            <?php endif; ?>
-                          <?php endif; ?>
+                          <td><img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product["product_picture_path"] ?>" alt="Avatar" style="max-height: 75px;" /></td>
+                          <td><?= $product["product_id"] ?></td>
+                          <td><?= $product["artist_display_name"] ?></td>
+                          <td><?= $product["title"] ?></td>
+                          <td><?= $product["product_category_name"] ?></td>
+                          <td title="<?= $product["product_description"] ?>"><?php if(strlen($product["product_description"]) > 30) {echo substr($product["product_description"], 0, 30) . '...'; } else { echo $product["product_description"];} ?></td>
+                          <td style="text-align:right !important;">₱ <?= number_format($product['price'], 2, '.', ',')?></td>
+                          <td><?= $product["tags"] ?></td>
+                          <td><?= $product["date_added"] ?></td>
                           <td>
                             <div class="dropdown">
                               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
