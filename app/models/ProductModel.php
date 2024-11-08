@@ -55,5 +55,11 @@ class ProductModel {
         ]);
     }
 
+    public function getProductById($product_id){
+        return $this->db->fetch("SELECT * FROM products WHERE product_id = :product_id", [
+            'product_id' => $product_id
+        ]);
+    }
+
     
 }
