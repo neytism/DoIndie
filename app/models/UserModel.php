@@ -107,5 +107,9 @@ class UserModel {
         return $this->db->fetchAll("SELECT user_id, username, email, is_verified_email, picture_path, is_artist, role, date_joined FROM users");
 
     }
+
+    public function getAllAdmins(){
+        return $this->db->fetchAll("SELECT user_id, username, email, is_verified_email, picture_path, is_artist, role, date_joined FROM users WHERE role = '0'");
+    }
     
 }
