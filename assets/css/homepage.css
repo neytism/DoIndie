@@ -176,15 +176,53 @@ a {
 }
 /* END: hero media queries */
 
-/* START: featured media queries */
-@media screen and (max-width: 550px) {
-  .popular-foods {
-    padding: 64px 32px;
-  }
-
-  .popular-foods__card,
-  .popular-foods__card.active-card {
-    min-width: 100%;
-  }
+/* CAROUSEL START */
+.carousel {
+  background-color: #6d584b;
+  padding: 20px;
 }
-/* END: featured media queries */
+
+/* Set border color for carousel items */
+.carousel-item {
+  border: 2px solid #423329; 
+}
+
+.carousel-control {
+  color: #f4e9dc; /* Set color of control buttons */
+}
+
+/* Optional: Change hover effects for controls */
+.carousel-control:hover {
+  background-color: #f4e9dc; /* Change background on hover */
+  color: #423329; /* Change text color on hover */
+}
+/* CAROUSEL END */
+
+/* LIGHTBOX START */
+.lightbox {
+  display: none; /* Hidden by default */
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with transparency */
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+/* LIGHTBOX END */

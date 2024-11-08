@@ -183,6 +183,42 @@ class Carousel {
     };
   }
 
+  setupCarouselNew(carousel) {
+    // Use the passed carousel element to get the existing container and controls
+    this.carouselContainer = carousel.querySelector('.carousel-container');
+    const controls = carousel.querySelector('.carousel-controls');
+  
+    // Get existing items from the carousel
+    const existingItems = this.carouselContainer.querySelectorAll('.carousel-item');
+    
+    // Initialize carouselData based on existing images in the HTML
+    this.carouselData = Array.from(existingItems).map((item, index) => ({
+      id: `${index + 1}`,
+      src: item.src // Use existing image source
+    }));
+    
+    // Set carouselInView based on the number of items
+    this.carouselInView = Array.from(existingItems).map((_, index) => index + 1);
+  
+    // Set event listeners for the existing controls
+    this.setControls([...controls.children]);
+  
+    // Optionally, initialize the carousel display
+    this.updateCarouselItems();
+  }
+  
+  // Method to update the carousel items based on the current state
+  updateCarouselItems() {
+    this.carouselData.slice(0, 5).forEach((data, index) => {
+      const item = this.carouselContainer.querySelector(`.carousel-item-${index + 1}`);
+      if (item) {
+        item.src = data.src; // Ensure the image src is set
+      }
+    });
+  }
+  
+  
+
 }
 
 // Refers to the carousel root element you want to target, use specific class selectors if using multiple carousels
@@ -190,4 +226,4 @@ const el = document.querySelector('.carousel');
 // Create a new carousel object
 const exampleCarousel = new Carousel(el);
 // Setup carousel and methods
-exampleCarousel.mounted();
+exampleCarousel.setupCarouselNew(el); // Pass it to the method
