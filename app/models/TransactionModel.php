@@ -34,8 +34,12 @@ class TransactionModel {
         
         return $this->db->lastInsertId();
     }
-
+    
     public function getCreatedAtByID($id){
         return $this->db->fetch('SELECT created_at FROM transactions WHERE transaction_id = :id', ['id' => $id]);
+    }
+
+    public function getAllTransactions() {
+        return $this->db->fetchAll('SELECT t.*, u.user_id, u.username FROM transactions t LEFT JOIN users u ON t.buyer_id = u.user_id');
     }
 }
