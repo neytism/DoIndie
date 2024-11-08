@@ -43,7 +43,12 @@ class Login extends Controller {
         if ($user_info && password_verify( $password.$salt, $hashedPassword )) {
             session_start();
             $_SESSION['user_id'] = $user_info['user_id'];
-            echo 'success|'.BASEURL;
+            if($user_info['role'] == "0"){
+                echo 'success|'.BASEURL."admin";
+            } else{
+                echo 'success|'.BASEURL;
+            }
+            
             exit();
         } else {
             echo 'error:Username or password is incorrect';
