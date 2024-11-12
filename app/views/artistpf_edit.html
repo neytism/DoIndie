@@ -47,10 +47,13 @@
 
 		<div class="artist-section">
 			<div class="artist-picture">
-                <img src="..\..\assets\img\ample.png" alt="Artist Picture"> 
-            </div>
+                <button onclick="location.href='link-to-destination'" style="border: none; background: none; padding: 0;">
+                    <img src="..\..\assets\img\sample.png" alt="Artist Picture"> 
+                </button>
+            </div>            
             <div class="box">
 			    <div class="artist-info">
+                    <img src="..\..\assets\img\edit.png"/>
                     <h2>Artist Name</h2>
                     <p class="headline">"Artist's headline or tagline"</p>
                 </div>
@@ -70,14 +73,14 @@
 		 <div id="gallery" class="gallery-section" style="display: flex; justify-content: center; align-items: center; margin-top: 100px;">
 			<div class="swiper">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide"> <a href="art-prev1.html"><img src="../images/sample.png" width="200" height="200" alt="ARTWORK PREVIEW 1" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev2.html"><img src="../images/sample.png" width="200" height="200" alt="ARTWORK PREVIEW 2" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev3.html"><img src="../images/sample.png" width="200" height="200" alt="ARTWORK PREVIEW 3" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev4.html"><img src="../images/sample.png" width="200" height="200" alt="ARTWORK PREVIEW 4" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev5.html"><img src="../images/sample.png" width="200" height="200" alt="ARTWORK PREVIEW 5" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev6.html"><img src="../images/sample.png" width="200" height="200" alt="ARTWORK PREVIEW 6" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev7.html"><img src="../images/sample.png" width="200" height="200" alt="ARTWORK PREVIEW 7" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev8.html"><img src="../images/sample.png" width="200" height="200" alt="ARTWORK PREVIEW 8" /></a> </div>
+					<div class="swiper-slide"> <a href="art-prev1.html"><img src="..\..\assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 1" /></a> </div>
+					<div class="swiper-slide"> <a href="art-prev2.html"><img src="..\..\assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 2" /></a> </div>
+					<div class="swiper-slide"> <a href="art-prev3.html"><img src="..\..\assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 3" /></a> </div>
+					<div class="swiper-slide"> <a href="art-prev4.html"><img src="..\..\assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 4" /></a> </div>
+					<div class="swiper-slide"> <a href="art-prev5.html"><img src="..\..\assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 5" /></a> </div>
+					<div class="swiper-slide"> <a href="art-prev6.html"><img src="..\..\assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 6" /></a> </div>
+					<div class="swiper-slide"> <a href="art-prev7.html"><img src="..\..\assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 7" /></a> </div>
+					<div class="swiper-slide"> <a href="art-prev8.html"><img src="..\..\assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 8" /></a> </div>
 				</div>
 				<div class="swiper-button-prev"></div>
 				<div class="swiper-button-next"></div>
@@ -100,7 +103,21 @@
         
         <!-- FOOTER -->
         <div class="footer">
-            <p>&copy; 2024 DoIndie. All rights reserved.</p>
+            <ul class="row-list center">
+                <li><a class="rowItem">Home</a></li>
+                <li><a class="rowItem">Products</a></li>
+                <li><a class="rowItem">Shopping Cart</a></li>
+                <li><a class="rowItem">Profile</a></li>
+                <li><a class="rowItem">About Us</a></li>
+            </ul>
+            <ul class="row-list center">
+                <a href="https://www.facebook.com" class="fa fa-facebook" style="font-size: 40px;" target="_blank"></a>
+                <a href="https://www.youtube.com" class="fa fa-youtube" style="font-size: 40px;" target="_blank"></a>
+                <a href="https://www.twitter.com" class="fa fa-twitter" style="font-size: 40px;" target="_blank"></a>
+                <a href="https://www.instagram.com" class="fa fa-instagram" style="font-size: 40px;" target="_blank"></a>
+                <a href="https://www.tumblr.com" class="fa fa-tumblr" style="font-size: 40px;" target="_blank"></a>
+            </ul>
+            <p style="color: #f4e9dc">&copy; 2024 DoIndie. All rights reserved.</p>
         </div>
     </div>
 
@@ -109,7 +126,7 @@
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- External JS File -->
-    <script src="userprofile.js"></script>
+    <script src="..\..\assets\js\artistpf_edit.js"></script>
 	
 </body>
 </html>
