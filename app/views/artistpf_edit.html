@@ -47,26 +47,33 @@
 
 		<div class="artist-section">
 			<div class="artist-picture">
-                <button onclick="location.href='link-to-destination'" style="border: none; background: none; padding: 0;">
-                    <img src="..\..\assets\img\sample.png" alt="Artist Picture"> 
-                </button>
-            </div>            
+                <img src="..\..\assets\img\sample.png" alt="Artist Picture"> 
+            </div>
             <div class="box">
 			    <div class="artist-info">
-                    <img src="..\..\assets\img\edit.png"/>
+                    <button class="edit-button" data-target="artistInfoId"><img src="..\..\assets\img\edit.png"/></button>
                     <h2>Artist Name</h2>
-                    <p class="headline">"Artist's headline or tagline"</p>
+                    <p id="artistInfoId">"Artist's headline or tagline"</p>
                 </div>
-                
                 <div class="artist-bio">
+                    <button class="edit-button" data-target="artistBioId"><img src="..\..\assets\img\edit.png"/></button>
                     <h3>Bio</h3>
-                    <p>Lorem ipsum dolor sit amet. Non optio officiis sed impedit beatae in voluptatem deserunt et doloribus debitis et modi natus qui earum voluptates eos autem sequi. Eos alias dolor qui incidunt repellendus et sint nesciunt eos sint neque nam odit amet aut minima debitis.</p>
+                    <p id="artistBioId">Lorem ipsum dolor sit amet. Non optio officiis sed impedit beatae in voluptatem deserunt et doloribus debitis et modi natus qui earum voluptates eos autem sequi. Eos alias dolor qui incidunt repellendus et sint nesciunt eos sint neque nam odit amet aut minima debitis.</p>
                 </div>
-                
                 <div class="artist-location">
+                    <button class="edit-button" data-target="artistLocationId"><img src="..\..\assets\img\edit.png"/></button>
                     <h3>Location</h3>
-                    <p>Aut Quis sunt sed fugiat dolor est nihil iusto eos adipisci necessitatibus eos adipisci totam sit dolorum dolorem nam autem culpa.</p>
-                </div>                           
+                    <p id="artistLocationId">Aut Quis sunt sed fugiat dolor est nihil iusto eos adipisci necessitatibus eos adipisci totam sit dolorum dolorem nam autem culpa.</p>
+                </div>
+                <div id="editModal" class="modal">
+                    <div class="modal-content">
+                      <span style="right: 0;" class="close" id="closeModal">&times;</span>
+                      <h3>Edit Text</h3>
+                      <textarea id="modalTextarea" rows="4" cols="30"></textarea>
+                      <br>
+                      <button class="save" id="saveChanges">Save Changes</button>
+                    </div>
+                </div>
             </div>
         </div>
 		 <!-- Pins Section -->
@@ -119,7 +126,6 @@
             </ul>
             <p style="color: #f4e9dc">&copy; 2024 DoIndie. All rights reserved.</p>
         </div>
-    </div>
 
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -128,5 +134,46 @@
     <!-- External JS File -->
     <script src="..\..\assets\js\artistpf_edit.js"></script>
 	
+    <script>
+        // Get elements
+        const modal = document.getElementById("editModal");
+        const closeModal = document.getElementById("closeModal");
+        const saveChanges = document.getElementById("saveChanges");
+        const modalTextarea = document.getElementById("modalTextarea");
+
+        // Open modal when an edit button is clicked
+        document.querySelectorAll(".edit-button").forEach(button => {
+            button.onclick = function() {
+                const targetId = button.getAttribute("data-target");
+                currentEditableElement = document.getElementById(targetId);
+
+                // Set the modal textarea to the current content of the target <p> element
+                if (currentEditableElement) {
+                    modalTextarea.value = currentEditableElement.textContent;
+                    modal.style.display = "flex";
+                }
+            };
+        });
+
+        // Close the modal
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // Save changes and update the content of the current editable element
+        saveChanges.onclick = function() {
+            if (currentEditableElement) {
+                currentEditableElement.textContent = modalTextarea.value;
+            }
+            modal.style.display = "none";
+        };
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+      </script>
 </body>
 </html>
