@@ -98,16 +98,26 @@
             <div class="review-header">
                 <h3>Reviews</h3>
             </div>
-            <div class="review-preview">
-                <p>Preview of past reviews...</p>
+            <div id="review-list" class="review-list">
+                <!-- Reviews will be dynamically loaded here -->
             </div>
         </div>
-        
+
         <div class="review-links-container">
-            <a href="#" class="review-link see-all-reviews">SEE ALL REVIEWS</a>
-            <a href="#" class="review-link write-review">WRITE A REVIEW</a>
+            <button id="seeAllReviews" class="review-link see-all-reviews">SEE ALL REVIEWS</button>
+            <button id="writeReview" class="review-link write-review">WRITE A REVIEW</button>
         </div>
-        
+
+        <!-- Write Review Modal -->
+        <div id="reviewModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeReviewModal">&times;</span>
+                <h3>Write a Review</h3>
+                <textarea id="reviewTextarea" rows="4" cols="30" placeholder="Write your review here..."></textarea>
+                <button class="save" id="submitReview">Submit Review</button>
+            </div>
+        </div>
+                
         <!-- FOOTER -->
         <div class="footer">
             <ul class="row-list center">
@@ -174,6 +184,70 @@
                 modal.style.display = "none";
             }
         };
-      </script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const reviewModal = document.getElementById("reviewModal");
+            const closeReviewModal = document.getElementById("closeReviewModal");
+            const writeReviewBtn = document.getElementById("writeReview");
+            const submitReviewBtn = document.getElementById("submitReview");
+            const reviewTextarea = document.getElementById("reviewTextarea");
+            const reviewList = document.getElementById("review-list");
+
+            // Load and display reviews from local storage
+            const loadReviews = () => {
+                const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+                reviewList.innerHTML = ""; // Clear existing reviews
+                reviews.forEach((review, index) => {
+                    addReviewToList(review, index);
+                });
+            };
+
+            // Function to add a new review to the list
+            const addReviewToList = (reviewText, index) => {
+                // Create a new review section
+                const reviewSection = document.createElement("div");
+                reviewSection.classList.add("review-item");
+                reviewSection.innerHTML = `
+                    <h4>Review ${index + 1}</h4>
+                    <p>${reviewText}</p>
+                `;
+                reviewList.appendChild(reviewSection); // Add to the review list
+            };
+
+            // Show modal for writing a new review
+            writeReviewBtn.onclick = () => {
+                reviewModal.style.display = "flex";
+            };
+
+            // Close the review modal
+            closeReviewModal.onclick = () => {
+                reviewModal.style.display = "none";
+                reviewTextarea.value = ""; // Clear the textarea
+            };
+
+            // Submit review
+            submitReviewBtn.onclick = () => {
+                const newReview = reviewTextarea.value.trim();
+                if (newReview) {
+                    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+                    reviews.push(newReview);
+                    localStorage.setItem("reviews", JSON.stringify(reviews));
+                    addReviewToList(newReview, reviews.length - 1); // Display the new review
+                    reviewModal.style.display = "none";
+                    reviewTextarea.value = ""; // Clear the textarea
+                }
+            };
+
+            // Close modal if user clicks outside of it
+            window.onclick = function (event) {
+                if (event.target == reviewModal) {
+                    reviewModal.style.display = "none";
+                }
+            };
+
+            // Initialize and load reviews on page load
+            loadReviews();
+        });
+    </script>
 </body>
 </html>
