@@ -31,7 +31,7 @@ a{
   padding: 20px;
 }
 .checkoutLayout .right{
-  background-color: #6d584b;
+  background-color: #726359;
   border-radius: 20px;
   padding: 40px;
   color: #f4e9dc;
@@ -57,7 +57,7 @@ a{
   border-radius: 20px;
   margin-top: 10px;
   border:none;
-  background-color: #423329;
+  background-color: #6d584b;
   color: #f4e9dc;
 }
 .checkoutLayout .right .return .row{
