@@ -4,6 +4,7 @@
 
 abstract class Controller
 {
+
     public abstract function index();
     
     public function model($model){
@@ -12,7 +13,13 @@ abstract class Controller
     }
 
     public function view($view, $data = []){
-    
+        if (session_status() == PHP_SESSION_NONE) session_start();
+        
+        $is_logged_in = false;
+        if(isset($_SESSION['user_id'])){
+            $is_logged_in = true;
+        }
+
         require_once 'app/views/'.$view.'.php';
     }
 
