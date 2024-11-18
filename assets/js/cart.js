@@ -45,7 +45,7 @@ function updateQuantity(event, cart_id, action, url) {
     const price = price_text.innerHTML.replace('Price: ₱ ','');
     
     const total_text = document.getElementById('total-'+cart_id);
-    var total = total_text.innerHTML.replace('Total: ₱ ','');
+    var total = total_text.innerHTML.replace('₱ ','');
     
     
         
@@ -64,7 +64,7 @@ function updateQuantity(event, cart_id, action, url) {
     total = price * quantity;
     total = total.toFixed(2);
 
-    total_text.innerHTML = 'Total: ₱ ' + total;
+    total_text.innerHTML = '₱ ' + total;
 
     updateCheckoutSummary();
     
@@ -110,7 +110,7 @@ function checkVoucher(base_url){
                 var [result, message, discount_value, discount_type] = response.split("|");
     
                 if(result == 'valid'){
-                    voucher_error_text.style.color = 'green';
+                    voucher_error_text.style.color = '#29a125';
                     voucher_error_text.innerHTML = message;
                     
                     global_voucher_code = voucher_code;
@@ -126,7 +126,7 @@ function checkVoucher(base_url){
                     updateCheckoutSummary();
 
                 }else{
-                    voucher_error_text.style.color = 'red';
+                    voucher_error_text.style.color = '#a12525';
                     voucher_error_text.innerHTML = message;
                 }
                 
@@ -150,14 +150,14 @@ function updateCheckoutSummary(){
         const checkbox = cartItem.querySelector('input[type="checkbox"]');
         if (checkbox.checked) {
             const priceText = cartItem.querySelector('h4[id^="total-"]');
-            const totalPrice = parseFloat(priceText.innerHTML.replace('Total: ₱ ', '').replace(',', ''));
+            const totalPrice = parseFloat(priceText.innerHTML.replace('₱ ', '').replace(',', ''));
             sub_total += totalPrice;
         }
     });
 
     total = sub_total;
     
-    document.getElementById('checkout-subtotal').innerHTML = 'Subtotal: ₱ ' + sub_total.toFixed(2);
+    document.getElementById('checkout-subtotal').innerHTML = '₱ ' + sub_total.toFixed(2);
 
     if(global_discount_value != ''){
         if(global_discount_type == 'fixed'){
@@ -167,7 +167,7 @@ function updateCheckoutSummary(){
         }
     }
     
-    document.getElementById('checkout-total').innerHTML = 'Total: ₱ ' + total.toFixed(2);
+    document.getElementById('checkout-total').innerHTML = '₱ ' + total.toFixed(2);
 
 }
 
@@ -193,7 +193,7 @@ function proceedToCheckOutPage(base_url){
         return;
     }
     
-    const mode_of_payment = document.querySelector("input[type='radio'][name=mode_of_payment]:checked").value;
+    const mode_of_payment = document.querySelector("select[name='mop']").value;
     
     const voucher_code = global_voucher_code;
     

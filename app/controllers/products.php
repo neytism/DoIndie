@@ -60,11 +60,12 @@ class Products extends Controller
         
         $user_info = $this->userModel->checkIfLoggedIn();
         $all_products = $this->productModel->getAllProducts();
+        $product_categories = $this->productModel->getProductCategories();
         
         if ($user_info) {
-            $this->view('productsView', ['user_info' => $user_info, 'all_products' => $all_products]);
+            $this->view('productsView', ['user_info' => $user_info, 'all_products' => $all_products, 'product_categories' => $product_categories]);
         } else {
-            $this->view('productsView', ['all_products' => $all_products]);
+            $this->view('productsView', ['all_products' => $all_products, 'product_categories' => $product_categories]);
         }
     }
 
