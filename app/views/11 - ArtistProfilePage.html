@@ -4,36 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="..\..\assets\css\website.css">
-    <link rel="stylesheet" type="text/css" href="..\..\assets\css\userprofile.css">
+    <link rel="stylesheet" type="text/css" href="..\..\assets\css\artistpf_edit.css"> 
     <title>DoIndie</title>
-    <link rel="icon" type="image/png" href="..\..\uploads\images\LOGO.png"> 
+    <link rel="icon" type="image/png" href="..\..\assets\img\LOGO.png"> 
 
     <!-- Swiper Stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
-    <!-- NAV BAR -->
+    <!-- NAV BAR --> 
     <div class="navbar row-list">
 
-        <a class="icon non-selectable"><img class="logo-img" src="..\..\uploads\images\LOGO.png" alt="DoIndie Logo"></a>
+        <a class="icon non-selectable"><img class="logo-img" src="..\..\assets\img\LOGO.png" alt="DoIndie Logo"></a>
 
         <ul class="menu">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">PRODUCTS</a>
+            <li><a href="01 - HomePage.html">HOME</a></li>
+            <li><a href="02 - ProductsPage.html">PRODUCTS</a>
                 <ul>
-                    <li><a>Pins</a></li>
-                    <li><a>Posters</a></li>
-                    <li><a>Stickers</a></li>
-                    <li><a>Keychains</a></li>
-                    <li><a>Fanart</a></li>
-                    <li><a>Commissions</a></li>
+                    <li><a href="02 - ProductsPage.html">Pins</a></li>
+                    <li><a href="02 - ProductsPage.html">Posters</a></li>
+                    <li><a href="02 - ProductsPage.html">Stickers</a></li>
+                    <li><a href="02 - ProductsPage.html">Keychains</a></li>
+                    <li><a href="02 - ProductsPage.html">Fanart</a></li>
+                    <li><a href="02 - ProductsPage.html">Commissions</a></li>
                 </ul>
             </li>
-            <li><a href="#">CART</a></li>
-            <li><a href="#">PROFILE</a>
+            <li><a href="03 - CheckoutPage.html" class="cart-link">CART</a></li>
+            <li><a href="04 - ArtistProfilePage.html">PROFILE</a>
                 <ul>
-                    <li><a href="#">Edit Profile</a></li>
-                    <li><a href="#">Log Out</a></li>
+                    <li><a href="04 - ArtistProfilePage.html">Edit Profile</a></li>
+                    <li><a href="01 - HomePage.html">Log Out</a></li>
                 </ul>
             </li>
         </ul>
@@ -51,22 +51,31 @@
             </div>
             <div class="box">
 			    <div class="artist-info">
+                    <button class="edit-button" data-target="artistInfoId"><img src="..\..\assets\img\edit.png"/></button>
                     <h2>Artist Name</h2>
-                    <p class="headline">"Artist's headline or tagline"</p>
+                    <p id="artistInfoId">"Artist's headline or tagline"</p>
                 </div>
-                
                 <div class="artist-bio">
+                    <button class="edit-button" data-target="artistBioId"><img src="..\..\assets\img\edit.png"/></button>
                     <h3>Bio</h3>
-                    <p>Lorem ipsum dolor sit amet. Non optio officiis sed impedit beatae in voluptatem deserunt et doloribus debitis et modi natus qui earum voluptates eos autem sequi. Eos alias dolor qui incidunt repellendus et sint nesciunt eos sint neque nam odit amet aut minima debitis.</p>
+                    <p id="artistBioId">Lorem ipsum dolor sit amet. Non optio officiis sed impedit beatae in voluptatem deserunt et doloribus debitis et modi natus qui earum voluptates eos autem sequi. Eos alias dolor qui incidunt repellendus et sint nesciunt eos sint neque nam odit amet aut minima debitis.</p>
                 </div>
-                
                 <div class="artist-location">
+                    <button class="edit-button" data-target="artistLocationId"><img src="..\..\assets\img\edit.png"/></button>
                     <h3>Location</h3>
-                    <p>Aut Quis sunt sed fugiat dolor est nihil iusto eos adipisci necessitatibus eos adipisci totam sit dolorum dolorem nam autem culpa.</p>
-                </div>                           
+                    <p id="artistLocationId">Aut Quis sunt sed fugiat dolor est nihil iusto eos adipisci necessitatibus eos adipisci totam sit dolorum dolorem nam autem culpa.</p>
+                </div>
+                <div id="editModal" class="modal">
+                    <div class="modal-content">
+                      <span style="right: 0;" class="close" id="closeModal">&times;</span>
+                      <h3>Edit Text</h3>
+                      <textarea id="modalTextarea" rows="4" cols="30"></textarea>
+                      <br>
+                      <button class="save" id="saveChanges">Save Changes</button>
+                    </div>
+                </div>
             </div>
         </div>
-        
 		 <!-- Pins Section -->
 		 <div id="gallery" class="gallery-section" style="display: flex; justify-content: center; align-items: center; margin-top: 100px;">
 			<div class="swiper">
@@ -84,7 +93,6 @@
 				<div class="swiper-button-next"></div>
 			</div>
 		</div>
-
         <!-- Reviews Section -->
         <div class="review-section">
             <div class="review-header">
@@ -109,15 +117,15 @@
                 <button class="save" id="submitReview">Submit Review</button>
             </div>
         </div>
-        
+                
         <!-- FOOTER -->
         <div class="footer">
             <ul class="row-list center">
-                <li><a class="rowItem">Home</a></li>
-                <li><a class="rowItem">Products</a></li>
-                <li><a class="rowItem">Shopping Cart</a></li>
-                <li><a class="rowItem">Profile</a></li>
-                <li><a class="rowItem">About Us</a></li>
+                <li><a href="01 - HomePage.html" class="rowItem">Home</a></li>
+                <li><a href="02 - ProductsPage.html" class="rowItem">Products</a></li>
+                <li><a href="03 - CheckoutPage.html" class="rowItem">Shopping Cart</a></li>
+                <li><a href="04 - ArtistProfilePage.html" class="rowItem">Profile</a></li>
+                <li><a href="05 - AboutUsPage.html" class="rowItem">About Us</a></li>
             </ul>
             <ul class="row-list center">
                 <a href="https://www.facebook.com" class="fa fa-facebook" style="font-size: 40px;" target="_blank"></a>
@@ -128,14 +136,55 @@
             </ul>
             <p style="color: #f4e9dc">&copy; 2024 DoIndie. All rights reserved.</p>
         </div>
+        <!-- END OF FOOTER -->
 
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- External JS File -->
-    <script src="..\..\assets\js\userprofile.js"></script>
+    <script src="..\..\assets\js\artistpf_edit.js"></script>
+	
     <script>
+        // Get elements
+        const modal = document.getElementById("editModal");
+        const closeModal = document.getElementById("closeModal");
+        const saveChanges = document.getElementById("saveChanges");
+        const modalTextarea = document.getElementById("modalTextarea");
+
+        // Open modal when an edit button is clicked
+        document.querySelectorAll(".edit-button").forEach(button => {
+            button.onclick = function() {
+                const targetId = button.getAttribute("data-target");
+                currentEditableElement = document.getElementById(targetId);
+
+                // Set the modal textarea to the current content of the target <p> element
+                if (currentEditableElement) {
+                    modalTextarea.value = currentEditableElement.textContent;
+                    modal.style.display = "flex";
+                }
+            };
+        });
+
+        // Close the modal
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // Save changes and update the content of the current editable element
+        saveChanges.onclick = function() {
+            if (currentEditableElement) {
+                currentEditableElement.textContent = modalTextarea.value;
+            }
+            modal.style.display = "none";
+        };
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
 
         document.addEventListener("DOMContentLoaded", function () {
             const reviewModal = document.getElementById("reviewModal");
@@ -147,7 +196,7 @@
 
             // Load and display reviews from local storage
             const loadReviews = () => {
-                localStorage.getItem("publicReviews");
+                const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
                 reviewList.innerHTML = ""; // Clear existing reviews
                 reviews.forEach((review, index) => {
                     addReviewToList(review, index);
@@ -181,9 +230,9 @@
             submitReviewBtn.onclick = () => {
                 const newReview = reviewTextarea.value.trim();
                 if (newReview) {
-                    const reviews = JSON.parse(localStorage.getItem("publicReviews") || "[]");
+                    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
                     reviews.push(newReview);
-                    localStorage.setItem("publicReviews", JSON.stringify(reviews));
+                    localStorage.setItem("reviews", JSON.stringify(reviews));
                     addReviewToList(newReview, reviews.length - 1); // Display the new review
                     reviewModal.style.display = "none";
                     reviewTextarea.value = ""; // Clear the textarea
@@ -201,6 +250,5 @@
             loadReviews();
         });
     </script>
-	
 </body>
 </html>
