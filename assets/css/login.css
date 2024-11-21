@@ -24,6 +24,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
+    background-color: rgb(0,0,0,.5); /* Fallback color */
   }
   
   /* Modal Content */
@@ -31,8 +32,46 @@
     position: relative;
     margin: auto;
     padding: 0;
+    height: 20em;
     width: 90%;
     max-width: 1200px;
     padding: 1em; 
     border-radius: 100px;
+    background-color: #423329;
+  }
+
+  .modal-input {
+    padding: 4em 6em;
+  }
+
+  .responsive {
+    height: 75%; 
+    width: 75%; 
+    padding: 2em;
+  }
+
+  
+  @media only screen and (max-width: 1000px) {
+    .responsive {
+      height:75%; 
+      width:75%;
+    }
+
+    .modal-content {
+      position: relative;
+      margin: auto;
+      padding: 0;
+      height: 750px;
+      width: 90%;
+      max-width: 1200px;
+      padding: 1em; 
+      border-radius: 100px;
+      background-color: #423329;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .modal-input {
+      padding: 0em;
+    }
   }
