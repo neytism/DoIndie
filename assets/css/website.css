@@ -132,6 +132,7 @@ hr {
   position: relative;
   display: inline-block;
   padding: 0 1vw;
+  z-index: 999;
 }
 
 .navbar li a {
@@ -140,6 +141,7 @@ hr {
   padding: 10px;
   font-size: 20px;
   display: block;
+  
 }
 
 .navbar ul ul {

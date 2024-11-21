@@ -1,4 +1,6 @@
-<div style="position: fixed; background-color: #00000050 ; width: 100%; height: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center;" id="login-container" onclick="closeLoginPopUp();">
+<div style="position: fixed; background-color: #00000050 ; width: 100%; height: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center;" 
+    id="login-container" onclick="closeLoginPopUp();">
+    
     <div style="background-color: white;  max-width: fit-content;" onclick="event.stopPropagation();">
         <h3>Log In</h3>
         

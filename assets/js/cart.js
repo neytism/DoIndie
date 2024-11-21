@@ -135,7 +135,7 @@ function checkVoucher(base_url){
     
         xhr.send(`voucher_code=${voucher_code}`);
 
-    }, 2000); // 2 secs
+    }, 1000); // 2 secs
 
 }
 

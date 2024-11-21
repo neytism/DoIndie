@@ -1,5 +1,3 @@
-<?php include 'app/views/navbarView.php'; ?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -70,13 +68,14 @@
 </head>
 
 <body>
-
+    
+<?php include 'app/views/navbarView.php'; ?>
 
     <!-- PRODUCT LIST START -->
     <div class="container" style="margin-top: 160px; margin-bottom: 160px;">
         <div class="checkoutLayout">
 
-
+            
             <div class="returnCart">
                 <a href="<?php echo BASEURL; ?>products" style="text-align: left; font-weight: normal;">← keep shopping</a>
                 <h1>List Product in Cart</h1>
@@ -155,11 +154,11 @@
                 <div class="return">
                     <div class="row">
                         <div style="color: #f4e9dc">Subtotal</div>
-                        <div id="checkout-subtotal" class="totalQuantity" style="color: #f4e9dc">8</div>
+                        <div id="checkout-subtotal" class="totalQuantity" style="color: #f4e9dc">₱ 0.00</div>
                     </div>
                     <div class="row">
                         <div style="color: #f4e9dc">Total Price</div>
-                        <div id="checkout-total"  class="totalPrice" style="color: #f4e9dc">$420.00</div>
+                        <div id="checkout-total"  class="totalPrice" style="color: #f4e9dc">₱ 0.00</div>
                     </div>
                 </div>
                 <button class="buttonCheckout" onclick="proceedToCheckOutPage('<?php echo BASEURL; ?>')">CHECKOUT</button>

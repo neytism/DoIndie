@@ -34,7 +34,7 @@
     <a href="<?php echo BASEURL; ?>home/aboutUs">About us</a>&nbsp;&nbsp;
     <?php endif; ?> -->
     
-    <?php if ($view != 'cartView'): ?>
+    <?php if ($view != 'cartView' && $view != 'userProfileView' && $view != 'checkOutView'): ?>
         <a class="search">
             <input class="navbarSearch" type="search" name="" placeholder="Search..."
                 oninput="inputSearch(this,'<?php echo BASEURL; ?>')">
@@ -55,8 +55,6 @@
         <a class="search"></a>
     <?php endif; ?>
 
-    
-    
 </div>
 
 <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/logInPopUp.js"></script>
