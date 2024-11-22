@@ -18,11 +18,12 @@ class Artists extends Controller
         
         $user_info = $this->userModel->checkIfLoggedIn();
         $all_artists = $this->userModel->getAllArtist();
-
+        $artist_categories = $this->userModel->getArtistCategories();
+        
         if ($user_info) {
-            $this->view('artistsView', ['all_artists' => $all_artists, 'user_info' => $user_info]);
+            $this->view('artistsView', ['all_artists' => $all_artists, 'user_info' => $user_info, 'artist_categories' => $artist_categories]);
         } else {
-            $this->view('artistsView', ['all_artists' => $all_artists]);
+            $this->view('artistsView', ['all_artists' => $all_artists, 'artist_categories' => $artist_categories]);
         }
     
     }

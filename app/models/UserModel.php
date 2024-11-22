@@ -70,6 +70,11 @@ class UserModel {
     public function getAllArtist(){
         return $this->db->fetchAll("SELECT u.*, c.artist_category_name FROM users u LEFT JOIN artist_categories c ON u.artist_category_id = c.artist_category_id WHERE u.is_artist = 'true'");
     }
+
+    public function getNewArtists(){
+        return $this->db->fetchAll("SELECT u.*, c.artist_category_name FROM users u LEFT JOIN artist_categories c ON u.artist_category_id = c.artist_category_id WHERE u.is_artist = 'true' ORDER BY u.date_joined DESC LIMIT 5");
+    }
+    
     
     public function updateUserAsArtistByUserID($user_id, $image, $username, $email, $artist_display_name, $artist_category_id){
         $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, artist_display_name = :artist_display_name, artist_category_id = :artist_category_id WHERE user_id = :user_id", [

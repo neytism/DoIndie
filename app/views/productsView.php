@@ -10,12 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo BASEURL; ?>assets\css\website.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASEURL; ?>assets\css\products.css">
-    <title>DoIndie</title>
+    <title>Products</title>
     <link rel="icon" type="image/png" href="<?php echo BASEURL; ?>assets\img\LOGO.png">
     
     <!-- Swiper Stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <style>
         .swiper {
@@ -78,7 +77,7 @@
                         break;
                     }
                 }
-
+                
                 if ($hasProducts): ?>
                     <div class="product-item">
                         <a
@@ -89,6 +88,50 @@
         </div>
     </div>
     
+    <div id="all-gallery" class="gallery-section" >
+        <h2 >All</h2>
+        <br><br>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+
+                <?php foreach ($data['all_products'] as $product): ?>
+                    <?php $is_self = false;
+                    if (isset($data['user_info']) && $product['artist_id'] == $data['user_info']['user_id']) {
+                        $is_self = true;
+                    }
+                    ;
+                    ?>
+                    <div class="swiper-slide">
+                        <a href="CHANGE_LINK">
+                            <img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>"
+                                width="240" height="240" alt="<?= htmlspecialchars($product['title']) ?>"
+                                title="<?= htmlspecialchars($product['title']) ?>" />
+                        </a>
+                        <h3><?= htmlspecialchars($product['title']) ?></h3>
+                        <h4>Artist: <?= $product['artist_display_name'] ?></h4>
+                        <?php if (!$is_self): ?>
+                            <?php if ($is_logged_in): ?>
+                                <button class="add-to-cart"
+                                    onclick="addToCart(event,<?= $product['product_id'] ?>,'<?php echo BASEURL; ?>cart/addToCart'); event.stopPropagation();">Add
+                                    to cart</button><br>
+                            <?php else: ?>
+                                <button class="add-to-cart"
+                                    onclick="window.location='<?php echo BASEURL; ?>logIn'; event.stopPropagation();">Add to
+                                    cart</button><br>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <button class="add-to-cart faded" title="This is yours.">Add to cart</button><br>
+                        <?php endif; ?>
+
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+     
     <!-- show products per category -->
     <?php foreach ($data['product_categories'] as $category): ?>
         <?php
@@ -150,26 +193,8 @@
         <?php endif; ?>
     <?php endforeach; ?>
     
-
-    <!-- FOOTER -->
-    <div class="footer">
-        <ul class="row-list center">
-            <li><a class="rowItem">Home</a></li>
-            <li><a class="rowItem">Products</a></li>
-            <li><a class="rowItem">Shopping Cart</a></li>
-            <li><a class="rowItem">Profile</a></li>
-            <li><a class="rowItem">About Us</a></li>
-        </ul>
-        <ul class="row-list center">
-            <a href="https://www.facebook.com" class="fa fa-facebook" style="font-size: 40px;" target="_blank"></a>
-            <a href="https://www.youtube.com" class="fa fa-youtube" style="font-size: 40px;" target="_blank"></a>
-            <a href="https://www.twitter.com" class="fa fa-twitter" style="font-size: 40px;" target="_blank"></a>
-            <a href="https://www.instagram.com" class="fa fa-instagram" style="font-size: 40px;" target="_blank"></a>
-            <a href="https://www.tumblr.com" class="fa fa-tumblr" style="font-size: 40px;" target="_blank"></a>
-        </ul>
-        <p style="color: #f4e9dc">&copy; 2024 DoIndie. All rights reserved.</p>
-    </div>
-
+    <?php include 'app/views/footerView.php';?>
+    
     <!-- CART PORTION -->
     <div class="cart">
         <h2>

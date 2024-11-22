@@ -14,7 +14,7 @@
   }
   
   .hero-image img {
-    width: 120%;
+    margin: 0 auto;
     height: 100%;
     object-fit: contain;
   }
@@ -41,7 +41,7 @@
   }
   
   .hero-content {
-    flex: 1.22;
+    flex: 1;
     display: flex;
     justify-content: space-between;
     flex-direction: column;

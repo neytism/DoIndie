@@ -31,6 +31,7 @@
   transition: all 0.3s ease-in-out;
   width: var(--carousel-item-width);
   z-index: 0;
+  border-radius: 20px;
 }
 
 .carousel-item-1 {
@@ -79,7 +80,7 @@
   background-color: transparent;
   border: 2px solid;
   border-radius: 4px;
-  color: #aaa;
+  color: #ffffff7a;
   cursor: pointer;
   height: 22px;
   margin: 0 20px;

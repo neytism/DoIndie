@@ -10,15 +10,14 @@
      <!-- CSS FILE LINK -->
      <link rel="stylesheet" type="text/css" href="<?php echo BASEURL; ?>assets\css\website.css">
      <link rel="stylesheet" type="text/css" href="<?php echo BASEURL; ?>assets\css\homepage.css">
-
-
+  
   </head>
   <body>
     <?php include 'app/views/navbarView.php'; ?>
     <div class="home-container">
 
       <!-- HERO SECTION START -->
-      <section class="hero">
+      <section class="hero" style="height: calc(100vh - 64px);">
         <div class="hero-image">
           <img 
             src="<?php echo BASEURL; ?>assets\img\FISH MASCOT.png"
@@ -32,22 +31,22 @@
 
           <div class="hero-image__overlay"></div>
         </div>
-
+        
         <div class="hero-content">
           <div class="hero-content-info" data-aos="fade-left">
-            <h1>Made by Artists, for Artists</h1>
+            <h1>Made by Artists,<br>for Artists</h1>
             <p>An online artists' marketplace.</p>
 
-            <div class="hero-content__buttons">
+            <!-- <div class="hero-content__buttons">
               <button class="hero-content__order-button">What's New?</button>
               <button class="hero-content__play-button">
                 <img src="<?php echo BASEURL; ?>assets\img\play-circle.svg" alt="play" />
                 Terms and Conditions
               </button>
-            </div>
+            </div> -->
           </div>
 
-          <div class="hero-content__testimonial" data-aos="fade-up">
+          <!-- <div class="hero-content__testimonial" data-aos="fade-up">
             <div class="hero-content__customer flex-center">
               <h4>Lorem</h4>
               <p>Ipsum Dolor</p>
@@ -57,30 +56,44 @@
               <img src="<?php echo BASEURL; ?>assets\img\user.png" alt="user" />
               <p>"User review here maybe?"</p>
             </div>
-          </div>
+          </div> -->
         </div>
       </section>
       <!-- HERO SECTION END -->
 
 
       <!-- SCROLLING GALLERY START -->
-      <div class="carousel">
-        <h1 style="text-align: center; font-weight: bolder; color: #f4e9dc; font-family:'Roboto', sans-serif; padding-top: 5px;">TOP SELLERS</h1>
+      
+      <div class="carousel" style="padding-top: 150px; padding-bottom: 150px; background-color: #6d584b;">
+        <h1 style="text-align: center; font-weight: bolder; color: #f4e9dc; font-family:'Roboto', sans-serif; padding-top: 5px;">TOP ARTWORKS</h1>
         <div class="carousel-container">
-          <img class="carousel-item carousel-item-3" src="<?php echo BASEURL; ?>assets\img\1.png" loading="lazy" data-index="1">
-          <img class="carousel-item carousel-item-4" src="<?php echo BASEURL; ?>assets\img\1.png" loading="lazy" data-index="2">
-          <img class="carousel-item carousel-item-5" src="<?php echo BASEURL; ?>assets\img\1.png" loading="lazy" data-index="3">
-          <img class="carousel-item carousel-item-1" src="<?php echo BASEURL; ?>assets\img\1.png" loading="lazy" data-index="4">
-          <img class="carousel-item carousel-item-2" src="<?php echo BASEURL; ?>assets\img\1.png" loading="lazy" data-index="5">
+            <?php 
+            $index = 1; 
+            $totalArtists = count($data['top_artworks']);
+            
+            while ($index <= 5) {
+                $currentArtistIndex = ($index - 1) % $totalArtists;
+                $artwork = $data['top_artworks'][$currentArtistIndex]; 
+            ?>
+                <img class="carousel-item carousel-item-<?=$index?>" 
+                    src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $artwork['product_picture_path'] ?>" 
+                    loading="lazy" 
+                    data-index="<?=$index?>"
+                    title="<?= $artwork['title'] ?>">
+                <?php 
+                $index++; 
+            } 
+            ?>
         </div>
         
         <div class="carousel-controls">
           <button class="carousel-control carousel-control-previous" data-name="previous">
             <span class="ax-hidden">previous</span>
           </button>
-          <button class="carousel-control carousel-control-add" data-name="add">
+          <!-- <button class="carousel-control carousel-control-add" data-name="add">
             <span class="ax-hidden">add</span>
-          </button><button class="carousel-control carousel-control-play playing" data-name="play">
+          </button> -->
+          <button class="carousel-control carousel-control-play playing" data-name="play">
             <span class="ax-hidden">play</span>
           </button>
           <button class="carousel-control carousel-control-next" data-name="next">
@@ -88,35 +101,87 @@
           </button>
         </div>
       </div>
+
+      <div class="carousel" style="padding-top: 150px; padding-bottom: 150px; background-color:#f4e9dc ;">
+        <h1 style="text-align: center; font-weight: bolder; color: #6d584b; font-family:'Roboto', sans-serif; padding-top: 5px;">NEW ARTISTS</h1>
+        <div class="carousel-container">
+            <?php 
+            $index = 1; 
+            $totalArtists = count($data['new_artists']);
+            
+            while ($index <= 5) {
+                $currentArtistIndex = ($index - 1) % $totalArtists;
+                $new_artist = $data['new_artists'][$currentArtistIndex]; 
+            ?>
+                <img class="carousel-item carousel-item-<?=$index?>" 
+                    src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $new_artist['picture_path'] ?>" 
+                    loading="lazy" 
+                    data-index="<?=$index?>"
+                    title="<?= $new_artist['artist_display_name'] ?>">
+                <?php 
+                $index++; 
+            } 
+            ?>
+        </div>
+        
+        <div class="carousel-controls">
+          <button class="carousel-control carousel-control-previous" data-name="previous">
+            <span class="ax-hidden">previous</span>
+          </button>
+          <!-- <button class="carousel-control carousel-control-add" data-name="add">
+            <span class="ax-hidden">add</span>
+          </button> -->
+          <button class="carousel-control carousel-control-play playing" data-name="play">
+            <span class="ax-hidden">play</span>
+          </button>
+          <button class="carousel-control carousel-control-next" data-name="next">
+            <span class="ax-hidden">next</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="carousel" style="padding-top: 150px; padding-bottom: 150px; background-color:#6d584b ;">
+        <h1 style="text-align: center; font-weight: bolder; color: #f4e9dc; font-family:'Roboto', sans-serif; padding-top: 5px;">NEW ARTWORKS</h1>
+        <div class="carousel-container">
+            <?php 
+            $index = 1; 
+            $totalArtists = count($data['new_artworks']);
+            
+            while ($index <= 5) {
+                $currentArtistIndex = ($index - 1) % $totalArtists;
+                $new_artwork = $data['new_artworks'][$currentArtistIndex]; 
+            ?>
+                <img class="carousel-item carousel-item-<?=$index?>" 
+                    src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $new_artwork['product_picture_path'] ?>" 
+                    loading="lazy" 
+                    data-index="<?=$index?>"
+                    title="<?= $new_artwork['title'] ?>">
+                <?php 
+                $index++; 
+            } 
+            ?>
+        </div>
+        
+        <div class="carousel-controls">
+          <button class="carousel-control carousel-control-previous" data-name="previous">
+            <span class="ax-hidden">previous</span>
+          </button>
+          <!-- <button class="carousel-control carousel-control-add" data-name="add">
+            <span class="ax-hidden">add</span>
+          </button> -->
+          <button class="carousel-control carousel-control-play playing" data-name="play">
+            <span class="ax-hidden">play</span>
+          </button>
+          <button class="carousel-control carousel-control-next" data-name="next">
+            <span class="ax-hidden">next</span>
+          </button>
+        </div>
+      </div>
+
       <!-- SCROLLING GALLERY END -->
 
-      <!-- FOOTER START -->
-      <footer class="footer flex-between">
-        <h3 class="footer__logo">
-          <span>Do</span>Indie
-        </h3>
-
-        <ul class="footer__nav">
-          <li><a href="homepage.html">Home</a></li>
-          <li><a href="">Customer Service</a></li>
-          <li><a href="">Shopping Cart</a></li>
-          <li><a href="">About Us</a></li>
-        </ul>
-        
-        <ul class="footer__social">
-          <li class="flex-center">
-            <img src="<?php echo BASEURL; ?>assets\img\facebook.svg" alt="facebook" />
-          </li>
-          <li class="flex-center">
-            <img src="<?php echo BASEURL; ?>assets\img\instagram.svg" alt="instagram" />
-          </li>
-          <li class="flex-center">
-            <img src="<?php echo BASEURL; ?>assets\img\twitter.svg" alt="twitter" />
-          </li>
-        </ul>
-      </footer>
-      <!-- FOOTER END -->
-
+      <?php include 'app/views/footerView.php';?>
+    
     </div>
     
 

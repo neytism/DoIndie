@@ -1,6 +1,6 @@
 
 <div class="navbar row-list">
-    <a class="icon non-selectable"><img class="logo-img" src="<?php echo BASEURL; ?>assets\img\LOGO.png" alt="DoIndie Logo"></a>
+    <a class="icon non-selectable"><img style="width: 140px;" src="<?php echo BASEURL; ?>assets\img\logo_cream_v2.png" alt="DoIndie Logo"></a>
     
     <ul class="menu">
         <li> <a href="<?php echo BASEURL; ?>">HOME</a></li>

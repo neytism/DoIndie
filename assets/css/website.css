@@ -115,7 +115,7 @@ hr {
 .navbar {
   display: flex;
   align-items: center;
-  height: con(5vw, 75px);
+  height: 64px;
   width: 100%;
   background-color: #423329;
   z-index: 999; 
@@ -139,7 +139,7 @@ hr {
   color: #f4e9dc;
   text-decoration: none;
   padding: 10px;
-  font-size: 20px;
+  font-size: 18px;
   display: block;
   
 }
@@ -230,7 +230,7 @@ hr {
 }
 
 .footer {
-  background-color: #423329;
+  background-color: #423329 !important;
   position: relative;
   bottom: 0;
   padding: 25px 0;

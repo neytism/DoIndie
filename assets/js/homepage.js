@@ -30,7 +30,7 @@ class Carousel {
     this.carouselContainer;
     this.carouselPlayState;
   }
-
+  
   mounted() {
     this.setupCarousel();
   }

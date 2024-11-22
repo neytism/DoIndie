@@ -37,7 +37,7 @@ body {
 
 .home-container{
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 100%;
 }
 
 a {
@@ -139,7 +139,7 @@ a {
 
   .hero-image img {
     width: 100%;
-
+    
     transform: matrix(1, 0.05, 0, 1.25, 0, 0) !important;
   }
 }
@@ -181,7 +181,7 @@ a {
 
 /* CAROUSEL START */
 .carousel {
-  background-color: #6d584b;
+  
   padding: 20px;
 }
 
@@ -191,7 +191,7 @@ a {
 }
 
 .carousel-control {
-  color: #f4e9dc; /* Set color of control buttons */
+  color: #302013; /* Set color of control buttons */
 }
 
 /* Optional: Change hover effects for controls */

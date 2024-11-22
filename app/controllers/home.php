@@ -3,9 +3,11 @@
 class Home extends Controller
 {
     private $userModel;
+    private $productModel;
     
     public function __construct() {
         $this->userModel = $this->model('UserModel');
+        $this->productModel = $this->model('ProductModel');
     }
     
     public function index()
@@ -17,11 +19,14 @@ class Home extends Controller
         session_start();
         
         $user_info = $this->userModel->checkIfLoggedIn();
-
+        $top_artworks = $this->productModel->getTopProducts();
+        $new_artists = $this->userModel->getNewArtists();
+        $new_artworks = $this->productModel->getNewProducts();
+        
         if ($user_info) {
-            $this->view('homeView', ['user_info' => $user_info]);
+            $this->view('homeView', ['user_info' => $user_info,'top_artworks' => $top_artworks, 'new_artists' => $new_artists, 'new_artworks' => $new_artworks]);
         } else {
-            $this->view('homeView');
+            $this->view('homeView', ['top_artworks' => $top_artworks, 'new_artists' => $new_artists, 'new_artworks' => $new_artworks]);
         }
     
     }
