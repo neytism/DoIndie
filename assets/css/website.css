@@ -311,3 +311,8 @@ hr {
   color: #ffffff;
   background-color: #6d584b; 
 }
+
+.transparent{
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, #42332988 100%);
+}

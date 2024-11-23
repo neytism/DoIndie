@@ -4,11 +4,13 @@ class Profile extends Controller
 {
     private $userModel;
     private $addressModel;
+    private $productModel;
 
     public function __construct()
     {
         $this->userModel = $this->model('UserModel');
         $this->addressModel = $this->model('AddressModel');
+        $this->productModel = $this->model('ProductModel');
     }
 
     public function index()
@@ -28,7 +30,13 @@ class Profile extends Controller
         
         $searched_user = $this->userModel->findUserByUsername(strtolower($username));
         $user_info = $this->userModel->checkIfLoggedIn();
-
+        $searched_user_products = $this->productModel->getTopProductsByUsername($username);
+        if($user_info){
+            $user_products = $this->productModel->getTopProductsByUsername($user_info['username']);
+        }
+       
+        
+        
         if ($searched_user) {
             
 
@@ -36,11 +44,11 @@ class Profile extends Controller
                 if ($_SESSION['user_id'] == $searched_user['user_id']) {
                     $this->viewMyProfile();
                 } else {
-                    $this->view('userProfileView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'is_self' => false]);
+                    $this->view('userProfileView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'is_self' => false, 'searched_user_products' => $searched_user_products, 'user_products' => $user_products  ]);
                 }
             
             } else {
-                $this->view('userProfileView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'is_self' => false]);
+                $this->view('userProfileView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'is_self' => false, 'searched_user_products' => $searched_user_products]);
             }
 
         } else {
@@ -49,20 +57,21 @@ class Profile extends Controller
         }
 
     }
-
+    
     public function viewMyProfile()
     {
         if (session_status() == PHP_SESSION_NONE)
             session_start();
         
         $user_info = $this->userModel->checkIfLoggedIn();
+        $user_products = $this->productModel->getTopProductsByUsername($user_info['username']);
 
         if ($user_info) {
-            $this->view('userProfileView', ['user_info' => $user_info, 'is_self' => true]);
+            $this->view('userProfileView', ['user_info' => $user_info, 'is_self' => true, 'user_products' => $user_products]);
         } else {
             $this->view('homeView');
         }
-
+    
     }
     
     public function edit()
@@ -83,7 +92,7 @@ class Profile extends Controller
         } 
     
     }
-
+    
     public function verifyProfileEdit()
     {
         if (session_status() == PHP_SESSION_NONE)
@@ -100,7 +109,7 @@ class Profile extends Controller
             'artist_display_name' => '',
             'artist_category_id' => '',
         );
-
+        
         $username = $_POST['username'];
         
         
@@ -233,9 +242,9 @@ class Profile extends Controller
         } else {
             
             if ($user_info['is_artist'] == 'true') {
-                $this->userModel->updateUserAsArtistByUserID($user_info['user_id'], $new_file_name, $username, $email, $artist_display_name, $artist_category_id);
+                $this->userModel->updateUserAsArtistByUserID($user_info['user_id'], $new_file_name, $username, $email, $artist_display_name, $artist_category_id, $_POST['full_name'], $_POST['phone_number']);
             } else{
-                $this->userModel->updateUserByUserID($user_info['user_id'], $new_file_name, $username, $email);
+                $this->userModel->updateUserByUserID($user_info['user_id'], $new_file_name, $username, $email, $_POST['full_name'], $_POST['phone_number']);
             }
             
             $region_id = $this->addressModel->getRegionIDByRegCode($region_code);
@@ -248,7 +257,7 @@ class Profile extends Controller
             // Redirect to a success page or log in
             echo 'success|' . BASEURL . 'profile';
         }
-
+    
     }
 
     function updateOnCheckout(){

@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/css/login.css">
 
-<div class="navbar row-list">
+<div class="navbar row-list <?php if ($view == 'userProfileView') echo 'transparent' ?>">
     <a class="icon non-selectable"><img style="width: 140px;" src="<?php echo BASEURL; ?>assets\img\logo_cream_v2.png" alt="DoIndie Logo"></a>
     
     <ul class="menu">
@@ -10,7 +10,11 @@
         <li> <a href="<?php echo BASEURL; ?>products" <?php if ($view == 'productsView') echo ' class="active-page" ' ?>>PRODUCTS</a></li>
         <?php if ($is_logged_in): ?>
                 <li> <a href="<?php echo BASEURL; ?>cart" <?php if ($view == 'cartView') echo ' class="active-page" ' ?>>CART</a></li>
+                <?php if ($data['user_info']['is_artist'] == "true"): ?>
+                    <li> <a href="<?php echo BASEURL; ?>products/upload">UPLOAD</a></li>
+                <?php endif; ?>
         <?php endif; ?>
+        
         <li><a href="#">PROFILE</a>
             <ul>
                 <?php if (!$is_logged_in): ?>
@@ -22,9 +26,7 @@
                             <li><a href="<?php echo BASEURL; ?>registerAsArtist">Register as Artist</a></li>
                         <?php endif; ?>
                     <?php endif; ?>
-                    <?php if ($view != 'userProfileView'): ?>
-                        <li><a href="<?php echo BASEURL; ?>profile/<?php echo $data['user_info']['username'] ?>">Profile</a></li>
-                    <?php endif; ?>
+                    <li><a href="<?php echo BASEURL; ?>profile/<?php echo $data['user_info']['username'] ?>">Profile</a></li>
                     <a href="<?php echo BASEURL; ?>login/logout">Logout</a>
                 <?php endif; ?>
             </ul>

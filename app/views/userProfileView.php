@@ -3,76 +3,38 @@ $is_self = $data['is_self'];
 ?>
 
 
-<?php include 'app/views/navbarView.php'; ?>
-
-<?php if(!$is_self){
+<?php if (!$is_self) {
     $user_info = $data['searched_user'];
-}else{
+    $user_top_products = $data['searched_user_products'];
+} else {
     $user_info = $data['user_info'];
-}?>
+    $user_top_products = $data['user_products'];
+} ?>
 
-<h2>DoIndie Profile Page</h2>
-
-
-<div ><img
-        style="height: auto; max-width: 300px"
-        src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $user_info['picture_path'] ?>"
-        alt="<?= $user_info['username'] ?> Profile Pic"></div>
-<?php if ($user_info['is_artist'] == "true"): ?>
-    <h1>Artist: <?= $user_info['artist_display_name'] ?></h1>
-<?php endif; ?>
-<h3><?= $user_info['username'] ?></h3>
-<h3><?= $user_info['full_name'] ?></h3>
-<?php if ($is_self): ?>
-    <h4>This is you.</h4>
-<?php endif; ?>
-<h4> User id is <?= $user_info['user_id'] ?></h4>
-<?php if ($user_info['is_verified_email'] == 'true'): ?>
-    <h4>Email is Verified.</h4>
-<?php else: ?>
-    <h4>Email is Not verified.</h4>
-    <?php if ($is_self): ?>
-        <button class="b" onclick="window.location='<?php echo BASEURL; ?>verifyEmail'">Verify Email</button>
-    <?php endif; ?>
-<?php endif; ?>
 <?php
-$date_joined = new DateTime($user_info['date_joined']);
-$formatted_date = $date_joined->format('F j, Y \a\t g:i A');
+    $date_joined = new DateTime($user_info['date_joined']);
+    $formatted_date = $date_joined->format('F j, Y \a\t g:i A');
 ?>
-<h4> Joined last <?= $formatted_date ?></h4>
-<?php if ($is_self): ?>
-    <button class="b" onclick="window.location='<?php echo BASEURL; ?>profile/edit'">Edit Profile</button>
-<?php endif; ?>
-<?php if($user_info['is_artist'] == "true"):?>
-<h4><a href="<?php echo BASEURL; ?>products/artist/<?=$user_info['username']?>">See products</a></h4>
-<?php endif; ?>
-<h4> Use this to show more info</h4><br>
 
-<?php if ($user_info['is_artist'] == "true"):?>
-    <h2>Featured Artworks</h2>
-<?php endif; ?>
-
-<?php if ($is_self && $user_info['is_artist'] == "true"): ?>
-    <button class="b">Upload new Product</button>
-<?php endif; ?>
+<?php include 'app/views/navbarView.php'; ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo BASEURL; ?>assets\css\website.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASEURL; ?>assets\css\userprofile.css">
-    <title>DoIndie</title>
-    <link rel="icon" type="image/png" href="<?php echo BASEURL; ?>uploads\images\LOGO.png"> 
+    <title><?= $user_info['username'] ?></title>
+    <link rel="icon" type="image/png" href="<?php echo BASEURL; ?>uploads\images\LOGO.png">
 
     <!-- Swiper Stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo BASEURL; ?>assets\css\website.css">
 
     <style>
-        
         .b {
             background-color: #423329;
             color: white;
@@ -82,108 +44,236 @@ $formatted_date = $date_joined->format('F j, Y \a\t g:i A');
             cursor: pointer;
             margin-top: 10px;
         }
-        
+
         .faded {
             opacity: 0.5;
         }
-        
+
         .b:hover {
             color: #ff7200;
-            background-color: #2f1a09; 
+            background-color: #2f1a09;
         }
-            
+
+        .banner {
+            top: -64px;
+            height: 400px; /* Set your desired height */
+            width: 100%; /* Full width of the screen */
+            position: relative; /* Position relative for overlay text if needed */
+            overflow: hidden; /* Prevent overflow of the pseudo-element */
+            z-index: -5; 
+
+            border-bottom: 10px solid white;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%; 
+            background-image: url('<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $user_info['picture_path'] ?>'); 
+            background-size: cover;
+            background-position: center; 
+            filter: blur(80px);
+            transform: translate(-50%, -50%); 
+            z-index: 0; 
+        }
+        
+        .banner::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            right: 50%;
+            bottom: 50%;
+            z-index: 1; 
+        }
+        
+        .profile-info {
+            position: relative; 
+            width: 100%; 
+            height: 300px; 
+            overflow: hidden; 
+            top: calc(-100px - 64px); 
+            z-index: 3;
+        }
+
+        .profile-info img {
+            border: 10px solid white;
+            position: absolute; 
+            left:0px;
+            margin-left: 100px;
+            width: 300px; 
+            height: 300px;
+            border-radius: 25px; 
+            background-color: #423329; 
+            z-index: 4;
+        }
+        
+        .profile-info h1 {
+            margin-left: 100px;
+            font-size: 64px;
+            text-align: left;
+            position: absolute; 
+            left: 350px;
+            z-index: 4;
+            top: calc(60% - 64px);
+        }
+
+        .profile-info h2 {
+            margin-left: 100px;
+            font-size: 24px;
+            text-align: left;
+            position: absolute; 
+            left: 350px;
+            z-index: 4;
+            opacity: 0.75;
+            top: calc(85% - 64px);
+        }
+
+        .profile-info p {
+            margin-left: 100px;
+            font-size: 18px;
+            text-align: left;
+            position: absolute; 
+            left: 350px;
+            z-index: 4;
+            top: calc(100% - 64px);
+        }
+
+        .profile-info .edit-profile-btn {
+            position: absolute; 
+            right: 50px;
+            z-index: 4;
+            top: calc(60% - 64px);
+        }
+    
     </style>
 </head>
-    
+
 <body>
 
-		<div class="artist-section">
-			<div class="artist-picture">
-                <img src="<?php echo BASEURL; ?>assets\img\sample.png" alt="Artist Picture"> 
+    <div class="banner"></div>
+    
+    <div class="profile-info">
+        <img src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $user_info['picture_path'] ?>" alt="Artist Picture" style="aspect-ratio: 1 / 1; object-fit: cover;">
+        <h1>
+        <?php if ($user_info['is_artist'] == "true"): ?>
+            <?= $user_info['artist_display_name'] ?>
+        <?php else: ?>
+            <?= $user_info['username'] ?>
+        <?php endif; ?>
+        </h1>
+        <h2>@<?= $user_info['username'] ?></h2>
+        <p>
+            <?php if (empty($user_info['bio'])): ?>
+                <?= "No Bio." ?>
+            <?php else: ?>
+                <?= $user_info['bio'] ?>
+            <?php endif; ?>
+        </p>
+        <?php if ($is_self): ?>
+            <button class="b edit-profile-btn" onclick="window.location='<?php echo BASEURL; ?>profile/edit'">Edit Profile</button>
+        <?php endif; ?>        
+    </div>
+
+    <div class="artist-section" style="margin-top: -100px">
+        <div class="box">
+
+            <div class="artist-info">
+                <h4 class="info-title">Username</h4>
+                <p class="info-deets" ><?= $user_info['username'] ?></p>
             </div>
-            <div class="box">
-			    <div class="artist-info">
-                    <h2>Artist Name</h2>
-                    <p class="headline">"Artist's headline or tagline"</p>
-                </div>
+
+            <div class="artist-info">
+                <h4 class="info-title">Full Name</h4>
+                <p class="info-deets" ><?= $user_info['full_name'] ?></p>
+            </div>
+
+            <div class="artist-info">
+                <h4 class="info-title">Email</h4>
+                <p class="info-deets" ><?= $user_info['email'] ?>
+                <?php if ($user_info['is_verified_email'] == 'true'): ?>
+                     (Verified)
+                <?php else: ?>
+                     (Not verified.)
+                <?php endif; ?></p>
+            </div> 
+            
+            <?php if ($user_info['is_artist'] == 'true'): ?>
+
+                <div class="artist-info">
+                    <h4 class="info-title">Artist Name</h4>
+                    <p class="info-deets" ><?= $user_info['artist_display_name'] ?></p>
+                </div>   
                 
-                <div class="artist-bio">
-                    <h3>Bio</h3>
-                    <p>Lorem ipsum dolor sit amet. Non optio officiis sed impedit beatae in voluptatem deserunt et doloribus debitis et modi natus qui earum voluptates eos autem sequi. Eos alias dolor qui incidunt repellendus et sint nesciunt eos sint neque nam odit amet aut minima debitis.</p>
+                <div class="artist-info">
+                    <h4 class="info-title">Specialty</h4>
+                    <p class="info-deets" ><?= $user_info['artist_category_name'] ?></p>
+                </div>   
+
+            <?php endif; ?>
+
+            <div class="artist-info">
+                <h4 class="info-title">Join Date</h4>
+                <p class="info-deets" ><?= $formatted_date ?></p>
+            </div>   
+        </div>
+    </div>
+    
+    <?php if ($user_info['is_artist'] == 'true'): ?>
+
+        <div id="gallery" class="gallery-section" style="display: flex; justify-content: center; align-items: center;">
+            <h1 style="padding: 50px; font-size: 48px;">Top Works</h1>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <?php foreach($user_top_products as $product): ?>
+                        <div class="swiper-slide"> <a href="CHANGE_LINK"><img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>" width="200" height="200" alt="<?= $product['title'] ?>" /></a> </div>
+                    <?php endforeach; ?>
                 </div>
-                
-                <div class="artist-location">
-                    <h3>Location</h3>
-                    <p>Aut Quis sunt sed fugiat dolor est nihil iusto eos adipisci necessitatibus eos adipisci totam sit dolorum dolorem nam autem culpa.</p>
-                </div>                           
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
         
-		 <!-- Pins Section -->
-		 <div id="gallery" class="gallery-section" style="display: flex; justify-content: center; align-items: center; margin-top: 100px;">
-			<div class="swiper">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"> <a href="art-prev1.html"><img src="<?php echo BASEURL; ?>assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 1" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev2.html"><img src="<?php echo BASEURL; ?>assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 2" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev3.html"><img src="<?php echo BASEURL; ?>assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 3" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev4.html"><img src="<?php echo BASEURL; ?>assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 4" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev5.html"><img src="<?php echo BASEURL; ?>assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 5" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev6.html"><img src="<?php echo BASEURL; ?>assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 6" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev7.html"><img src="<?php echo BASEURL; ?>assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 7" /></a> </div>
-					<div class="swiper-slide"> <a href="art-prev8.html"><img src="<?php echo BASEURL; ?>assets\img\sample.png" width="200" height="200" alt="ARTWORK PREVIEW 8" /></a> </div>
-				</div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
-			</div>
-		</div>
-
-        <!-- Reviews Section -->
-        <div class="review-section">
-            <div class="review-header">
-                <h3>Reviews</h3>
-            </div>
-            <div id="review-list" class="review-list">
-                <!-- Reviews will be dynamically loaded here -->
-            </div>
-        </div>
-
-        <div class="review-links-container">
-            <button id="seeAllReviews" class="review-link see-all-reviews">SEE ALL REVIEWS</button>
-            <button id="writeReview" class="review-link write-review">WRITE A REVIEW</button>
-        </div>
-
-        <!-- Write Review Modal -->
-        <div id="reviewModal" class="modal">
-            <div class="modal-content">
-                <span class="close" id="closeReviewModal">&times;</span>
-                <h3>Write a Review</h3>
-                <textarea id="reviewTextarea" rows="4" cols="30" placeholder="Write your review here..."></textarea>
-                <button class="save" id="submitReview">Submit Review</button>
-            </div>
-        </div>
+        <br> <br>
         
-        <!-- FOOTER -->
-        <div class="footer">
-            <ul class="row-list center">
-                <li><a class="rowItem">Home</a></li>
-                <li><a class="rowItem">Products</a></li>
-                <li><a class="rowItem">Shopping Cart</a></li>
-                <li><a class="rowItem">Profile</a></li>
-                <li><a class="rowItem">About Us</a></li>
-            </ul>
-            <ul class="row-list center">
-                <a href="https://www.facebook.com" class="fa fa-facebook" style="font-size: 40px;" target="_blank"></a>
-                <a href="https://www.youtube.com" class="fa fa-youtube" style="font-size: 40px;" target="_blank"></a>
-                <a href="https://www.twitter.com" class="fa fa-twitter" style="font-size: 40px;" target="_blank"></a>
-                <a href="https://www.instagram.com" class="fa fa-instagram" style="font-size: 40px;" target="_blank"></a>
-                <a href="https://www.tumblr.com" class="fa fa-tumblr" style="font-size: 40px;" target="_blank"></a>
-            </ul>
-            <p style="color: #f4e9dc">&copy; 2024 DoIndie. All rights reserved.</p>
+        <button class="b" onclick="window.location='<?php echo BASEURL; ?>products/artist/<?= $user_info['username'] ?>'">See All products</button>
+    
+    <?php endif; ?>
+    <!-- Pins Section -->
+    
+    
+    <!-- Reviews Section -->
+    <!-- <div class="review-section">
+        <div class="review-header">
+            <h3>Reviews</h3>
         </div>
+        <div id="review-list" class="review-list"> -->
+            <!-- Reviews will be dynamically loaded here -->
+        <!-- </div>
+    </div> -->
+    
+    <!-- <div class="review-links-container">
+        <button id="seeAllReviews" class="review-link see-all-reviews">SEE ALL REVIEWS</button>
+        <button id="writeReview" class="review-link write-review">WRITE A REVIEW</button>
+    </div> -->
+    
+    <!-- Write Review Modal -->
+    <!-- <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeReviewModal">&times;</span>
+            <h3>Write a Review</h3>
+            <textarea id="reviewTextarea" rows="4" cols="30" placeholder="Write your review here..."></textarea>
+            <button class="save" id="submitReview">Submit Review</button>
+        </div>
+    </div> -->
+    <br><br><br><br>
+    <?php include 'app/views/footerView.php';?>
 
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- External JS File -->
     <script src="<?php echo BASEURL; ?>assets\js\userprofile.js"></script>
@@ -253,6 +343,7 @@ $formatted_date = $date_joined->format('F j, Y \a\t g:i A');
             loadReviews();
         });
     </script>
-	
+
 </body>
+
 </html>

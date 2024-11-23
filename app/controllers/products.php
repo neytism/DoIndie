@@ -29,18 +29,19 @@ class Products extends Controller
         $searched_user = $this->userModel->findUserByUsername(strtolower($username));
         $user_info = $this->userModel->checkIfLoggedIn();
         $searched_user_products = $this->productModel->getAllProductsOfUserByUsername($username);
+        $product_categories = $this->productModel->getProductCategories();
 
         if ($searched_user) {
             if ($searched_user['is_artist'] == 'true') {
                 if (isset($_SESSION['user_id'])) {
                     if ($_SESSION['user_id'] == $searched_user['user_id']) {
-                        $this->view('userProductsView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'searched_user_products' => $searched_user_products, 'is_self' => true]);
+                        $this->view('userProductsView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'searched_user_products' => $searched_user_products, 'is_self' => true, 'product_categories' => $product_categories]);
                     } else {
-                        $this->view('userProductsView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'searched_user_products' => $searched_user_products, 'is_self' => false]);
+                        $this->view('userProductsView', ['user_info' => $user_info, 'searched_user' => $searched_user, 'searched_user_products' => $searched_user_products, 'is_self' => false, 'product_categories' => $product_categories]);
                     }
 
                 } else {
-                    $this->view('userProductsView', ['searched_user' => $searched_user, 'searched_user_products' => $searched_user_products, 'is_self' => false]);
+                    $this->view('userProductsView', ['searched_user' => $searched_user, 'searched_user_products' => $searched_user_products, 'is_self' => false, 'product_categories' => $product_categories]);
                 }
 
             } else {

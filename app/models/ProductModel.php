@@ -37,6 +37,10 @@ class ProductModel {
         return $this->db->fetchAll("SELECT p.*, u.artist_display_name, u.username, c.product_category_name FROM products p JOIN users u ON p.artist_id = u.user_id LEFT JOIN product_categories c ON p.product_category_id = c.product_category_id ORDER BY p.views DESC LIMIT 5;");
     }
 
+    public function getTopProductsByUsername($username){
+        return $this->db->fetchAll("SELECT p.*, u.artist_display_name, u.username, c.product_category_name FROM products p JOIN users u ON p.artist_id = u.user_id LEFT JOIN product_categories c ON p.product_category_id = c.product_category_id WHERE username = :username ORDER BY p.views DESC LIMIT 5;", ['username' => $username]);
+    }
+    
     public function getNewProducts(){
         return $this->db->fetchAll("SELECT p.*, u.artist_display_name, u.username, c.product_category_name FROM products p JOIN users u ON p.artist_id = u.user_id LEFT JOIN product_categories c ON p.product_category_id = c.product_category_id ORDER BY p.date_added DESC LIMIT 5;");
     }

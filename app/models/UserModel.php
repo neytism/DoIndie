@@ -9,11 +9,21 @@ class UserModel {
     
     //test
     public function findUserByUsername($username) {
-        return $this->db->fetch("SELECT * FROM users WHERE username = :username", ['username' => $username]);
+        return $this->db->fetch("SELECT u.*, c.artist_category_name FROM users u LEFT JOIN artist_categories c ON u.artist_category_id = c.artist_category_id WHERE username = :username", ['username' => $username]);
+    }
+
+    public function checkIfLoggedIn(){
+        if(isset($_SESSION['user_id'])){
+            $user_id = $_SESSION['user_id'];
+            return $this->findUserByUserID($user_id);
+        } else {
+            return false;
+        }
     }
     
     public function findUserByUserID($user_id) {
-        return $this->db->fetch("SELECT * FROM users WHERE user_id = :user_id", ['user_id' => $user_id]);
+        return $this->db->fetch("SELECT u.*, c.artist_category_name FROM users u LEFT JOIN artist_categories c ON u.artist_category_id = c.artist_category_id WHERE user_id = :user_id", ['user_id' => $user_id]);
+        
     }
     
     public function checkIfUserExistByUsername($username) {
@@ -28,15 +38,6 @@ class UserModel {
     
     public function verifyUserEmailByUserID($user_id, $is_verified_email) {
         $this->db->fetch("UPDATE users SET is_verified_email = :is_verified_email WHERE user_id = :user_id", ['is_verified_email' => $is_verified_email, 'user_id' => $user_id]);
-    }
-
-    public function checkIfLoggedIn(){
-        if(isset($_SESSION['user_id'])){
-            $user_id = $_SESSION['user_id'];
-            return $this->findUserByUserID($user_id);
-        } else {
-            return false;
-        }
     }
     
     public function getArtistCategories(){
@@ -75,23 +76,27 @@ class UserModel {
     }
     
     
-    public function updateUserAsArtistByUserID($user_id, $image, $username, $email, $artist_display_name, $artist_category_id){
-        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, artist_display_name = :artist_display_name, artist_category_id = :artist_category_id WHERE user_id = :user_id", [
+    public function updateUserAsArtistByUserID($user_id, $image, $username, $email, $artist_display_name, $artist_category_id, $full_name, $phone_number){
+        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, artist_display_name = :artist_display_name, artist_category_id = :artist_category_id , full_name = :full_name, phone_number = :phone_number WHERE user_id = :user_id", [
             'image' => $image,
             'username' => $username,
             'email' => $email,
             'artist_display_name' => $artist_display_name ,
             'artist_category_id' => $artist_category_id,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'full_name' => $full_name,
+            'phone_number' => $phone_number,
         ]);
     }
     
-    public function updateUserByUserID($user_id, $image, $username, $email){
-        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, WHERE user_id = :user_id", [
+    public function updateUserByUserID($user_id, $image, $username, $email, $full_name, $phone_number){
+        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, full_name = :full_name, phone_number = :phone_number WHERE user_id = :user_id", [
             'image' => $image,
             'username' => $username,
             'email' => $email,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'full_name' => $full_name,
+            'phone_number' => $phone_number,
         ]);
     }
     
