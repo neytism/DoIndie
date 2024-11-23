@@ -60,11 +60,19 @@ class ProductModel {
         ]);
     
     }
-
-    public function searchProducts($keyword, $count){
-        return $this->db->fetchAll("SELECT p.*, u.artist_display_name, u.username, c.product_category_name FROM products p JOIN users u ON p.artist_id = u.user_id LEFT JOIN product_categories c ON p.product_category_id = c.product_category_id WHERE title LIKE :keyword LIMIT $count", [
-            'keyword' => '%'.$keyword.'%'
-        ]);
+    
+    public function searchProducts($keyword, $count) {
+        return $this->db->fetchAll(
+            "SELECT p.*, u.artist_display_name, u.username, c.product_category_name 
+             FROM products p 
+             JOIN users u ON p.artist_id = u.user_id 
+             LEFT JOIN product_categories c ON p.product_category_id = c.product_category_id 
+             WHERE title LIKE :keyword OR tags LIKE :keyword 
+             LIMIT $count", 
+            [
+                'keyword' => '%' . $keyword . '%'
+            ]
+        );
     }
 
     public function getProductById($product_id){

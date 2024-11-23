@@ -10,7 +10,7 @@ $user_address = $data['user_address'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="<?php echo BASEURL; ?>assets\img\LOGO.png" />
     <title>DoIndie</title>
-
+    
     <!-- CSS FILE LINK -->
     <link rel="stylesheet" type="text/css" href="<?php echo BASEURL; ?>assets\css\website.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASEURL; ?>assets\css\checkout.css">
@@ -20,8 +20,7 @@ $user_address = $data['user_address'];
 </head>
 
 <body>
-
-    <!-- PRODUCT LIST START -->
+    
     <div class="container" style="width: 100%; max-width: 100%">
         <div class="checkoutLayout" style="display: flex; align-items: center; justify-content: center;">
             
@@ -163,7 +162,7 @@ $user_address = $data['user_address'];
     
     <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/address.js"></script>
     <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/sendForm.js"></script>
-
+    <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/updateUploadImage.js"></script>
 </body>
 
 </html>

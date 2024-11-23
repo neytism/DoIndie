@@ -45,7 +45,6 @@ a{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  border-bottom: 1px solid #423329;
   padding-bottom: 20px;
 }
 
@@ -55,6 +54,7 @@ a{
 }
 
 .checkoutLayout .form input, 
+.checkoutLayout .form textarea,
 .checkoutLayout .form select
 {
   width: 100%;

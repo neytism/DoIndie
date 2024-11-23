@@ -27,7 +27,7 @@ class Search extends Controller
             
             $keyword = trim($_POST['keyword']);
 
-            $maxResults = 5;
+            $maxResults = 30;
 
             $artists = $this->userModel->searchArtists($keyword, $maxResults);
             
