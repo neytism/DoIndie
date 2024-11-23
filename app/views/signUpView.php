@@ -25,8 +25,8 @@
           <h1 class="center" style="color: #f4e9dc; font-size: 50px;">REGISTER</h1>
             <p id="error-message" style="color: red;"></p>
             <form class="registerFormDiv  " id="signup-form" method="POST">
-            <div class="form-group"> <input type="email" class="registerInput" id="email" name="email" placeholder="Email" required></div>
             <div class="form-group"> <input type="text" class="registerInput" id="username" name="username" placeholder="Username" required></div>
+            <div class="form-group"> <input type="email" class="registerInput" id="email" name="email" placeholder="Email" required></div>
             <div class="form-group"> <input type="password" class="registerInput" id="password" name="password" placeholder="Password" required></div>
             <div class="form-group"> <input type="password" class="registerInput" id="repeat_password" name="repeat_password" placeholder="Confirm Password" required></div>
             <input class="inputButtonV1" type="button" value="Already have an account." onclick="window.location='<?php echo BASEURL; ?>login'"><br>

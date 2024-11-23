@@ -1,27 +1,44 @@
-<div style="position: fixed; background-color: #00000050 ; width: 100%; height: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center;" 
-    id="login-container" onclick="closeLoginPopUp();">
-    
-    <div style="background-color: white;  max-width: fit-content;" onclick="event.stopPropagation();">
-        <h3>Log In</h3>
-        
-        <p id="error-message" style="color: red;"></p>
-        
-        <!-- sending form data with javascript, no need for refreshing -->
-        <form id="login-form" method="POST" onsubmit="sendForm(event, 'login-form', 'error-message', '<?php echo BASEURL; ?>logIn/checkLogIn')">
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" required><br><br>
+
+<?php if ($view == 'logInView'): ?>
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/css/website.css">          
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>assets/css/login.css">                 
+<?php endif; ?>
+
+<div id="login-container" class="modal" onclick="closeLoginPopUp();">
+      
+    <!-- Modal content -->
+    <div class="modal-content" onclick="event.stopPropagation();">
+        <span class="close"></span>
+            <div class="row">
+                
+                <div class="col-sm-5 center modal-input">
+                    <img src="<?php echo BASEURL; ?>/uploads/images/LoginPic.png" class="responsive" alt="Image">
+                </div>
+                
+                <div class="col-sm-7 center modal-input" style="margin-right: 50px !important">
+                    <h1 class="headerTitle center" style="color: #f4e9dc">LOGIN</h1>
+                    
+                    <form id="login-form" method="POST" onsubmit="sendForm(event, 'login-form', 'error-message', '<?php echo BASEURL; ?>logIn/checkLogIn')">
+                        <div class="form-group"> <input class="loginInput" type="text" id="username" name="username"
+                                placeholder="Username" required></div>
+                        <br>
+                        <div class="form-group"> <input class="loginInput" type="password" id="password" name="password"
+                                placeholder="Password" required></div>
+                        <div>
+                            <!-- no funcitonalities yet clickin will lead to homepage -->
+                            <span onclick="window.location='<?php echo BASEURL; ?>signup'" class="loginSubHeader">Don't have an
+                                account?</span>
+                        </div><br>
+                        <p id="error-message" style="color: red; "></p>
+                        <input class="inputButtonV1" type="submit" value="Login" >
+                    </form>                
+                </div>
             
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
+            </div>
             
-            <input type="submit" value="Log In" >
-            <input type="button" value="Sign Up" onclick="window.location='<?php echo BASEURL; ?>signup'"><br><br>
             
-            <input type="button" value="Close" onclick="closeLoginPopUp();">
-        
-        </form>
     </div>
-    
+
 </div>
 
-<script src="http://localhost:8000/DoIndie/assets/js/sendForm.js" id="sendFormScript"></script>
+<script src="<?php echo BASEURL; ?>assets/js/sendForm.js" id="sendFormScript"></script>

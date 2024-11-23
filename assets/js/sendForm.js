@@ -25,6 +25,7 @@ function sendForm(event, form_id, error_id, url) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             
             const response = xhr.responseText
+            console.log(xhr.responseText);
             var [result, redirect] = response.split("|");
 
             if(result == 'success'){

@@ -34,6 +34,9 @@
         
         <div class="hero-content">
           <div class="hero-content-info" data-aos="fade-left">
+            <?php if($is_logged_in):?>
+            <p>Welcome, <?=$data['user_info']['username'] ?></p>
+            <?php endif;?>
             <h1>Made by Artists,<br>for Artists</h1>
             <p>An online artists' marketplace.</p>
 

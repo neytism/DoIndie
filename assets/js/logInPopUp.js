@@ -31,30 +31,43 @@ function openLoginPopUp(event, url, baseUrl) {
     } else{
 
         const login_popup_template = `
-        <div style="position: fixed; background-color: #00000080 ; width: 100%; height: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center;" id="login-container" onclick="closeLoginPopUp();">
-            <div style="background-color: white;  max-width: fit-content;" onclick="event.stopPropagation();">
-                <h3>Log In</h3>
-                
-                <p id="error-message" style="color: red;"></p>
-                
-                <!-- sending form data with javascript, no need for refreshing -->
-                <form id="login-form" method="POST" onsubmit="sendForm(event, 'login-form', 'error-message', '`+baseUrl+`logIn/checkLogIn')">
-                    <label for="username">Username:</label><br>
-                    <input type="text" id="username" name="username" required><br><br>
+        <div id="login-container" class="modal" onclick="closeLoginPopUp();">
+      
+            <!-- Modal content -->
+            <div class="modal-content" onclick="event.stopPropagation();">
+                <span class="close"></span>
+                    <div class="row">
+                        
+                        <div class="col-sm-5 center modal-input">
+                            <img src=" ` + baseUrl + `/uploads/images/LoginPic.png" class="responsive" alt="Image">
+                        </div>
+                        
+                        <div class="col-sm-7 center modal-input" style="margin-right: 50px !important">
+                            <h1 class="headerTitle center" style="color: #f4e9dc">LOGIN</h1>
+                            
+                            <form id="login-form" method="POST" onsubmit="sendForm(event, 'login-form', 'error-message', ' ` + baseUrl + `logIn/checkLogIn')">
+                                <div class="form-group"> <input class="loginInput" type="text" id="username" name="username"
+                                        placeholder="Username" required></div>
+                                <br>
+                                <div class="form-group"> <input class="loginInput" type="password" id="password" name="password"
+                                        placeholder="Password" required></div>
+                                <div>
+                                    <!-- no funcitonalities yet clickin will lead to homepage -->
+                                    <span onclick="window.location=' ` + baseUrl + `signup'" class="loginSubHeader">Don't have an
+                                        account?</span>
+                                </div><br>
+                                <p id="error-message" style="color: red; "></p>
+                                <input class="inputButtonV1" type="submit" value="Login" >
+                            </form>        
+                        </div>
                     
-                    <label for="password">Password:</label><br>
-                    <input type="password" id="password" name="password" required><br><br>
+                    </div>
                     
-                    <input type="submit" value="Log In" >
-                    <input type="button" value="Sign Up" onclick="window.location='`+baseUrl+`signup'"><br><br>
                     
-                    <input type="button" value="Close" onclick="closeLoginPopUp();">
-                
-                </form>
             </div>
-            
+
         </div>`;
-        
+
         document.body.insertAdjacentHTML('beforebegin', login_popup_template);
         
         if (!document.getElementById('sendFormScript')) {

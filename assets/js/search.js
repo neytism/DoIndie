@@ -64,6 +64,15 @@ function inputSearch(input_box, base_url){
                         artists.forEach(function (artist) {
                             let artistDiv = document.createElement('div');
                             artistDiv.innerHTML = 'Artist: ' + highlight(artist.artist_display_name, keyword); // Highlight keyword
+
+                            artistDiv.classList.add('search-result');
+                            
+                            artistDiv.onclick = function() {
+                                window.location.href = base_url + 'profile/user/' + artist.username;
+                            };
+                            
+                            artistDiv.style.cursor = 'pointer';  
+
                             results_container.appendChild(artistDiv);
                         });
                     }
@@ -74,11 +83,13 @@ function inputSearch(input_box, base_url){
                         users.forEach(function (user) {
                             let userDiv = document.createElement('div');
                             userDiv.innerHTML = 'User: ' + highlight(user.username, keyword); // Highlight keyword
+                            
+                            userDiv.classList.add('search-result');
 
                             userDiv.onclick = function() {
                                 window.location.href = base_url + 'profile/user/' + user.username;
                             };
-
+                            
                             userDiv.style.cursor = 'pointer';  
                             results_container.appendChild(userDiv);
                         });
@@ -90,6 +101,7 @@ function inputSearch(input_box, base_url){
                         products.forEach(function (product) {
                             let productDiv = document.createElement('div');
                             productDiv.innerHTML = 'Artwork: ' + highlight(product.title, keyword); // Highlight keyword
+                            productDiv.classList.add('search-result');
                             results_container.appendChild(productDiv);
                         });
                     }
