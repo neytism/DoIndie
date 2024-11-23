@@ -47,11 +47,10 @@ class UserModel {
         $picture_path = 'default_profile_picture.png'; //remove after implementing upload
         $role = '1';
         
-        $this->db->query("INSERT INTO users (email, username, password, first_name, picture_path, role) VALUES (:email, :username, :password, :first_name, :picture_path , :role)", [
+        $this->db->query("INSERT INTO users (email, username, password, picture_path, role) VALUES (:email, :username, :password, :picture_path , :role)", [
             'email' => $email,
             'username' => $username,
             'password' => $password,
-            'first_name' => $username,
             'picture_path' => $picture_path ,
             'role' => $role
         ]);
@@ -86,7 +85,7 @@ class UserModel {
             'user_id' => $user_id
         ]);
     }
-
+    
     public function updateUserByUserID($user_id, $image, $username, $email){
         $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, WHERE user_id = :user_id", [
             'image' => $image,
@@ -95,7 +94,16 @@ class UserModel {
             'user_id' => $user_id
         ]);
     }
-
+    
+    public function updateUserOnCheckout($user_id, $full_name, $phone_number){
+        $this->db->query("UPDATE users SET full_name = :full_name, phone_number = :phone_number WHERE user_id = :user_id", [
+            'full_name' => $full_name,
+            'phone_number' => $phone_number,
+            'user_id' => $user_id
+        ]);
+    }
+    
+    
     public function searchUsers($keyword, $count){
         return $this->db->fetchAll("SELECT u.*, c.artist_category_name FROM users u LEFT JOIN artist_categories c ON u.artist_category_id = c.artist_category_id WHERE username LIKE :keyword LIMIT $count", [
             'keyword' => '%'.$keyword.'%'

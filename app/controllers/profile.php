@@ -213,7 +213,7 @@ class Profile extends Controller
                 $errors['address'] = '- As an artist, a valid address is required';
             }
         }
-
+        
         if ($user_info['is_artist'] == 'true') {
             
             if (empty($artist_display_name)) {
@@ -225,7 +225,7 @@ class Profile extends Controller
             }
         
         }
-
+        
         
         if (array_filter($errors)) {
             //has errors
@@ -249,6 +249,35 @@ class Profile extends Controller
             echo 'success|' . BASEURL . 'profile';
         }
 
+    }
+
+    function updateOnCheckout(){
+        if (session_status() == PHP_SESSION_NONE)
+            session_start();
+
+        $user_info = $this->userModel->checkIfLoggedIn();
+
+        $region_code = $_POST['region_id'];
+        $province_code = $_POST['province_id'];
+        $city_code = $_POST['city_id'];
+        $brgy_code = $_POST['brgy_id'];
+        $detailed_address = $_POST['detailed_address'];
+        $landmark = $_POST['landmark'];
+        $full_name = $_POST['full_name'];
+        $phone_number = $_POST['phone_number'];
+
+        $this->userModel->updateUserOnCheckout($user_info['user_id'], $full_name, $phone_number);
+
+        $region_id = $this->addressModel->getRegionIDByRegCode($region_code);
+        $province_id = $this->addressModel->getProvinceIDByProvCode($province_code);
+        $city_id = $this->addressModel->getCityMunIDByCityMunCode($city_code);
+        $brgy_id = $this->addressModel->getBrgyIDByBrgyCode($brgy_code);
+        
+        $this->addressModel->updateUserAddressByUserID($user_info['user_id'], $brgy_id, $city_id, $province_id, $region_id, $detailed_address, $landmark);
+        
+        // Redirect to a success page or log in
+        echo 'success|' . '';
+        
     }
     
     function HasSpecialCharacters($str)

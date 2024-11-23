@@ -29,7 +29,7 @@ function fetchData(url, selectElement, responseHandler) {
 }
 
 function populateOptions(selectElement, items, valueKey, textKey, default_text) {
-    selectElement.innerHTML = `<option value="">---Select ${default_text}---</option>`;
+    selectElement.innerHTML = `<option value=""></option>`;
     
     items.forEach(function(item) {
         let opt = document.createElement('option');

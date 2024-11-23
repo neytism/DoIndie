@@ -171,7 +171,14 @@ function updateCheckoutSummary(){
 
 }
 
-function proceedToCheckOutPage(base_url){
+function proceedToCheckOutPage(form_id, base_url){
+
+    const checkout_form = document.getElementById(form_id);
+    
+    if (!checkout_form.checkValidity()) {
+        
+        return;
+    }
     
     var new_url = base_url + 'checkOut';
     

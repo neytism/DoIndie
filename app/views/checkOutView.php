@@ -88,11 +88,13 @@
     <div class="container-new" style="margin-top: 80px; margin-bottom: 160px; align-items: center;">
     
     <h3>CHECKOUT</h3><br>
-
+    
     <p id="error-message" style="color: red;"></p>
-
+    
     <p><b>Username: </b><?= $data['user_info']['username']?></p>
     <p><b>Email: </b><?= $data['user_info']['email']?></p>
+    <p><b>Full Name: </b><?= $data['user_info']['full_name']?></p>
+    <p><b>Phone Number: </b><?= $data['user_info']['phone_number']?></p>
     <?php if($data['user_info']['is_verified_email'] == 'false'):?>
     <p style="color: red;">IMPORTANT: Verify your email on the profile page to make a purchase.</p>
     <?php endif; ?>
@@ -145,7 +147,7 @@
         <p><b>TOTAL: </b>₱ <?= $data['total']?></p><br>
 
         <?php if($data['user_info']['is_verified_email'] == 'false' || empty(preg_replace('/\s+/', '', str_replace(',','', $data['address'])))):?>
-            <button class="b" disabled>CONFIRM</button>
+            <button class="b" title="Email not verified or problem with address." disabled>CONFIRM</button>
         <?php else: ?>
             <button class="b" onclick="window.location='<?php echo BASEURL; ?>checkOut/confirmOrder'">CONFIRM</button>
         <?php endif; ?>

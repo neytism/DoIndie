@@ -27,9 +27,13 @@ function sendForm(event, form_id, error_id, url) {
             const response = xhr.responseText
             console.log(xhr.responseText);
             var [result, redirect] = response.split("|");
-
+            
             if(result == 'success'){
-                window.location.href = redirect;
+                if(redirect === ''){
+
+                } else{
+                    window.location.href = redirect;
+                }
                 
             }else{
                 document.getElementById(error_id).innerHTML = xhr.responseText;

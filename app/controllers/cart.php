@@ -5,12 +5,15 @@ class Cart extends Controller
     private $cartModel;
     private $userModel;
     private $voucherModel;
+
+    private $addressModel;
     
     public function __construct()
     {
         $this->cartModel = $this->model('CartModel');
         $this->userModel = $this->model('UserModel');
         $this->voucherModel = $this->model('VoucherModel');
+        $this->addressModel = $this->model('AddressModel');
     }
     
     public function index()
@@ -26,7 +29,13 @@ class Cart extends Controller
         if ($user_info) {
 
             $cart_items = $this->cartModel->getCartItemsByUserID($user_info['user_id']);
-            $this->view('cartView', ['user_info' => $user_info,'cart_items' => $cart_items]);
+            $user_address = $this->addressModel->getAddressOfUserByUserID($user_info['user_id']);
+            $regions = $this->addressModel->getAllRegion();
+            $provinces = $this->addressModel->getAllProvinceByRegionCode($this->addressModel->getRegionCodeByRegionID($user_address['region_id']));
+            $cities = $this->addressModel->getAllCityByProvinceCode($this->addressModel->getProvinceCodeByProvinceID($user_address['province_id']));
+            $brgys = $this->addressModel->getAllBrgyByCityCode($this->addressModel->getCityMunCodeByCityMunID($user_address['city_id']));
+
+            $this->view('cartView', ['user_info' => $user_info,'cart_items' => $cart_items, 'user_address' => $user_address , 'regions' => $regions, 'provinces' => $provinces, 'cities' => $cities, 'brgys' => $brgys]);
             
         } else {
             $this->view('logInView');

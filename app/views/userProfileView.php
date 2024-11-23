@@ -22,12 +22,11 @@ $is_self = $data['is_self'];
     <h1>Artist: <?= $user_info['artist_display_name'] ?></h1>
 <?php endif; ?>
 <h3><?= $user_info['username'] ?></h3>
+<h3><?= $user_info['full_name'] ?></h3>
 <?php if ($is_self): ?>
     <h4>This is you.</h4>
 <?php endif; ?>
 <h4> User id is <?= $user_info['user_id'] ?></h4>
-<h4> First Name is <?= $user_info['first_name'] ?></h4>
-<h4> Last Name is <?= $user_info['last_name'] ?></h4>
 <?php if ($user_info['is_verified_email'] == 'true'): ?>
     <h4>Email is Verified.</h4>
 <?php else: ?>
