@@ -103,13 +103,13 @@ $is_self = $data['is_self'];
                     ;
                     ?>
                     <div class="swiper-slide">
-                        <a style="cursor: pointer;" onclick="openProductPopUp(event, '<?= BASEURL; ?>', '<?= $product['product_id'] ?>', '<?= $product['product_picture_path'] ?>', '<?= htmlspecialchars($product['title']) ?>', '<?= $product['artist_display_name'] ?>', '<?= htmlspecialchars($product['product_description'])?>', '<?= $product['views'] ?>', <?php echo $is_logged_in ? 'true':'false' ?>,<?php echo $is_self ? 'true':'false'?> )">
-                            <img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>"
+                    <a style="cursor: pointer;" onclick="openProductPopUp(event, '<?= BASEURL; ?>', '<?= $product['product_id'] ?>', '<?= $product['product_picture_path'] ?>', '<?= htmlspecialchars($product['title']) ?>', '<?= $product['artist_display_name'] ?>', '<?= htmlspecialchars($product['product_description'])?>', '<?= $product['views'] ?>', <?php echo $is_logged_in ? 'true':'false' ?>,<?php echo $is_self ? 'true':'false'?> )">
+                                <img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>"
                                 width="240" height="240" alt="<?= htmlspecialchars($product['title']) ?>"
                                 title="<?= htmlspecialchars($product['title']) ?>" />
                         </a>
                         <h3><?= htmlspecialchars($product['title']) ?></h3>
-                        <h4>Artist: <?= $product['artist_display_name'] ?></h4>
+                        <h4 style="cursor: pointer;" onclick="window.location='<?php echo BASEURL; ?>profile/user/<?=$product['username']?>'">Artist: <?= $product['artist_display_name'] ?></h4>
                         <?php if (!$is_self): ?>
                             <?php if ($is_logged_in): ?>
                                 <button class="add-to-cart"
@@ -163,12 +163,12 @@ $is_self = $data['is_self'];
                             ?>
                             <div class="swiper-slide">
                                 <a style="cursor: pointer;" onclick="openProductPopUp(event, '<?= BASEURL; ?>', '<?= $product['product_id'] ?>', '<?= $product['product_picture_path'] ?>', '<?= htmlspecialchars($product['title']) ?>', '<?= $product['artist_display_name'] ?>', '<?= htmlspecialchars($product['product_description'])?>', '<?= $product['views'] ?>', <?php echo $is_logged_in ? 'true':'false' ?>,<?php echo $is_self ? 'true':'false'?> )">
-                                    <img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>"
-                                        width="240" height="240" alt="<?= htmlspecialchars($product['title']) ?>"
+                                <img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>"
+                                            width="240" height="240" alt="<?= htmlspecialchars($product['title']) ?>"
                                         title="<?= htmlspecialchars($product['title']) ?>" />
                                 </a>
                                 <h3><?= htmlspecialchars($product['title']) ?></h3>
-                                <h4>Artist: <?= $product['artist_display_name'] ?></h4>
+                                <h4 style="cursor: pointer;" onclick="window.location='<?php echo BASEURL; ?>profile/user/<?=$product['username']?>'">Artist: <?= $product['artist_display_name'] ?></h4>
                                 <?php if (!$is_self): ?>
                                     <?php if ($is_logged_in): ?>
                                         <button class="add-to-cart"

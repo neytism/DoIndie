@@ -134,7 +134,7 @@
     
                         <?php foreach ($products as $product): ?>
                             <div class="swiper-slide">
-                                <a href="CHANGE_LINK">
+                                <a href="<?php echo BASEURL; ?>profile/user/<?=$product['username']?>">
                                     <img src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $product['picture_path'] ?>"
                                         width="240" height="240" alt="<?= htmlspecialchars($product['artist_display_name']) ?>"
                                         title="<?= htmlspecialchars($product['artist_display_name']) ?>" />
