@@ -54,12 +54,18 @@ $user_address = $data['user_address'];
                             <label style="color:#9ec43a;" for="email">* email verified</label><br>
                         <?php endif; ?>
                     </div>
+
+                    <div class="group full-width">
+                        <label for="bio">Bio:</label><br>
+                        <textarea style="height: auto;"  id="bio" name="bio"><?= $user_info['bio'] ?></textarea>
+                    </div>
+                    
                      
                     <div class="group full-width">
                         <label for="full_name">Full Name:</label>
                         <input type="text" id="full_name" name="full_name" value='<?= $user_info['full_name'] ?>'>
                     </div>
-
+                    
                     <div class="group full-width">
                         <label for="phone_number">Phone Number:</label>
                         <input type="text" id="phone_number" name="phone_number" value='<?= $user_info['phone_number'] ?>'>

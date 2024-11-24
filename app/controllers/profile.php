@@ -242,9 +242,9 @@ class Profile extends Controller
         } else {
             
             if ($user_info['is_artist'] == 'true') {
-                $this->userModel->updateUserAsArtistByUserID($user_info['user_id'], $new_file_name, $username, $email, $artist_display_name, $artist_category_id, $_POST['full_name'], $_POST['phone_number']);
+                $this->userModel->updateUserAsArtistByUserID($user_info['user_id'], $new_file_name, $username, $email, $artist_display_name, $artist_category_id, $_POST['full_name'], $_POST['phone_number'], $_POST['bio']);
             } else{
-                $this->userModel->updateUserByUserID($user_info['user_id'], $new_file_name, $username, $email, $_POST['full_name'], $_POST['phone_number']);
+                $this->userModel->updateUserByUserID($user_info['user_id'], $new_file_name, $username, $email, $_POST['full_name'], $_POST['phone_number'], $_POST['bio']);
             }
             
             $region_id = $this->addressModel->getRegionIDByRegCode($region_code);

@@ -76,8 +76,8 @@ class UserModel {
     }
     
     
-    public function updateUserAsArtistByUserID($user_id, $image, $username, $email, $artist_display_name, $artist_category_id, $full_name, $phone_number){
-        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, artist_display_name = :artist_display_name, artist_category_id = :artist_category_id , full_name = :full_name, phone_number = :phone_number WHERE user_id = :user_id", [
+    public function updateUserAsArtistByUserID($user_id, $image, $username, $email, $artist_display_name, $artist_category_id, $full_name, $phone_number, $bio){
+        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, artist_display_name = :artist_display_name, artist_category_id = :artist_category_id , full_name = :full_name, phone_number = :phone_number, bio = :bio WHERE user_id = :user_id", [
             'image' => $image,
             'username' => $username,
             'email' => $email,
@@ -86,17 +86,19 @@ class UserModel {
             'user_id' => $user_id,
             'full_name' => $full_name,
             'phone_number' => $phone_number,
+            'bio' => $bio
         ]);
     }
     
-    public function updateUserByUserID($user_id, $image, $username, $email, $full_name, $phone_number){
-        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, full_name = :full_name, phone_number = :phone_number WHERE user_id = :user_id", [
+    public function updateUserByUserID($user_id, $image, $username, $email, $full_name, $phone_number, $bio){
+        $this->db->query("UPDATE users SET picture_path = :image, username = :username, email = :email, full_name = :full_name, phone_number = :phone_number, bio = :bio WHERE user_id = :user_id", [
             'image' => $image,
             'username' => $username,
             'email' => $email,
             'user_id' => $user_id,
             'full_name' => $full_name,
             'phone_number' => $phone_number,
+            'bio' => $bio
         ]);
     }
     
