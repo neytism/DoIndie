@@ -3,11 +3,15 @@
     <ul class="row-list center">
         <li><a class="rowItem" href="<?php echo BASEURL; ?>">Home</a></li>
         <li><a class="rowItem" href="<?php echo BASEURL; ?>products">Products</a></li>
+        
         <?php if ($is_logged_in): ?>
                 <li><a class="rowItem" href="<?php echo BASEURL; ?>cart">Shopping Cart</a></li>
         <?php endif; ?>
         
-        <li><a class="rowItem" href="<?php echo BASEURL; ?>profile/<?php echo $data['user_info']['username']; ?>">Profile</a></li>
+        <?php if ($is_logged_in): ?>
+            <li><a class="rowItem" href="<?php echo BASEURL; ?>profile/<?php echo $data['user_info']['username']; ?>">Profile</a></li>
+        <?php endif; ?>
+        
         <li><a class="rowItem" href="<?php echo BASEURL; ?>home/aboutUs">About Us</a></li>
     </ul>
     <ul class="row-list center">
