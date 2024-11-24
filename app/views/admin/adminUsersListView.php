@@ -127,12 +127,16 @@
 
                           <!-- <td><span class="badge bg-label-warning me-1">Pending</span></td> -->
                           <?php if ($users["is_artist"] == "true"): ?>
-                            <td>Artist</td>
+                            <?php if ($users["role"] == "1"): ?>
+                              <td>Artist</td>
+                            <?php else: ?>
+                              <td>Artist & Admin</td>
+                            <?php endif; ?>
                           <?php else: ?>
                             <?php if ($users["role"] == "1"): ?>
                               <td>User</td>
                             <?php else: ?>
-                              <td>Admin</td>
+                              <td>User & Admin</td>
                             <?php endif; ?>
                           <?php endif; ?>
                           <td>
@@ -141,11 +145,11 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
+                                <a class="dropdown-item" onclick="console.log('test')"><i class="bx bx-edit-alt me-1"></i>
                                   Edit</a>
-                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-user me-1"></i>
+                                <a class="dropdown-item" onclick="makeAdmin(event, '<?= BASEURL; ?>', '<?= $users['user_id'] ?>')"><i class="bx bx-user me-1"></i>
                                   Make Admin</a>
-                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                <a class="dropdown-item" onclick="deleteUser(event, '<?= BASEURL; ?>', '<?= $users['user_id'] ?>')"><i class="bx bx-trash me-1"></i>
                                   Delete</a>
                               </div>
                             </div>
@@ -183,7 +187,8 @@
   <script src="<?php echo BASEURL; ?>assets/vendor/js/bootstrap.js"></script>
   <script src="<?php echo BASEURL; ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
   <script src="<?php echo BASEURL; ?>assets/vendor/js/menu.js"></script>
-
+  
+  <script type="text/javascript" src="<?php echo BASEURL; ?>assets/js/admin/admin.js"></script>
   <!-- endbuild -->
 
   <!-- Vendors JS -->

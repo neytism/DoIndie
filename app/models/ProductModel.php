@@ -33,6 +33,10 @@ class ProductModel {
         return $this->db->fetchAll("SELECT p.*, u.artist_display_name, u.username, c.product_category_name FROM products p JOIN users u ON p.artist_id = u.user_id LEFT JOIN product_categories c ON p.product_category_id = c.product_category_id");
     }
 
+    public function getAllProductsByNewest(){
+        return $this->db->fetchAll("SELECT p.*, u.artist_display_name, u.username, c.product_category_name FROM products p JOIN users u ON p.artist_id = u.user_id LEFT JOIN product_categories c ON p.product_category_id = c.product_category_id ORDER BY p.date_added DESC");
+    }
+
     public function getTopProducts(){
         return $this->db->fetchAll("SELECT p.*, u.artist_display_name, u.username, c.product_category_name FROM products p JOIN users u ON p.artist_id = u.user_id LEFT JOIN product_categories c ON p.product_category_id = c.product_category_id ORDER BY p.views DESC LIMIT 5;");
     }
@@ -97,8 +101,18 @@ class ProductModel {
         $this->db->query("DELETE FROM products WHERE product_id = :product_id", [
             'product_id' => $product_id
         ]);
+        
+        $this->db->query("DELETE FROM carts WHERE product_id = :product_id", [
+            'product_id' => $product_id
+        ]);
     }
-
+    
+    public function updateCategoryNameByID($product_category_id, $product_category_name){
+        $this->db->query("UPDATE product_categories SET product_category_name = :product_category_name WHERE product_category_id = :product_category_id", [
+            'product_category_name' => $product_category_name,
+            'product_category_id' => $product_category_id
+        ]);
+    }
 
     
 }

@@ -33,6 +33,12 @@
                 <div class="text-truncate" data-i18n="Basic">Users</div>
               </a>
             </li>
+            <li class="menu-item <?php if ($view == 'admin/adminArtistCategoriesListView') echo 'active' ?>">
+              <a href="<?php echo BASEURL; ?>admin/artistCategories" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-selection"></i>
+                <div class="text-truncate" data-i18n="Basic">Artist Categories</div>
+              </a>
+            </li>
             <li class="menu-item <?php if ($view == 'admin/adminArtistsListView') echo 'active' ?>">
               <a href="<?php echo BASEURL; ?>admin/artists" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
@@ -49,6 +55,12 @@
             <!-- PRODUCTS -->
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Products</span>
+            </li>
+            <li class="menu-item <?php if ($view == 'admin/adminProductCategoriesListView') echo 'active' ?>">
+              <a href="<?php echo BASEURL; ?>admin/productCategories" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-selection"></i>
+                <div class="text-truncate" data-i18n="Basic">Product Categories</div>
+              </a>
             </li>
             <li class="menu-item <?php if ($view == 'admin/adminProductsListView') echo 'active' ?>">
               <a href="<?php echo BASEURL; ?>admin/products" class="menu-link">

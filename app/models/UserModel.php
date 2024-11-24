@@ -125,11 +125,66 @@ class UserModel {
 
     public function getAllUsers(){
         return $this->db->fetchAll("SELECT user_id, username, email, is_verified_email, picture_path, is_artist, role, date_joined FROM users");
-
     }
 
+    public function getAllUsersByNewest(){
+        return $this->db->fetchAll("SELECT user_id, username, email, is_verified_email, picture_path, is_artist, role, date_joined FROM users ORDER BY date_joined DESC");
+    
+    }
+    
     public function getAllAdmins(){
         return $this->db->fetchAll("SELECT user_id, username, email, is_verified_email, picture_path, is_artist, role, date_joined FROM users WHERE role = '0'");
+    }
+    
+    public function makeUserAdminByIdD($user_id){
+        $this->db->query("UPDATE users SET role = 0 WHERE user_id = :user_id", [
+            'user_id' => $user_id
+        ]);
+    }
+    
+    public function removeUserAdminByIdD($user_id){
+        $this->db->query("UPDATE users SET role = 1 WHERE user_id = :user_id", [
+            'user_id' => $user_id
+        ]);
+    }
+    
+    public function deleteUserDataByID($user_id) {
+        $this->db->query("DELETE c FROM carts c JOIN products p ON c.product_id = p.product_id WHERE p.artist_id = :user_id", [
+            'user_id' => $user_id
+        ]);
+
+        $this->db->query("DELETE FROM products WHERE artist_id = :user_id", [
+            'user_id' => $user_id
+        ]);
+
+        $this->db->query("DELETE FROM carts WHERE user_id = :user_id", [
+            'user_id' => $user_id
+        ]);        
+        
+        $this->db->query("DELETE FROM transactions WHERE buyer_id = :user_id", [
+            'user_id' => $user_id
+        ]);
+
+        $this->db->query("DELETE FROM addresses WHERE owner_id = :user_id", [
+            'user_id' => $user_id
+        ]);
+
+        $this->db->query("DELETE FROM users WHERE user_id = :user_id", [
+            'user_id' => $user_id
+        ]);
+    }
+
+    public function addArtistCategory($artist_category_name){
+        $this->db->query("INSERT INTO artist_categories (artist_category_name) VALUES (:artist_category_name)", [
+            'artist_category_name' => $artist_category_name
+        ]);
+    }
+
+    public function updateCategoryNameByID($artist_category_id, $artist_category_name){
+        $this->db->query("UPDATE artist_categories SET artist_category_name = :artist_category_name WHERE artist_category_id = :artist_category_id", [
+            'artist_category_name' => $artist_category_name,
+            'artist_category_id' => $artist_category_id
+        ]);
     }
     
 }

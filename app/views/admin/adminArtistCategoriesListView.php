@@ -92,77 +92,66 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th></th>
                       <th>ID</th>
-                      <th>Username</th>
-                      <th>Email</th>
-                      <th>Email Verification</th>
-                      <th>Role</th>
+                      <th>Category Name</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
-                    <?php if (count($data['all_admins']) <= 0): ?>
+                    <?php if (count($data['artist_categories']) <= 0): ?>
                       <tr>
-                        <td>No admins available.</td>
-                        <td>No admins available.</td>
-                        <td>No admins available.</td>
-                        <td>No admins available.</td>
-                        <td>No admins available.</td>
-                        <td>No admins available.</td>
-                        <td>No admins available.</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                       </tr>
                     <?php else: ?>
-                      <?php foreach ($data['all_admins'] as $admin): ?>
+                      <?php foreach ($data['artist_categories'] as $cetegory): ?>
                         <tr>
-                          <td>
-                            <ul class="list-unstyled m-0 avatar-group d-flex align-items-center">
-                              <li class="avatar avatar-s">
-                                <img
-                                  src="<?php echo BASEURL; ?>uploads/images/profile_pictures/<?= $admin["picture_path"] ?>"
-                                  alt="Avatar" class="rounded-circle" />
-                              </li>
-                            </ul>
-                          </td>
-                          <td><?= $admin["user_id"] ?></td>
-                          <td><?= $admin["username"] ?></td>
-                          <td><?= $admin["email"] ?></td>
-                          <?php if ($admin["is_verified_email"] == "true"): ?>
-                            <td><span class="badge bg-label-success me-1">Verified</span></td>
-                          <?php else: ?>
-                            <td><span class="badge bg-label-warning me-1">Pending</span></td>
-                          <?php endif; ?>
-
-                          <!-- <td><span class="badge bg-label-warning me-1">Pending</span></td> -->
-                          <?php if ($admin["is_artist"] == "true"): ?>
-                            <?php if ($admin["role"] == "1"): ?>
-                              <td>Artist</td>
-                            <?php else: ?>
-                              <td>Artist & Admin</td>
-                            <?php endif; ?>
-                          <?php else: ?>
-                            <?php if ($admin["role"] == "1"): ?>
-                              <td>User</td>
-                            <?php else: ?>
-                              <td>User & Admin</td>
-                            <?php endif; ?>
-                          <?php endif; ?>
-                          <td>
+                          <td><?= $cetegory["artist_category_id"] ?></td>
+                          <td id="label-row-<?= $cetegory["artist_category_id"] ?>" style="width: 100%; display: table-cell;"><?= $cetegory["artist_category_name"] ?></td>
+                          <td id="input-row-<?= $cetegory["artist_category_id"] ?>" style="width: 100%; display: none;">
+                              <input type="text" id="input-<?= $cetegory["artist_category_id"] ?>" placeholder="Enter category name" value="<?= $cetegory["artist_category_name"] ?>" class="form-control"> </td>
+                          <td id="kebab-buttons-row-<?= $cetegory["artist_category_id"] ?>">
                             <div class="dropdown">
                               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div class="dropdown-menu">
-                                <a class="dropdown-item"><i class="bx bx-edit-alt me-1"></i>Edit</a>
-                                  <?php if ($admin["user_id"] != $data['user_info']['user_id']): ?>
-                                    <a class="dropdown-item"  onclick="removeAdmin(event, '<?= BASEURL; ?>', '<?= $admin['user_id'] ?>')"><i class="bx bx-x me-1"></i>Remove Admin</a>
-                                  <?php endif; ?>
+                                <a class="dropdown-item" onclick="editButtonClicked('label-row-<?= $cetegory['artist_category_id'] ?>','input-row-<?= $cetegory['artist_category_id'] ?>'); editButtonClicked('kebab-buttons-row-<?= $cetegory['artist_category_id'] ?>','edit-buttons-row-<?= $cetegory['artist_category_id'] ?>')"><i class="bx bx-edit-alt me-1"></i>Edit</a>
                               </div>
                             </div>
                           </td>
+                          <td id="edit-buttons-row-<?= $cetegory["artist_category_id"] ?>" style="width: 100%; display: none;">
+                              <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" onclick="updateArtistCategoryName(event, '<?= BASEURL; ?>', 'input-<?= $cetegory['artist_category_id'] ?>', '<?= $cetegory['artist_category_id'] ?>', '<?= $cetegory['artist_category_name'] ?>'); cancelEditButtonClicked('label-row-<?= $cetegory['artist_category_id'] ?>','input-row-<?= $cetegory['artist_category_id'] ?>'); cancelEditButtonClicked('kebab-buttons-row-<?= $cetegory['artist_category_id'] ?>','edit-buttons-row-<?= $cetegory['artist_category_id'] ?>')">
+                                save
+                              </button>
+                              <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" onclick="cancelEditButtonClicked('label-row-<?= $cetegory['artist_category_id'] ?>','input-row-<?= $cetegory['artist_category_id'] ?>'); cancelEditButtonClicked('kebab-buttons-row-<?= $cetegory['artist_category_id'] ?>','edit-buttons-row-<?= $cetegory['artist_category_id'] ?>')">
+                                cancel
+                              </button>
+                          </td>
+                          
                         </tr>
                       <?php endforeach; ?>
                     <?php endif; ?>
+                      <tr id="add-category-row" style="display: none;">
+                          <td></td>
+                          <td style="width: 100%;">
+                              <input type="text" id="new-category-name" placeholder="Enter category name" class="form-control">
+                          </td>
+                          <td >
+                              <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" onclick="addNewArtistCategory(event, '<?= BASEURL; ?>', 'new-category-name'); addButtonClicked('add-category-row', 'add-category-button' )">
+                                save
+                              </button>
+                              <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" onclick="addButtonClicked('add-category-row', 'add-category-button' )">
+                                cancel
+                              </button>
+                          </td>
+                      </tr>
+                      <tr id="add-category-button">
+                          <td colspan="3">
+                              <button onclick="addButtonClicked('add-category-button', 'add-category-row' )" type="button" class="btn" id="add-category-btn" style="width: 100%;">Add Category +</button>
+                          </td>
+                      </tr>
                   </tbody>
                 </table>
               </div>
