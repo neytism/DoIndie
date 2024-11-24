@@ -80,6 +80,25 @@ class ProductModel {
             'product_id' => $product_id
         ]);
     }
+    
+    public function updateProductByID($product_id, $product_picture_path, $title, $product_description, $tags, $product_category_id, $price){
+        $this->db->query("UPDATE products SET product_picture_path = :product_picture_path, title = :title, product_description = :product_description, tags = :tags, product_category_id = :product_category_id, price = :price WHERE product_id = :product_id", [
+            'product_picture_path' => $product_picture_path,
+            'title' => $title,
+            'product_description' => $product_description,
+            'tags' => $tags,
+            'product_category_id' => $product_category_id,
+            'price' => $price,
+            'product_id' => $product_id
+        ]);
+    }
+    
+    public function deleteProductByID($product_id){
+        $this->db->query("DELETE FROM products WHERE product_id = :product_id", [
+            'product_id' => $product_id
+        ]);
+    }
+
 
     
 }

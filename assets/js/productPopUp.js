@@ -1,29 +1,4 @@
 
-// function openLoginPopUp(event, url, baseUrl) {
-    
-//     event.preventDefault();
-   
-//     const xhr = new XMLHttpRequest();
-//     xhr.open('GET', url, true);
-//     xhr.onreadystatechange = function() {
-//         if (xhr.readyState == 4 && xhr.status == 200) {
-//             //modify on where to put the login form
-//             document.body.insertAdjacentHTML('beforeend', xhr.responseText);
-            
-//             if (!document.getElementById('sendFormScript')) {
-//                 const script = document.createElement('script');
-//                 script.src = baseUrl+'assets/js/sendForm.js';
-//                 script.id = 'sendFormScript';
-//                 document.body.appendChild(script);
-//             }
-            
-//             // Optional: scroll to the newly added login form
-//             //document.getElementById('login-form').scrollIntoView();
-//         }
-//     };
-//     xhr.send();
-// }
-
 let timer_for_view_increase;
 
 function openProductPopUp(event, base_url, product_id, image_name, title, artist, description, view_count, is_logged_in, is_self) {
@@ -32,22 +7,24 @@ function openProductPopUp(event, base_url, product_id, image_name, title, artist
         closeProductPopUp();
     } else{
         
+        let edit_button = ``; 
+        let add_to_cart_button = ``;
+    
+        
         if(is_logged_in){
-            if(is_self == 'true'){
-                var add_to_cart_button = `<button style="cursor: pointer;" class="buttonCheckout full-width" onclick="addToCart(event,`+product_id+`,'`+base_url+`cart/addToCart'); event.stopPropagation();">Add to cart</button>`; 
+            if(is_self){
+                add_to_cart_button = `<button style="cursor: pointer;" class="buttonCheckout full-width faded">Add to cart</button>`; 
+                edit_button = `<button type="button" style="cursor: pointer;" class="buttonCheckout full-width" onclick="event.stopPropagation(); window.location='`+base_url+`products/edit/`+product_id+`';">Edit Product</button>`; 
+            
             } else{
-                var add_to_cart_button = `<button style="cursor: pointer;" class="buttonCheckout full-width faded">Add to cart</button>`; 
+                add_to_cart_button = `<button style="cursor: pointer;" class="buttonCheckout full-width" onclick="addToCart(event,`+product_id+`,'`+base_url+`cart/addToCart'); event.stopPropagation();">Add to cart</button>`; 
+                
             }
         } else{
-            var add_to_cart_button = `<button style="cursor: pointer;" class="buttonCheckout full-width" onclick="window.location='`+base_url+`logIn'; event.stopPropagation();">Add to cart</button>`; 
+            add_to_cart_button = `<button style="cursor: pointer;" class="buttonCheckout full-width" onclick="window.location='`+base_url+`logIn'; event.stopPropagation();">Add to cart</button>`; 
         }
         
-        if(is_self == 'true'){
-            var edit_button = `<button style="cursor: pointer;" class="buttonCheckout full-width" onclick="window.location='`+base_url+`products/edit/`+product_id+`'; event.stopPropagation();">Edit Product</button>`; 
-        } else{
-            var edit_button = ``; 
-        }
-        
+
         const login_popup_template = `
             <div style="z-index: 1000; position: fixed; background-color: #00000050 ; width: 100%; height: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center;"
                 id="product-container" onclick="closeProductPopUp();">

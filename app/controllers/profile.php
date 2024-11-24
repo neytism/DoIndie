@@ -97,10 +97,10 @@ class Profile extends Controller
     {
         if (session_status() == PHP_SESSION_NONE)
             session_start();
-
+        
         $user_info = $this->userModel->checkIfLoggedIn();
         $new_file_name = '';
-
+        
         $errors = array(
             'image' => '',
             'username' => '',
@@ -172,7 +172,7 @@ class Profile extends Controller
         } else {
 
             if ($user_info['username'] != $username) {
-
+                
                 if (strlen($username) < 8) {
                     $errors['username'] = '- Must be atleast 8 characters.';
                 } elseif ($this->HasSpecialCharacters($username)) {
@@ -186,7 +186,7 @@ class Profile extends Controller
             }
 
         }
-
+        
         //email validation, cant change if verified
         if($user_info['is_verified_email'] != 'true'){
             

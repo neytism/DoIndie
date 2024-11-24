@@ -102,7 +102,7 @@
                     ;
                     ?>
                     <div class="swiper-slide">
-                        <a style="cursor: pointer;" onclick="openProductPopUp(event, '<?= BASEURL; ?>', '<?= $product['product_id'] ?>', '<?= $product['product_picture_path'] ?>', '<?= $product['title'] ?>', '<?= $product['artist_display_name'] ?>', '<?= $product['product_description'] ?>', '<?= $product['views'] ?>', '<?php echo $is_logged_in ?>','<?php echo $is_self ?>' )">
+                        <a style="cursor: pointer;" onclick="openProductPopUp(event, '<?= BASEURL; ?>', '<?= $product['product_id'] ?>', '<?= $product['product_picture_path'] ?>', '<?= $product['title'] ?>', '<?= $product['artist_display_name'] ?>', '<?= $product['product_description'] ?>', '<?= $product['views'] ?>', <?php echo $is_logged_in ? 'true':'false' ?>,<?php echo $is_self ? 'true':'false'?> )">
                             <img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>"
                                 width="240" height="240" alt="<?= htmlspecialchars($product['title']) ?>"
                                 title="<?= htmlspecialchars($product['title']) ?>" />
@@ -161,7 +161,7 @@
                             ;
                             ?>
                             <div class="swiper-slide">
-                                <a href="CHANGE_LINK">
+                                <a style="cursor: pointer;" onclick="openProductPopUp(event, '<?= BASEURL; ?>', '<?= $product['product_id'] ?>', '<?= $product['product_picture_path'] ?>', '<?= htmlspecialchars($product['title']) ?>', '<?= $product['artist_display_name'] ?>', '<?= htmlspecialchars($product['product_description'])?>', '<?= $product['views'] ?>', <?php echo $is_logged_in ? 'true':'false' ?>,<?php echo $is_self ? 'true':'false'?> )">
                                     <img src="<?php echo BASEURL; ?>uploads/images/product_pictures/<?= $product['product_picture_path'] ?>"
                                         width="240" height="240" alt="<?= htmlspecialchars($product['title']) ?>"
                                         title="<?= htmlspecialchars($product['title']) ?>" />
