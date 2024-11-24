@@ -75,7 +75,7 @@
             </li> -->
             
             <!-- Support and Helpdesk -->
-            <li class="menu-header small text-uppercase">
+            <!-- <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Support and Helpdesk</span>
             </li>
             <li class="menu-item">
@@ -83,10 +83,10 @@
                 <i class="menu-icon tf-icons bx bx-message-dots"></i>
                 <div class="text-truncate" data-i18n="Basic">Concerns</div>
               </a>
-            </li>
+            </li> -->
             
             <!-- Settings -->
-            <li class="menu-header small text-uppercase">
+            <!-- <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Sitewide Settings</span>
             </li>
             <li class="menu-item">
@@ -94,7 +94,7 @@
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div class="text-truncate" data-i18n="Basic">Settings</div>
               </a>
-            </li>
+            </li> -->
             
           
           </ul>
